@@ -1,0 +1,103 @@
+.menu {
+  align-items: center;
+  display: flex;
+  list-style: none;
+  padding-inline-start: $space-xs;
+
+  &-item {
+		position: relative;
+    line-height: 1;
+
+    & + .menu-item {
+			margin-left: $space-m;
+		}
+
+    &.menu-item-has-children {
+			.menu-link {
+        display: inline-flex;
+        &:after {
+          transition: background-color $transition-button;
+          content: '';
+          width: 20px;
+          aspect-ratio: 1;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-color: var(--color-text-primary);
+          mask-size: 100%;
+          
+          mask-image: var(--icon-chevron-down-link);
+        }
+
+        &:hover {
+          &:after {
+            background-color: var(--color-brand-primary-action);
+          }
+        }
+			}
+
+      &:hover {
+        .submenu {
+          opacity: 1;
+          transform: translate(-50%, 0);
+          visibility: visible;
+        }
+      }
+		}
+
+    .current-menu-item {
+      .link {
+        color: var(--color-accent);
+        text-decoration: underline;
+      }
+    }
+
+  }
+
+  // TODO - turn into button
+  &-link {
+    color: $color-text-primary;
+    // font-size: $step--1;
+    text-decoration: none;
+    transition: color 0.2s ease-out;
+    will-change: color;
+    
+    font-size: $step--1;
+    line-height: 20px; // TODO
+    // font-size: 14px;
+
+    &:hover {
+      --link-text-color: var(--color-brand-primary-action);
+      color: var(--color-brand-primary-action);
+    }
+  }
+
+  .search-toggle {
+    padding-right: $space-xs;
+    &::before {
+      content: '';
+      position: absolute;
+      height: 1px;
+      left: 0;
+      right: $space-xs;
+      bottom: -2px;
+      background: $color-primary-action;
+      // transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      inset-block: 0;
+      right: 0;
+      background: $color-border;
+
+    }
+
+    + .menu-item {
+			margin-left: $space-xs;
+		}
+  }
+
+}

@@ -1,0 +1,42 @@
+{% if posts|length > 0 %}
+  <ul role="list" class="results" animation="fade-up-children">
+    {% for post in posts %}
+      {% set aria_labelledby_id = uuid ~ '-' ~ loop.index %}
+      <li class="result" id="{{ aria_labelledby_id }}">
+        <a href="{{ post.link|e('esc_url') }}">
+          <div class="result-content">
+            {% include 'templates/_image.twig' with {
+                image: post.thumbnail,
+                width: 340,
+                height: 254,
+                'radius': 'variable',
+            } only %}
+            <div class="result-text">
+
+              {% if post.post_type == 'contenthub' %}
+                {% set terms = post.terms('contenthub-type') %}
+                {% set terms = terms|merge(post.terms('contenthub-category')) %}
+              {% elseif post.post_type == 'page' %}
+                {% set terms = ['Page'] %}
+              {% elseif post.post_type == 'publication' %}
+                {% set terms = ['Publication'] %}
+              {% elseif post.post_type == 'events' %}
+                {% set terms = ['Event'] %}
+              {% endif %}
+
+              {% if terms %}
+                <p class="result-taxonomy">{% for term in terms %}<span>{{ loop.index == 1 ? '' : ' | '}}{{term}}</span>{% endfor %}</p>
+              {% endif %}
+              <h2 class="result-title">{{ post.title }}</h2>
+              <p class="result-description">{{ post.post_excerpt }}</p>
+            </div>
+          </div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <div class="noResults">
+    <p>No results</p>
+  </div>
+{% endif %}

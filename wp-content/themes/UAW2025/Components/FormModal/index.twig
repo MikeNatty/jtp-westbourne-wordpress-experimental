@@ -1,0 +1,24 @@
+<flynt-component name="FormModal">
+    <div 
+      class="modal-container" 
+      id="formModal" 
+      aria-hidden="true" 
+    >
+      <div class="modal-overlay">
+        <div class="modal-background" data-action="close-modal"></div>
+        <div class="form-modal">
+          <div class="close-button">
+            <button data-action="close-modal" type="button" class="button--icon" data-size="x-small" data-icon="close-large" data-button-theme="tertiary"></button>
+          </div>
+
+          {% for key, id in formIds %}
+              <div class="form" id="{{key}}">
+                {% set formShortcode = "[formidable id=" ~ id  ~ "]" %}
+                {{ formShortcode|shortcodes }}
+              </div>
+          {% endfor %}
+        </div>
+    </div>
+  </div>
+</flynt-component>
+

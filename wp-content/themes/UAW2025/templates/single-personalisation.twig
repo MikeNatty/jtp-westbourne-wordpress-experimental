@@ -1,0 +1,24 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+
+  {% for component in post.meta('pageComponents') %}
+    {# if final answer is detected in url param #}
+    {% if final_answers %}
+      {# {{dump(final_answers)}}
+      {{dump(component.selectedAnswers)}} #}
+
+      {# if the final answer in the url param matches one of the blocks selected answer #}
+      {% set has_match = final_answers|filter((int) => int in component.selectedAnswers)|length > 0 %}
+      {# {{dump(has_match)}} #}
+
+      {% if has_match %}
+        {{ renderComponent(component) }}
+      {% endif %}
+    {% else %}
+      {{ renderComponent(component) }}
+    {% endif %}
+
+  {% endfor %}
+
+{% endblock %}

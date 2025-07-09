@@ -1,0 +1,77 @@
+{% set width = 931 %}
+
+<flynt-component 
+  name="BlockVirtualTour" 
+  data-animated
+>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+  <div class="container">
+    <div class="heading-container">
+      {% if heading %}
+        <h2 class="heading {% if titleSize %}size--{{ titleSize }}{% endif %}" animation="text-reveal">{{ heading }}</h2>
+      {% endif %}
+    </div>
+
+    <div class="content-section" animation="border-fade-in-children" animation-delay="2">
+        <div class="column">
+            {% include 'templates/_cardText.twig' with {
+              title: subheading ? subheading : cards[0].title,
+              description: description ? description: cards[0].description,
+            } only %}
+        </div>
+
+        <div class="media-content column">
+
+          <div class="iframe-launcher">
+            {% if coverImage %}
+              <div class="iframe-launcher-image">
+                {% include 'templates/_image.twig' with {
+                  image: coverImage,
+                  width: width,
+                  height: 580,
+                } only %}
+              </div>
+            {% endif %}
+            <div data-ref="iframe-launcherPlayer" class="iframe-launcher-player" >
+              {% if btnText %}
+                <div data-ref="playButton" class="iframe-launcher-playButton">
+                  <button 
+                    class="button" 
+                    type="button" 
+                    data-size="x-small"
+                    data-icon="play-standalone"
+                    data-icon-gap="medium"
+                  >{{btnText}}</button>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="iframe-modal " id="iframeModal" aria-hidden="true" >
+    <div 
+      class="modal-container" 
+    >
+      <div class="modal-overlay">
+        <div class="modal-background" data-action="close-iframe-modal"></div>
+        <div class="close-button">
+          <button data-action="close-iframe-modal" type="button" class="button--icon" data-size="small" data-icon="close-large" data-button-theme="white"></button>
+        </div>
+        <div class="content-modal">
+          <div class="content-modal-inner active">
+            {% if iframeUrl %}
+              <iframe 
+                src= {{iframeUrl}}
+                frameborder="0" 
+                allowfullscreen>
+              </iframe>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</flynt-component>

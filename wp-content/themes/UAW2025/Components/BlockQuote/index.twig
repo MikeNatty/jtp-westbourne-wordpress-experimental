@@ -1,0 +1,25 @@
+<flynt-component name="BlockQuote" data-animated>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+    <div class="container">
+      <div class="content-section" animation="border-fade-in">
+        <div class="content-section-inner">
+          <div class="quote-mark" animation="fade-in" animation-delay="5">"</div>
+          {% if quote %}
+            <h2 class="quote" animation="text-reveal">{{ quote }}</h2>
+          {% endif %}
+          {% if authorName %}
+            <p 
+              class="author-name" 
+              animation="fade-up" animation-delay="3">{{ authorName }}</p>
+            {% if authorPosition %}
+              <p 
+                class="author-position" 
+                animation="fade-up"
+                animation-delay="4"
+              >{{ authorPosition }}</p>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+</flynt-component>

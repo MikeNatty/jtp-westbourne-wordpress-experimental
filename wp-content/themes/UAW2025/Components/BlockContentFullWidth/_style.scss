@@ -1,0 +1,43 @@
+flynt-component[name="blockContentFullWidth"] {
+	margin-top: var(--space-section-large);
+	padding-block: var(--space-section-small);
+	text-align: center;
+			
+	.content-section {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		@media (min-width: $breakpoint-tablet) {
+			align-items: center;
+		}
+	}
+
+	.sectionHeading {
+		font-size: $step-1;
+	}
+	
+	.heading {
+		font-size: $step-7;
+		line-height: 1;
+	}
+			
+	.description {
+		font-size: $step-1;
+		margin-inline: auto;
+		max-inline-size: 480px;
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			max-inline-size: 780px;
+		}
+	}
+	
+
+	.cta {
+		margin-top: $space-l;
+		@media (min-width: $breakpoint-tablet) {
+			margin-top: $space-xl;
+		}
+		@media (min-width: $breakpoint-desktop) {
+			margin-top: $space-2xl;
+		}
+	}
+}

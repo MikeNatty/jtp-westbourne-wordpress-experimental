@@ -1,0 +1,137 @@
+$mm_module: ".mm-btn";
+
+#{$mm_module} {
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: v.$btnSize;
+    padding: 0;
+
+    &--next,
+    [dir="rtl"] &--prev {
+        --mm-btn-rotate: 135deg;
+    }
+
+    &--prev,
+    [dir="rtl"] &--next {
+        --mm-btn-rotate: -45deg;
+    }
+
+    &--prev {
+        width: auto;
+        @extend .button;
+        @extend [data-icon];
+        @extend [data-button-theme="tertiary"];
+        @extend [data-size="small"];
+        --icon: var(--icon-chevron-left);
+
+        flex-grow: 0 !important;
+        padding-block: var(--button-padding-block);
+        padding-left: calc(20px - var(--button-border-width));
+        padding-right: calc(27px - var(--button-border-width));
+        // --button-padding-inline: calc(27px - var(--button-border-width));
+        --button-padding-block: calc(19px - var(--button-border-width));
+
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    // &--prev:after {
+    //     content: "Back";
+    //     font-size: $step-0;
+    //     color: var(--button-text-color);
+    //     line-height: 24px;
+    // }
+
+
+    &--next:after {
+        content: "";
+        // display: block;
+        // top: 0;
+        // bottom: 0;
+        // width: 8px;
+        // height: 8px;
+        // margin: auto;
+        // box-sizing: border-box;
+        // border: 2px solid var(--mm-color-icon);
+        // border-bottom: none;
+        // border-right: none;
+        // transform: rotate(var(--mm-btn-rotate));
+
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        aspect-ratio: 1;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: $color-primary-action;
+        background-size: 100%;
+        mask-size: 100%;
+        mask-image: var(--icon-chevron-right-0-right-padding);
+    }
+
+    // &--prev:before {
+    //     inset-inline-start: v.$listitemIndent + 3; // left, right for RTL
+    // }
+
+    &--next:after {
+        inset-inline-end: v.$listitemIndent + 3; // right, left for RTL
+    }
+
+    &--close {
+        &:before {
+            content: '\d7';
+            font-size: 150%;
+        }
+    }
+
+    // <button> reset
+    &reset {
+        padding: 0;
+        background: none;
+        border: none;
+
+        cursor: pointer;
+    }
+}
+
+.mmenu-back {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: auto;
+    @extend .button;
+    @extend [data-icon];
+    @extend [data-button-theme="tertiary"];
+    @extend [data-size="small"];
+    --icon: var(--icon-chevron-left);
+
+    flex-grow: 0 !important;
+    padding-block: var(--button-padding-block);
+    padding-left: calc(20px - var(--button-border-width));
+    padding-right: calc(27px - var(--button-border-width));
+    --button-padding-block: calc(19px - var(--button-border-width));
+
+    &:after {
+        content: "Back";
+        font-size: $step-0;
+        color: var(--button-text-color);
+        line-height: 24px;
+    }
+
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity $transition-quick 100ms;
+
+    .main-panel-active & {
+        transition-delay: 0ms;
+        opacity: 0;
+        pointer-events: none;
+    }
+}

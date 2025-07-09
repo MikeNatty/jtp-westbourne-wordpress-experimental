@@ -1,0 +1,52 @@
+flynt-component[name="BlockQuote"] {
+	margin-top: var(--space-section-large);
+	position: relative;
+	overflow: hidden;
+
+	
+	.content-section {
+		background: $color-background-pink;
+		border-radius: var(--variable-radius);
+
+		padding: $space-xl $space-s;
+		@media (min-width: $breakpoint-mobile-horizontal) {
+			padding: $space-3xl $space-m;
+		}
+
+		&-inner {
+			margin-inline: auto;
+			text-align: center;
+			max-width: 780px;
+		}
+	}
+
+	.quote-mark {
+		margin-inline: auto;
+		width: 32px;
+		height: 32px;
+		mask-size: 100%;
+		background: $color-primary-action;
+		mask: var(--icon-quotation-marks);
+	}
+	
+	.quote {
+		font-size: $step-4;
+		margin-top: $space-m;
+	}
+	
+	.author-name {
+		color: var(--color-text-primary);
+		font-size: $step-0;
+
+		margin-top: $space-l;
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			margin-top: $space-xl;
+		}
+	}
+	
+	.author-position {
+		color: var(--color-brand-secondary);
+		font-size: $step-0;
+		margin-top: $space-2xs;
+	}
+}

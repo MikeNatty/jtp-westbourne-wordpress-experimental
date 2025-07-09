@@ -1,0 +1,18 @@
+<flynt-component name="BlockLocationMap" data-sticky-nav-end>
+  <div class="container">
+    <div id="location-service"
+      {% if mapCategory %}
+        data-default-location-category="{{ mapCategory }}"
+      {% elseif filterSettings.defaultLocationCategory is defined and filterSettings.defaultLocationCategory %} 
+        data-default-location-category="{{ filterSettings.defaultLocationCategory.slug }}"
+      {% endif %}
+
+      {% if mapState %}
+        data-default-state="{{ mapState }}"
+      {% elseif filterSettings.defaultState is defined and filterSettings.defaultState %} 
+        data-default-state="{{ filterSettings.defaultState }}"
+      {% endif %}
+    >
+    </div>
+  </div>
+</flynt-component>

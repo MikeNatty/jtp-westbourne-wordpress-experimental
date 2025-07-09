@@ -1,0 +1,328 @@
+flynt-component[name="BlockVirtualTour"] {
+	position: relative;
+	overflow: hidden;
+
+	margin-top: var(--space-section-large);
+
+	
+
+	.content-section {
+		display: flex;
+		flex-direction: column;
+
+
+		gap: $space-xs;
+		margin-top: $space-xl;
+		flex-direction: column-reverse;
+		@media (min-width: $breakpoint-tablet) {
+			margin-top: $space-xl;
+		}
+		
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: stretch;
+		}
+
+		& > * {
+			min-width: 0;
+		}
+	}
+
+	
+	.heading-container {
+		grid-area: title;
+
+		display: flex;
+		gap: $space-l;
+		align-items: flex-end;
+		justify-content: space-between;
+		
+		flex-direction: column;
+		align-items: stretch;
+		@media (min-width: $breakpoint-tablet) {
+		align-items: flex-start;
+		}
+		@media (min-width: $breakpoint-desktop) {
+			flex-direction: row;
+			align-items: flex-end;
+		}
+
+		.button {
+			margin: 0;
+		}
+	}
+
+	.heading {
+		line-height: 1.05;
+		font-size: $step-8;
+		max-width: 1280px;
+	}
+
+	.cta {
+		flex-shrink: 0;
+	}
+
+	.column {
+		position: relative;
+		width: 100%;
+		max-width: 100%;
+	
+		border-radius: var(--variable-radius);
+
+		.card--text {
+			height: 100%;
+		}
+
+		.card {
+			height: 100%;
+		}
+	}
+
+	.card-text-top {
+		max-width: 480px;
+	}
+	.card-text-bottom {
+		max-width: 440px;
+	}
+
+	.media-content {
+		overflow: clip;
+
+		&::before {
+			border-radius: 0 0 var(--variable-radius) var(--variable-radius);
+			pointer-events: none;
+			z-index: 2;
+			content: '';
+			position: absolute;
+			inset: 0;
+			top: 50%;
+			background: linear-gradient(rgba(#000, 0%), rgba(#000, 60%));
+		}
+
+		
+		.card {
+			max-width: none;
+			@media (min-width: $breakpoint-desktop) {
+				min-height: 580px;
+			}
+			&-media {
+				height: 100%;
+				.media {
+					height: 100%;
+				}
+			}
+		}
+	}
+
+	.iframe-launcher {
+		height: 100%;
+		border-radius: var(--variable-radius);
+		overflow: clip;
+		position: relative;
+	
+		&-player {
+			inset: 0;
+			position: absolute;
+			z-index: 10;
+	
+			&[data-state='isLoading'] {
+				.video-loader {
+					display: block;
+				}
+		
+				.video-playButton {
+					display: none;
+				}
+			}
+	
+			&[data-state='isLoaded'] {
+				.video-loader,
+				.video-playButton {
+					display: none;
+				}
+		
+				iframe {
+					display: block;
+				}
+			}
+		}
+
+		&:hover {
+			.iframe-launcher-image img {
+				transform: scale(1.05);
+			}
+		}
+		
+		&-image {
+			height: 100%;
+			.media {
+				height: 100%;
+			}
+			img {
+				transition: transform $transition-slow;
+			}
+			&[data-state='isHidden'] {
+				visibility: hidden;
+			}
+		}
+	
+		iframe {
+			block-size: 100%;
+			display: none;
+			inline-size: 100%;
+			inset-block-start: 0;
+			inset-inline-start: 0;
+			position: absolute;
+		}
+
+		--button-width: 60px;
+		@media (min-width: $breakpoint-tablet) {
+			--button-width: 100px;
+		}
+
+		&-playButton {
+			block-size: 100%;
+			cursor: pointer;
+			display: block;
+			inline-size: 100%;
+			inset-block-start: 0;
+			inset-inline-start: 0;
+			outline: 0;
+			position: absolute;
+			z-index: 2;
+
+			.button {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%,-50%);
+			}
+
+			&--icon {
+
+				&::before,
+				&::after {
+					content: '';
+					inset-block-start: 50%;
+					inset-inline-start: 50%;
+					position: absolute;
+					transition: $transition-quick background-color;
+					translate: -50% -50%;
+				}
+				
+				&::before {
+					background-color: #fff;
+					block-size: var(--button-width);
+					border-radius: 50%;
+					inline-size: var(--button-width);
+				}
+				
+				&::after {
+					content: '';
+					position: absolute;
+					width: 19px;
+					height: 21px;
+					margin-left: 3px;
+					mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='19' height='21' viewBox='0 0 19 21' fill='none'%3e%3cpath d='M18.2919 9.9696C18.7776 10.25 18.7776 10.9511 18.2919 11.2315L1.89905 20.6959C1.41334 20.9764 0.806195 20.6258 0.806195 20.065L0.806196 1.13614C0.806196 0.575282 1.41334 0.224749 1.89905 0.505176L18.2919 9.9696Z' fill='%237A6BF7'/%3e%3c/svg%3e");
+					mask-size: 100%;
+					background-color: $color-primary-action;
+				}
+				&:hover {
+					&::before {
+					background-color: $color-primary-action;
+					}
+					&::after {
+					background-color: #fff;
+					}
+				}
+			}
+		}
+	}
+
+	.iframe-modal {
+		z-index: 10002;
+		.modal-container {
+			pointer-events: none;
+		}
+
+		&.active {
+			.modal-overlay {
+				transition-duration: 200ms;
+				opacity: 1;
+
+				.modal-background {
+					opacity: 1;
+					transition-delay: 0;
+					pointer-events: all;
+				}
+
+				.content-modal {
+					opacity: 1;
+					transition: opacity 800ms ease;
+					transition-delay: 200ms;
+				}
+			}
+			.modal-container {
+				pointer-events: all;
+			}
+		}
+		.modal-overlay {
+			opacity: 0;
+			transition: opacity 800ms ease;
+
+			display: grid;
+			align-items: center;
+			justify-items: center;
+
+			.modal-background {
+				content: '';
+				pointer-events: none;
+				position: fixed;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(black, 0.5);
+	
+				opacity: 0;
+				transition: opacity 800ms ease;
+				z-index: -1;
+			}
+
+		}
+
+		.content-modal {
+			position: relative;
+			width: 90%;
+			max-width: 900px;
+
+			opacity: 0;
+			transition: opacity 800ms ease;
+			
+			&-inner {
+				position: relative;
+				width: 100%;
+				height: 0;
+				overflow: hidden;
+				padding-top: math.percentage(math.div(9, 16));
+
+				iframe {
+					position: absolute;
+					display: block;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					box-shadow: 0 0 0 rgba(0, 0, 0, .6);
+					background: #000;
+				}
+			}
+		}
+
+		.close-button {
+			position: absolute;
+			top: $space-m;
+			right: $space-m;
+		}
+	}
+}

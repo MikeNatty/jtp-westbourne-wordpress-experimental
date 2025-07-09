@@ -1,0 +1,40 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+  {% set testPage = false %}
+  {% if post.parent %}
+    {% set testPage = post.parent.slug == 'design-system' %}
+  {% endif %}
+
+  {% set anchorBarEnabled = post.meta('anchorLink_enable') %}
+
+  {% if anchorBarEnabled %}
+    {% set anchorLinks = [] %}
+    {% for component in post.meta('pageComponents') %}
+      {% if component.anchorId and component.anchorTitle  %}
+        {% set anchorLinks = anchorLinks|merge({(component.anchorId): component.anchorTitle}) %}
+      {% endif %}
+    {% endfor %}
+    {{ renderComponent('BlockAnchorLinkBar', 
+      {
+        components: anchorLinks,
+        cta: post.meta('anchorLink_cta'),
+        downloads: post.meta('anchorLink_downloads'),
+      }) }}
+  {% endif %}
+
+  {% if testPage %}
+    {% for component in post.meta('pageComponents') %}
+      <div class="test-animation-container">
+        <div class="container play-button-container">
+          <button class="button play-button" data-size="xx-small">Play animation</button>
+        </div>
+        {{ renderComponent(component) }}
+      </div>
+    {% endfor %}
+  {% else %}
+    {% for component in post.meta('pageComponents') %}
+      {{ renderComponent(component) }}
+    {% endfor %}
+  {% endif %}
+{% endblock %}

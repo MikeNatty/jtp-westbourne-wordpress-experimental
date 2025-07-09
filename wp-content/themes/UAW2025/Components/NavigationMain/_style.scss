@@ -1,0 +1,74 @@
+flynt-component[name='NavigationMain'] {
+  display: none;
+  font-size: var(--font-size-body-small);
+  position: relative;
+
+  // --navigation-height: 130px;
+  //  block-size: var(--navigation-height);
+
+  @media (min-width: $breakpoint-desktop) {
+    display: block;
+  }
+
+  .navigation {
+    position: relative;
+    z-index: 10002;
+    background-color: var(--color-background);
+    border-block-end: solid 1px var(--color-border);
+
+    // block-size: var(--navigation-height);
+    // inset-block-start: 0;
+    //  inset-inline: 0;
+
+    .admin-bar & {
+      inset-block-start: var(--wp-admin--admin-bar--height);
+    }
+  }
+
+  .container {
+    block-size: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    // padding: $space-m $space-l $space-s;
+    padding: $space-m var(--container-spacing) $space-s;
+  }
+
+  @import 'Partials/search';
+  @import 'Partials/logo';
+  @import 'Partials/menu';
+  @import 'Partials/submenu';
+
+
+
+  &.search-active {
+    .search {
+      pointer-events: all;
+      .container {
+      }
+      &-inner {
+        clip-path: inset(0% 0% 0% 0%);
+
+      }
+      .close-button {
+        opacity: 1;
+        transition-delay: 150ms;
+      }
+    }
+    .page-overlay {
+      opacity: 0.5;
+      transition-duration: 500ms;
+      pointer-events: all;
+    }
+    .search-toggle {
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+  }  
+}
+
+
+.relevanssi-live-search-results {
+  transform: translateY(calc(var(--navigation-height) * -1));
+}

@@ -1,0 +1,84 @@
+{% set loadInt = variant == 1 ? 6 : 10  %}
+<flynt-component 
+  name="BlockAccordion" 
+  data-variant="{{ variant }}" 
+  data-load-int="{{loadInt}}" 
+  data-animated
+>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+  <div class="container">
+    <h2 class="heading" animation="text-reveal">{{ heading }}</h2>
+    <div class="content-section">
+      <div class="content-section-text" animation="border-fade-in" animation-delay="2">
+        {% if sectionHeading %}
+          <p class="section-heading">{{ sectionHeading }}</p>
+        {% endif %}
+        {% if description %}
+          <p class="description">{{ description }}</p>
+        {% endif %}
+        {% include 'templates/_cta.twig' with {
+          cta: cta,
+          size: 'small'
+        } only %}
+      </div>
+      <div class="content-section-accordion">
+        {% if panels %}
+          <div class="panels" animation="fade-up-children" animation-delay="3">
+            {% for item in panels %}
+              {% if item.heading and item.contentHtml %}
+                <div class="panels-row{% if loop.index > loadInt %} is-hidden{% endif %}" aria-expanded="false">
+                  <div class="panels-heading">
+                    <div class="expand-icon">"</div>
+                    {% if item.heading %}
+                      <h3 class="panels-heading-text">
+                        {{ item.heading }}
+                      </h3>
+                    {% endif %}
+                    {% if variant == "1" and item.iconImage %}
+                      <div class="hide-mobile">
+                        {% include 'templates/_image.twig' with {
+                          'image': item.iconImage,
+                          'width': 120,
+                          'height': 120,
+                        } only %}
+                      </div>
+                    {% endif %}
+                    <button data-refs="toggle" title="Toggle Content" class="trigger toggle-button" type="button" aria-expanded="false" aria-controls="content-{{ uuid ~ '-' ~ loop.index }}"></button>
+                  </div>
+                  <div class="panels-content" aria-hidden="true" id="content-{{ uuid ~ '-' ~ loop.index }}">
+                    <div class="panels-content-inner">
+                      {% if item.contentHtml %}
+                        {{ item.contentHtml|e('wp_kses_post') }}
+                      {% endif %}
+                      {% if variant == "1" and item.cta %}
+                        {% include 'templates/_cta.twig' with {
+                          cta: item.cta,
+                          size: 'small',
+                          class: 'panels-cta'
+                        } only %}
+                      {% endif %}
+
+                      {% if variant == "1" and item.image %}
+                        {% include 'templates/_image.twig' with {
+                          'image': item.image,
+                          'width': 837,
+                          'height': 471,
+                          'radius': 'variable',
+                        } only %}
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% if panels|length > loadInt %}
+          <div class="load-more">
+            <button class="button" data-ref="loadMore" data-button-theme="tertiary" data-size="small">{{loadMoreText}}</button>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</flynt-component>

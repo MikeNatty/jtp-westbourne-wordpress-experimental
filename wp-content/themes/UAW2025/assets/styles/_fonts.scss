@@ -1,0 +1,18 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Studio6';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/Studio6-Regular.woff2') format('woff2'),
+  url('../assets/fonts/Studio6-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Studio6 Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arial');
+  ascent-override: 74.55%;
+  descent-override: 18.15%;
+  line-gap-override: 14.85%;
+  size-adjust: 107.87%;
+}

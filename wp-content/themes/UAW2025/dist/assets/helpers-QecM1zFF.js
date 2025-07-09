@@ -1,0 +1,1 @@
+function l(c,t=!1,o={}){const r=t?"querySelectorAll":"querySelector",s=t?"data-refs":"data-ref";return new Proxy({},{get(n,e){if(!n[e]){const a=o[e]??`[${s}="${e}"]`;n[e]=c[r](a),n[e]}return n[e]}})}function f(c,t='script[type="application/json"]',o="textContent"){let r={};try{r=JSON.parse(c.querySelector(t)[o])}catch(s){console.error(s)}return r}export{l as b,f as g};

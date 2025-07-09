@@ -1,0 +1,77 @@
+<flynt-component name="PostFilter" data-post-type="{{ postType }}" data-sticky-nav>
+    <div class="container" data-pinned-content>
+
+      <div class="filter-bar">
+        {% if taxonomyPrimaryTerms|length > 0 %}
+          <div class="select-wrapper">
+            <label for="">{{taxonomyPrimary}}:</label>
+            <select id="content-type-filter" aria-label="">
+                <option value="">All</option>
+                {% for option in taxonomyPrimaryTerms %}
+                  {% if option.count!= 0 %}
+                    <option value="{{option.slug}}">{{option.name}}</option>
+                  {% endif %}
+                {% endfor %}
+            </select>
+          </div>
+        {% endif %}
+
+        <div class="select-wrapper">
+          <label for="">Sort by:</label>
+          <select id="sort-by-filter" aria-label="Sort by">
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+          </select>
+        </div>
+
+        {% if taxonomySecondaryTerms|length > 0 %}
+          <div class="select-wrapper">
+            <label for="">Category:</label>
+            <select id="category-filter" aria-label="">
+              <option value="">All</option>
+              {% for option in taxonomySecondaryTerms %}
+                {% if option.count!= 0 %}
+                  <option value="{{option.slug}}">{{option.name}}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+          </div>
+        {% endif %}
+
+        <button
+          type="button"
+          id="reset-filter"
+          class="button--icon button--circle"
+          data-icon="reset-01"
+          aria-label="Reset filters"
+          data-button-theme="white"
+        >
+          Reset filters
+        </button>
+
+        <button
+          type="button"
+          id="filter-button"
+          class="button--icon button--circle"
+{#          data-icon="--icon-filters-01"#}
+          data-icon="filters-02"
+          aria-label="Show filters"
+          data-button-theme="white"
+        >
+          Reset filters
+        </button>
+
+        <button
+          type="button"
+          id="clear-filters-button"
+          class="button"
+          aria-label="Clear"
+          data-button-theme="white"
+        >
+          Reset filters
+        </button>
+
+      </div>
+
+    </div>
+</flynt-component>

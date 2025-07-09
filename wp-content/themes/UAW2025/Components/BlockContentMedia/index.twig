@@ -1,0 +1,124 @@
+{# {% set isCarousel = image|length > 1 %} #}
+
+{% set width
+  = variant == '1' ? 789
+  : 931 %}
+
+{% if layout == '1' %}
+  <flynt-component
+    name="BlockContentMedia"
+    data-variant="{{ variant }}"
+    data-padding="{{ padding }}"
+    data-color="{{bgColor}}"
+    data-animated
+  >
+    {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+    <div class="container">
+      <div class="content-section" animation="border-fade-in">
+        <div class="content-section-text">
+          {% if label %}
+            <p class="pill" data-pill-theme="secondary">{{ label }}</p>
+          {% endif %}
+          {% if title %}
+            <h1 class="title" animation="text-reveal">{{ title }}</h1>
+          {% endif %}
+          {% if subtitle %}
+            <div class="subtitle" animation="fade-up" animation-delay="2">
+              {{ subtitle|e('wp_kses_post') }}
+            </div>
+          {% endif %}
+
+          <div class="cta-container">
+            {% include 'templates/_cta.twig' with {
+              cta: cta,
+            } only %}
+            {% include 'templates/_cta.twig' with {
+              cta: cta2,
+              theme: bgColor == 'pink' ? 'tertiary' : 'secondary'
+            } only %}
+          </div>
+
+        </div>
+
+        {#  Image #}
+        {% if mediaTypeAlt == 'image' %}
+          <div class="content-section-media">
+            {% include 'templates/_image.twig' with {
+              'image': image[0],
+              'width': 636,
+              'height': 636,
+              'radius': 'variable',
+              'animate': true,
+              "delay": 3,
+            } only %}
+          </div>
+
+        {# Video Player #}
+        {% elseif mediaTypeAlt == 'videoPlayer' %}
+          <div class="video">
+            {% if coverImage %}
+              <div data-ref="coverImage" class="video-image">
+                {% include 'templates/_image.twig' with {
+                  image: coverImage,
+                  width: width,
+                  height: 580,
+                } only %}
+              </div>
+            {% endif %}
+            <div data-ref="videoPlayer" class="video-player" >
+              {{ oembed }}
+              <div class="video-loader"></div>
+              {% if btnText %}
+                <div data-ref="playButton" class="video-playButton">
+                  <button
+                    class="button"
+                    type="button"
+                    data-size="x-small"
+                    data-icon="play-standalone"
+                    data-icon-gap="medium"
+                    aria-label="{{ labels.videoPlayButtonAriaLabel|e }}"
+                  >{{btnText}}</button>
+                </div>
+              {% else %}
+                <button data-ref="playButton" class="video-playButton video-playButton--icon" type="button" aria-label="{{ labels.videoPlayButtonAriaLabel|e }}"></button>
+              {% endif %}
+            </div>
+          </div>
+        {# Video Background #}
+        {% elseif mediaTypeAlt == "videoBackground" %}
+          <div class="background-video">
+            {% if videoFile %}
+              <video data-ref="videoBackground" data-src="{{ videoFile }}" type="video/mp4" autoplay loop muted></video>
+            {% endif %}
+          </div>
+          {% if videoFile.caption and showCaptions %}
+            <div class="caption-container">
+              <p>{{videoFile.caption}}</p>
+            </div>
+          {% endif %}
+
+        {% endif %}
+      </div>
+    </div>
+  </flynt-component>
+{% else %}
+  {{
+    renderComponent(
+      'BlockContentCarousel',
+      {
+        heading: title,
+        subheading: label,
+        description: subtitle,
+        mediaType: mediaType,
+        gallery: image,
+        variant: "1",
+        bgColor: bgColor,
+        cta: cta,
+        videoFile: videoFile,
+        coverImage: coverImage,
+        oembed: oembed,
+        btnText: btnText,
+      }
+    )
+  }}
+{% endif %}

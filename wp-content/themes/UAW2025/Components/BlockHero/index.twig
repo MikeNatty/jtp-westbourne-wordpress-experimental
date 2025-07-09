@@ -1,0 +1,69 @@
+<flynt-component name="BlockHero" data-variant="{{ variant }}" data-animated>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+    <div class="container">
+      <div class="content-section">
+        <div class="content-section-text">
+          <div animation="fade-up" animation-delay="5">
+          {% if showBreadcrumbs and post.parent %}
+            {% include 'templates/_breadcrumb.twig' with {post: post} only %}
+          {% elseif parentID %}
+            {% include 'templates/_breadcrumb.twig' with
+              {
+                post: post,
+                parentID: parentID
+            } only %}
+          {% endif %}
+          </div>
+
+          {% if title %}
+            <h1 class="title size--{{ titleSize }}" animation="text-reveal">{{ title }}</h1>
+          {% endif %}
+          {% if subtitle %}
+            <p class="subtitle" animation="fade-up" animation-delay="4">{{ subtitle }}</p>
+          {% endif %}
+
+          <div class="cta-container" animation="fade-up" animation-delay="4">
+            {% include 'templates/_cta.twig' with {
+              cta: cta,
+              size: "small"
+            } only %}
+            {% include 'templates/_cta.twig' with {
+              cta: cta2,
+              size: "small",
+              theme: 'secondary'
+            } only %}
+          </div>
+
+          {% if image2 and variant == '2' %}
+              <div class="image-container-2 desktop-only">
+                {% include 'templates/_image.twig' with {
+                  'image': image2,
+                  'width': 270,
+                  'height': 270,
+                  'radius': 32,
+                  'animate': true,
+                  'delay': 3,
+                } only %}
+              </div>
+          {% endif %}
+        </div>
+
+        <div id="location-search"></div>
+
+
+        {% if image %}
+          <div class="content-section-media">
+            <div class="image-container">
+              {% include 'templates/_image.twig' with {
+                'image': image,
+                'width': 837,
+                'radius': 'variable',
+                'animate': true,
+              } only %}
+            </div>
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+</flynt-component>

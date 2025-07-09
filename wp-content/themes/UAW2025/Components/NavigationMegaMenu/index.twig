@@ -1,0 +1,10 @@
+{# <flynt-component load:on="idle" load:on:media="(min-width: 1024px)" name="NavigationMegaMenu"> #}
+<flynt-component name="NavigationMegaMenu" data-sticky-nav>
+  <nav class="navigation" aria-label="{{ labels.ariaLabel|e }}" data-pinned-content>
+    <div class="container">
+      {% if menu %}
+        {% include 'Partials/_menu.twig' with {'items': menu.items, 'gallery': gallery} only %}
+      {% endif %}
+    </div>
+  </nav>
+</flynt-component>

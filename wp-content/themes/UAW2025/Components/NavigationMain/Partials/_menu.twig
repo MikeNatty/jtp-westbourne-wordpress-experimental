@@ -1,0 +1,15 @@
+<ul class="menu">
+
+    <li class="menu-item search-toggle">
+      {# <button class="menu-link link" aria-label="Toggle search" data-icon="phone" title="{{ searchTitle }}">{{ searchTitle }}</button> #}
+      <button class="menu-link link button--reversed" aria-label="Toggle search" data-icon="search">{{ searchTitle }}</button>
+    </li>
+  {% for item in items %}
+    <li class="menu-item {{ item.classes | join(' ') }}">
+      <a class="menu-link" href="{{ item.link|e('esc_url') }}" {{- item.is_external or item.is_target_blank ? ' target="_blank" rel="noopener noreferrer"' -}}>{{ item.title }}</a>
+      {% if item.children %}
+        {% include 'Partials/_submenu.twig' with { 'items': item.children } only %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

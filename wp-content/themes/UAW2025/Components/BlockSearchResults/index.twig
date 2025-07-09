@@ -1,0 +1,29 @@
+<flynt-component name="BlockSearchResults" class="componentSpacing" data-animated>
+  <div class="container">
+    {% if title %}<h1 class="title">Search results for "{{title}}"</h1>{% endif %}
+
+    <div class="search-container">
+      <form class="searchBar" role="search" action="/">
+        <div class="search-wrapper">
+          <input class="input searchBar-input" id="searchForm-input-text" type="search" placeholder="Search" name="s" value="{{ searchQuery }}">
+          <button class="search-submit button--icon button--circle searchBar-button" type="submit" data-icon="search" data-button-theme="primary" data-size="small" aria-label="Submit search">Search</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="filters">
+      {% for item in filters %}
+        <a class="button {{ filter == 'all' and loop.index == 1 or filter == item.param  ? 'selected' : ''}}" href="/?s={{searchQuery}}{{item.url}}{{ item.param ?? '' }}" title="{{item.label}}" data-button-theme="white" data-size="small">{{ item.label }}</a>
+      {% endfor %}
+    </div>
+
+    {% include 'Partials/_results.twig' %}
+
+    {% set pagination = posts.pagination %}
+    {% if pagination.pages %}
+      {% include 'templates/_pagination.twig' with {
+        'pagination': pagination,
+      } only %}
+    {% endif %}
+  </div>
+</flynt-component>

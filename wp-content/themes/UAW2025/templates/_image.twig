@@ -1,0 +1,41 @@
+<figure class="media" 
+  {% if radius == 'variable' %}
+    style="border-radius: var(--variable-radius);"
+  {% elseif radius %}
+    style="border-radius: {{radius}}px"
+  {% endif %}
+  {% if animate %}
+    animation="border-fade-in"
+  {% endif %}
+  {% if delay %}
+    animation-delay="{{delay}}"
+  {% endif %}
+  >
+
+  {% if image and image != 'placeholder' %}
+    {# if no height defined then use the aspect ratio of the image #}
+    {% if not height %}
+      {% set height = image ? (width / image.aspect|default(1))|round : width %}
+    {% endif %}
+    <img 
+      src="{{ image.src|resizeDynamic(width) }}" 
+      srcset="{{ placeholderImage(width, height) }}" 
+      data-srcset="
+          {{ image.src|resizeDynamic(width * 2, height * 2) }} {{ width}}w,
+          {{ image.src|resizeDynamic(width, height) }} {{ width / 2 }}w"
+      data-sizes="auto"
+      width="{{ width }}"
+      height="{{ height }}"
+      alt="{{ image.alt|e }}"
+      class="lazyload lazyload--fade"
+    />
+  {% else %}
+      <img 
+        src="{{ placeholderImage(width, height) }}"
+        width="{{ width }}"
+        height="{{ height }}"
+        alt="" 
+        class="placeholder"
+      />
+  {% endif %}      
+</figure>

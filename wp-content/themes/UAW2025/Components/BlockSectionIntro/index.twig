@@ -1,0 +1,22 @@
+<flynt-component name="BlockSectionIntro" data-animated>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+    <div class="container">
+      <div class="content-section">
+        <div class="lhs">
+          {% if sectionHeading %}
+            <p class="sectionHeading" animation="fade-up" animation-delay="1">{{ sectionHeading }}</p>
+          {% endif %} 
+        </div>
+        <div class="rhs">
+          {% if heading %}
+            <h2 class="heading" animation="text-reveal">{{ heading }}</h2>
+          {% endif %} 
+          <div class="description" animation="fade-up" animation-delay="2">
+            {% if contentHtml %}     
+              {{ contentHtml|e('wp_kses_post') }}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+</flynt-component>

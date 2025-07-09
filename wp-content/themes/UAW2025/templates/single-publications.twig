@@ -1,0 +1,60 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+  {# {{post.field_contenthubOpitons_oembed}} #}
+      {% if post.terms('contenthub-type') %}
+        {% include 'templates/_taxonomyPills.twig' with {
+            taxonomies: post.terms('contenthub-type'),
+            theme: "tertiary",
+        } only %}
+      {% endif %}
+
+      {{
+        renderComponent(
+          'BlockHeading',
+          {
+            title: post.title
+          }
+        )
+      }}
+      {{
+        renderComponent(
+          'BlockMedia',
+          {
+            gallery: [post.field_contenthubOpitons_mainImage ? post.field_contenthubOpitons_mainImage : post.thumbnail],
+            variant: post.field_contenthubOpitons_oembed ? "videoPlayer" : "carousel",
+            oembed: post.field_contenthubOpitons_oembed,
+            coverImage: post.field_contenthubOpitons_mainImage ? post.field_contenthubOpitons_mainImage : post.thumbnail,
+          }
+        )
+      }}
+
+      {% if post.terms('contenthub-category') %}
+        {% include 'templates/_taxonomyPills.twig' with {
+            taxonomies: post.terms('contenthub-category'),
+            theme: "tertiary",
+            size: "medium",
+        } only %}
+      {% endif %}
+
+      {{ post.content }}
+
+      {% include 'templates/_socialSharing.twig' with {
+          post: post,
+          size: "medium",
+      } only %}
+
+      {{
+        renderComponent(
+          'BlockCardCarousel',
+          {
+            heading: "Recent content",
+            contentSource: 'post',
+            filter: 'recent',
+            post: post,
+          }
+        )
+      }}
+     
+  {# </article> #}
+{% endblock %}

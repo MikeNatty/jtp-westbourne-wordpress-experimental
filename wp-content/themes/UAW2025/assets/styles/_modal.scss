@@ -1,0 +1,107 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10002;
+
+    .close-button {
+        z-index: 10001;
+        position: absolute;
+        top: $space-s;
+        right: $space-s;
+    }
+}
+
+.modal-background {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(black, 0.5);
+
+    opacity: 0;
+    transition: opacity $transition;
+
+    .active & {
+        opacity: 1;
+    }
+}
+
+.form {
+    height: 100%; 
+    overflow: scroll;
+
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
+
+.modal-container.active {
+    .form-modal {
+        // clip-path: inset(0% round 20px);
+        opacity: 1;
+    }
+}
+
+.form-modal {
+    position: absolute;
+    inset: 16px;
+    background-color: #fff;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+
+    // clip-path: inset(3% round 20px);
+    opacity: 0;
+    transition: opacity $transition-quick;
+    
+    @media (min-width: $breakpoint-tablet) {
+        inset: auto;
+        width: 80%;
+        top: 16px;
+        right: 16px;
+        bottom: 16px;
+        max-width: 480px;
+    }
+    @media (min-width: $breakpoint-desktop) {
+        width: 60%;
+        max-width: 658px;
+    }
+
+
+
+
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        padding: 16px 16px 0 $space-m;
+        @media (min-width: $breakpoint-tablet) {
+            padding: 16px 16px 0 $space-l;
+        }
+        @media (min-width: $breakpoint-desktop) {
+            padding: 16px 16px 0 $space-xl;
+            align-items: flex-start;
+        }
+
+        & + div {
+            overflow: auto;
+            flex-grow: 1;
+
+            padding-inline: $space-m;
+            padding-top: $space-l;
+            
+            @media (min-width: $breakpoint-tablet) {
+                padding-inline: $space-l;
+                padding-top: $space-s;
+            }
+            @media (min-width: $breakpoint-desktop) {
+                padding-inline: $space-xl;
+                padding-top: $space-xl;
+            }
+        }
+    }
+}
+

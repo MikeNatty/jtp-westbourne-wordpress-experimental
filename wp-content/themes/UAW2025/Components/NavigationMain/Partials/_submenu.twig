@@ -1,0 +1,9 @@
+<div class="submenu">
+  <ul class="submenu-list">
+    {% for item in items %}
+      <li class="submenu-item {{ item.classes | join(' ') }}">
+        <a class="submenu-link" href="{{ item.link|e('esc_url') }}" {{- item.is_external or item.is_target_blank ? ' target="_blank" rel="noopener noreferrer"' -}}>{{ item.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

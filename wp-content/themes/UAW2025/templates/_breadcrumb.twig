@@ -1,0 +1,14 @@
+{% if parentID %}
+    {% set parent = Post(parentID) %}
+    {% if parent %}
+        <p class="breadcrumbs"><span><a href="{{ parent.link }}" title="{{ parent.title }}">{{ parent.title }}</a></span> <span>{{ post.title }}</span></p>
+    {% endif %}
+{% elseif post %}
+    {% macro renderParents(postItem) %}
+        {% if postItem.parent %}
+        {{ _self.renderParents(postItem.parent) }}
+            <span><a href="{{ postItem.parent.link }}" title="{{ postItem.parent.title }}">{{ postItem.parent.title }}</a></span>
+        {% endif %}
+    {% endmacro %}
+    <p class="breadcrumbs">{{ _self.renderParents(post) }} <span>{{ post.title }}</span></p>
+{% endif %}

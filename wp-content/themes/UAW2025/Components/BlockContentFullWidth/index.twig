@@ -1,0 +1,23 @@
+<flynt-component name="blockContentFullWidth" data-animated>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+    <div class="container">
+      <div class="content-section">
+        {% if sectionHeading %}
+          <h3 class="sectionHeading" animation="fade-up" animation-delay="2">{{ sectionHeading }}</h3>
+        {% endif %} 
+        {% if heading %}
+          <h2 class="heading" animation="text-reveal">{{ heading }}</h2>
+        {% endif %} 
+        {% if contentHtml %}
+          <div class="description" animation="fade-up" animation-delay="3">
+            {{ contentHtml|e('wp_kses_post') }}
+          </div>
+        {% endif %} 
+        <div animation="fade-up" animation-delay="5">
+          {% include 'templates/_cta.twig' with {
+            cta: cta,
+          } only %}
+        </div>
+      </div>
+    </div>
+</flynt-component>

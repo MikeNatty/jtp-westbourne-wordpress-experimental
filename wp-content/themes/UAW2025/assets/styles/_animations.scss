@@ -1,0 +1,199 @@
+/**
+ * Animations
+ */
+
+// data-animated
+
+// animation="text-reveal"
+
+// animation="fade-up"
+// animation="fade-in"
+// animation="border-fade-in"
+
+// animation="fade-up-children"
+// animation="fade-in-children" 
+// animation="border-fade-in-children"
+
+// animation-delay="2"
+
+
+:root {
+  --animation-delay: 0ms;
+}
+$custom-ease-out: cubic-bezier(0.23,1,0.32,1);
+
+[animation="text-reveal"] {
+  [data-animated] & {
+    opacity: 0;
+  }
+  
+  .active & {
+    opacity: 1;
+  }
+
+
+  .line-parent {
+    overflow: clip;
+  }
+  [data-animated] & {
+    opacity: 0;
+    .line-child {
+      transform: translateY(100%);
+    }
+  }
+  
+  .active & {
+    opacity: 1;
+    .line-parent {
+      @for $i from 1 through 80 {
+        &:nth-child(#{$i}n) {
+          .line-child {
+            // line timing
+            // transition-delay: #{$i * 0.1}s;
+
+            // word timing 
+            transition-delay: #{$i * 0.02}s;
+          }
+        }
+      }
+    }
+    .line-child {
+      transition: transform 1.4s $custom-ease-out;
+      transform: translateY(0);
+    }
+  }
+}
+
+[animation="fade-up"] {
+  [data-animated] & {
+    opacity: 0;
+  }
+  
+  .active & {
+    animation: fadeInUp forwards $transition-slow;
+  }
+}
+
+[animation="fade-in"] {
+  [data-animated] & {
+    opacity: 0;
+  }
+  
+  .active & {
+    animation: fadeIn forwards $transition-slow;
+  }
+}
+
+[animation="fade-in-children"] {
+  [data-animated] & {
+    & > * {
+      opacity: 0;
+    }
+  }
+  
+  .active & {
+    & > * {
+      animation: fadeIn forwards $transition-slow;
+
+      @for $i from 1 through 10 {
+				&:nth-child(#{$i}n) {
+					animation-delay: #{$i * 0.15}s;
+				}
+			}
+    }
+  }
+}
+
+[animation="fade-up-children"] {
+  [data-animated] & {
+    & > * {
+      opacity: 0;
+    }
+  }
+  
+  .active & {
+    & > * {
+      animation: fadeInUp forwards $transition-slow;
+
+      @for $i from 1 through 10 {
+				&:nth-child(#{$i}n) {
+					animation-delay: calc( var(--animation-delay) + #{$i * 0.15}s);
+				}
+			}
+    }
+  }
+}
+
+[animation="border-fade-in-children"] {
+  [data-animated] & {
+    & > * {
+      opacity: 0;
+    }
+  }
+  
+  .active & {
+    & > * {
+      animation: borderFadeIn forwards $transition-slow;
+
+      @for $i from 1 through 10 {
+				&:nth-child(#{$i}n) {
+					animation-delay: #{$i * 0.15}s;
+				}
+			}
+    }
+  }
+}
+
+
+
+[animation="border-fade-in"] {
+  [data-animated] & {
+    opacity: 0;
+  }
+  
+  .active & {
+    animation: borderFadeIn forwards $transition-slow;
+  }
+}
+
+
+@keyframes borderFadeIn {
+	from {
+		opacity: 0;
+    clip-path: inset(5% round var(--variable-radius));
+	}
+	to {
+		opacity: 1;
+    clip-path: inset(0% round var(--variable-radius));
+	}
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fadeInUp {
+	from {
+		transform: translate(0, 10px);
+		opacity: 0;
+	}
+	to {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+}
+
+
+@for $i from 1 through 10 {
+  [animation-delay="#{$i}"] {
+    
+    .active & {
+      --animation-delay: calc(#{$i} * 150ms);
+      animation-delay: calc(150ms * #{$i});
+    }
+  }
+}
+

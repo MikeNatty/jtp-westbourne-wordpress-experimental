@@ -1,0 +1,155 @@
+{% set isCarousel = gallery|length > 1 %}
+<flynt-component 
+  name="BlockMedia" 
+  data-{{ isCarousel ? 'carousel' : 'image' }} 
+  data-variant="{{ variant }}"
+  data-animated
+>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+    <div class="container">
+      {% if heading %}
+        <h2 class="heading" animation="text-reveal">{{ heading }}</h2>
+      {% endif %} 
+      <div class="media-section">
+        {% if variant == "carousel" %}
+          {% if isCarousel %}
+            {% if showCaptions %}
+              <div class="caption-container" animation="fade-up" animation-delay="3">
+                <swiper-container 
+                  id="caption-carousel-{{uuid}}"
+                  css-mode="true"
+                >
+                  {% for item in gallery %}
+                    <swiper-slide>
+                      {% if item.caption %}
+                        <p class="caption">
+                          {{item.caption}}
+                        </p>
+                      {% endif %}
+                    </swiper-slide>
+                  {% endfor %}
+                </swiper-container>
+              </div>
+            {% endif %}
+
+            <div class="carousel-container" animation="border-fade-in" animation-delay="2">
+              {# {% if carouselOptions.showButtons %} #}
+                <div class="carousel-container-controls">
+                  <button type="button" class="button--icon prev-{{uuid}}" data-icon="chevron-left" data-button-theme="white" alt="Previous Slide">Previous Slide</button>
+                  <button type="button" class="button--icon next-{{uuid}}" data-icon="chevron-right" data-button-theme="white" alt="Next Slide">Next Slide</button>
+                </div>
+              {# {% endif %} #}
+              <swiper-container 
+                class="main-carousel" 
+                {# {% if carouselOptions.showButtons %} #}
+                  navigation-next-el=".next-{{uuid}}" 
+                  navigation-prev-el=".prev-{{uuid}}"
+                {# {% endif %} #}
+                pagination="true"
+                grab-cursor="true"
+                {% if carouselOptions.showThumbnails %}
+                  thumbs-swiper="#thumbnail-carousel-{{uuid}}"
+                {% endif %}
+                {% if showCaptions %}
+                  controller-control="#caption-carousel-{{uuid}}"
+                {% endif %}
+                {% if carouselOptions.autoplay %}
+                  autoplay-delay="{{carouselOptions.autoplaySpeed}}"
+                {% endif %}
+              >
+                {% for item in gallery %}
+                  <swiper-slide>
+                    {% include 'templates/_image.twig' with {
+                      'image': item, 
+                      'width': 1593,
+                      'height': 768,
+                    } only %}
+                  </swiper-slide>
+                {% endfor %}
+              </swiper-container>
+            </div>
+
+            {% if carouselOptions.showThumbnails %}
+              <div class="thumbnail-container">
+                <swiper-container 
+                  id="thumbnail-carousel-{{uuid}}" 
+                  class="thumbnail-carousel" 
+                  space-between="9" 
+                  slides-per-view="5" 
+                  free-mode="true"
+                  watch-slides-progress="true"
+                  animation="fade-in-children"
+                  animation-delay="3"
+                >
+                  {% for item in gallery %}
+                    <swiper-slide>
+                      {% include 'templates/_image.twig' with {
+                        'image': item, 
+                        'width': 312,
+                        'height': 208,
+                      } only %}
+                    </swiper-slide>
+                  {% endfor %}
+                </swiper-container>
+              </div>
+            {% endif %}
+          {% else %}
+            <div class="content-section-media">
+              {% include 'templates/_image.twig' with {
+                'image': gallery[0], 
+                'width': 1593,
+                'height': 768,
+                'radius': 'variable',
+                'animate': true,
+                'delay': 2,
+              } only %}
+            </div>
+            {% if gallery[0].caption and showCaptions %}
+              <div class="caption-container" animation="fade-up" animation-delay="3">
+                <p>{{gallery[0].caption}}</p>
+              </div>
+            {% endif %}        
+          {% endif %} 
+
+        {# Video Player #}
+        {% elseif variant == "videoPlayer" %}   
+          <div class="video" animation="border-fade-in" animation-delay="2">
+            {% if coverImage %}
+              <div data-ref="coverImage" class="video-image">
+                {% include 'templates/_image.twig' with {
+                  image: coverImage,
+                  width: 1593,
+                  height: 768,
+                } only %}
+              </div>
+            {% endif %}
+            <div data-ref="videoPlayer" class="video-player" >
+              {{ oembed }}
+              <div class="video-loader"></div>
+              <button data-ref="playButton" class="video-playButton" type="button" aria-label="{{ labels.videoPlayButtonAriaLabel|e }}"></button>
+            </div>
+          </div>
+
+          {% if coverImage.caption and showCaptions %}
+            <div class="caption-container" animation="fade-up" animation-delay="3">
+              <p>{{coverImage.caption}}</p>
+            </div>
+          {% endif %}  
+
+        {# Video Background #}
+        {% elseif variant == "videoBackground" %} 
+          <div class="background-video" animation="border-fade-in" animation-delay="2">
+            {% if videoFile %}
+              <video data-ref="videoBackground" data-src="{{ videoFile }}" type="video/mp4" autoplay loop muted></video>
+            {% endif %}
+          </div>
+          {% if videoFile.caption and showCaptions %}
+            <div class="caption-container" animation="fade-up" animation-delay="3">
+              <p>{{videoFile.caption}}</p>
+            </div>
+          {% endif %}  
+        {% endif %}      
+
+      </div>
+    </div>
+</flynt-component>

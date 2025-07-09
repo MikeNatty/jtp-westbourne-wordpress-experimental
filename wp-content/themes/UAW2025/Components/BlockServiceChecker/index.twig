@@ -1,0 +1,31 @@
+<flynt-component name="BlockServiceChecker" data-animated>
+  <div class="container" animation="fade-up">
+    <div class="service-checker">
+      <header class="service-checker-header">
+        <h2 class="title">{{ heading ?? 'Find services near you' }}</h2>
+        <p class="subtitle">{{ description ?? 'Search by suburb, postcode or state' }}</p>
+      </header>
+      <div id="service-checker"></div>
+      <div class="service-checker-feedback-form">
+        {% if feedbackFormID %}
+          <div class="content">
+            <h3>{{ errorNoResultsHeading }}</h3>
+            {% if errorNoResultsSubHeading %}
+              <p>{{ errorNoResultsSubHeading }}</p>
+            {% endif %}
+
+            {% set formShortcode = "[formidable id=" ~ feedbackFormID  ~ "]" %}
+            {{ formShortcode|shortcodes }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="service-checker-service-area-message">
+        {% if errorOutsideServiceArea %}
+          <div class="content">
+            <h5>{{ errorOutsideServiceArea }}</h5>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</flynt-component>

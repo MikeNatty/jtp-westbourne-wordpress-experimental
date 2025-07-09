@@ -1,0 +1,69 @@
+flynt-component[name="BlockPersonalisationLauncher"] {
+	margin-top: var(--space-section-large);
+	text-align: center;
+
+	.content-section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background: #fff;
+		border-radius: var(--variable-radius);
+
+		padding: $space-xl $space-s;
+
+		@media (min-width: $breakpoint-tablet) {
+			padding: $space-xl;
+		}
+
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			padding: var(--space-section-small) 0;
+			background: transparent;
+		}
+	}
+
+
+	.subtitle {
+		position: relative;
+		font-size: $step-1;
+		--flow-space: var(--space-s);
+
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			--flow-space: var(--space-m);
+		}
+	}
+
+	.heading {
+		font-size: $step-9;
+		line-height: 1;
+	}
+
+	.description {
+		font-size: $step-1;
+		max-inline-size: 480px;
+
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			max-inline-size: 780px;
+		}
+	}
+
+	.cta-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: $space-xs;
+		margin-top: $space-l;
+		width: 100%;
+		max-width: 360px;
+
+		@media (min-width: $breakpoint-tablet) {
+			margin-top: $space-xl;
+		}
+
+		@media (min-width: $breakpoint-desktop) {
+			width: auto;
+			max-width: none;
+			flex-direction: row;
+			margin-top: $space-2xl;
+		}
+	}
+}

@@ -1,0 +1,545 @@
+.card {
+  position: relative;
+  width: 100%;
+  // max-width: 790px;
+  background: #fff;
+  // min-height: 520px;
+
+  border-radius: var(--variable-radius);
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  [name='BlockCardGrid'] &,
+  swiper-slide & {
+    height: 100%;
+  }
+
+  &[data-card-theme='icon'] {
+
+    // min-height: 456px;
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      // min-height: 480px;
+      // min-height: 456px;
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      // min-height: 520px;
+      // min-height: 456px;
+    }
+
+    .card {
+      &-title {
+        font-size: $step-2;
+      }
+
+      &-description {
+        font-size: $step-0;
+      }
+
+      &-title,
+      &-description {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-clamp: 2;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      &-text {
+        justify-content: flex-end;
+        gap: $space-xs;
+
+        padding: 0 $space-m $space-l;
+
+        @media (min-width: $breakpoint-tablet) {
+          padding: 0 $space-l 50px;
+          min-height: $space-4xl;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          gap: 0;
+        }
+      }
+
+      &-media {
+        padding: 65px 45px $space-l;
+
+        @media (min-width: $breakpoint-mobile-horizontal) {
+          padding: 70px 60px $space-l;
+        }
+
+        @media (min-width: $breakpoint-tablet) {
+          // padding: 85px 74px $space-l;
+          // padding: calc($space-s + 12px) 74px 0;
+          padding: math.percentage(math.div(30, 388)) math.percentage(math.div(74, 388)) 0;
+        }
+
+        .media {
+          transform: translateY(23px);
+          border-radius: var(--variable-radius);
+          height: auto;
+          aspect-ratio: auto;
+        }
+      }
+    }
+
+    a & {
+      @media (min-width: $breakpoint-desktop) {
+        .media {
+          transition: transform $transition;
+        }
+
+        &:hover {
+          .media {
+            transform: translateY(0);
+
+            img {
+              transform: scale(1);
+            }
+          }
+        }
+      }
+    }
+
+    a:hover & {
+      .button--icon {
+        --button-text-color: #fff;
+        --button-background-color: var(--color-brand-primary-action);
+        --button-border-color: var(--color-brand-primary-action);
+      }
+    }
+
+    // hover animation only for desktop
+    @media (min-width: $breakpoint-desktop) {
+      .card-text-bottom {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 350ms ease-out;
+      }
+
+      .card-description-container {
+        overflow: hidden;
+
+        .card-description {
+          margin-top: $space-xs;
+          opacity: 0;
+          transition: opacity 0ms 350ms ease;
+        }
+      }
+
+      a:hover & {
+        .card-text-bottom {
+          grid-template-rows: 1fr;
+        }
+
+        .card-description {
+          opacity: 1;
+          transition-delay: 100ms;
+          transition-duration: 900ms;
+        }
+      }
+    }
+  }
+
+  &[data-card-theme='icon-small'] {
+    min-height: 240px;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      min-height: 400px;
+    }
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      min-height: 552px;
+    }
+
+    .card {
+      &-title {
+        font-size: $step-3;
+      }
+
+      &-description {
+        font-size: $step-0;
+      }
+
+      &-text {
+        justify-content: flex-end;
+        gap: $space-xs;
+
+        padding: 0 $space-m $space-l;
+
+        @media (min-width: $breakpoint-tablet) {
+          padding: 0 $space-xl $space-xl;
+        }
+      }
+
+      &-media {
+        padding: $space-m $space-s;
+
+        @media (min-width: $breakpoint-mobile-horizontal) {
+          padding: $space-xl $space-l;
+        }
+
+        @media (min-width: $breakpoint-tablet) {
+          padding: $space-xl;
+        }
+
+        .media {
+          max-width: 48px;
+
+          @media (min-width: $breakpoint-mobile-horizontal) {
+            max-width: 76px;
+          }
+
+          border-radius: var(--variable-radius);
+          height: auto;
+        }
+      }
+    }
+  }
+
+  &[data-card-theme='text-large'] {
+    .card-title {
+      font-size: $step-3;
+    }
+  }
+
+  &[data-card-theme='large'] {
+    .card {
+      &-text {
+        gap: $space-m;
+        padding: $space-m $space-s;
+
+        @media (min-width: $breakpoint-tablet) {
+          gap: $space-xl;
+          padding: $space-l $space-m $space-m;
+        }
+      }
+
+      &-labels {
+        p+p::before {
+          padding-left: $space-xs;
+          margin-left: $space-xs;
+        }
+
+        &+.card-title {
+          margin-top: $space-2xs;
+
+          @media (min-width: $breakpoint-tablet) {
+            margin-top: $space-m;
+          }
+        }
+      }
+
+      &-title {
+        font-size: $step-3;
+      }
+
+      &-media {
+        .media {
+          // height: 360px;
+          // test
+          aspect-ratio: 16 / 9;
+        }
+      }
+
+      &-description {
+        font-size: $step-0;
+      }
+
+      &-description+.card-pills {
+        padding-top: $space-m;
+        margin-top: $space-m;
+      }
+
+      &-pills {
+        padding-top: $space-m;
+      }
+    }
+  }
+
+  .button--icon {
+    --button-text-color: var(--color-brand-secondary);
+    position: absolute;
+    z-index: 1;
+    top: 16px;
+    right: 16px;
+    padding: 14px;
+
+    &::before {
+      width: 26px;
+    }
+  }
+
+  &-media {
+    position: relative;
+    swiper-container::part(container){
+      &::after {
+        content: "";
+        pointer-events: none;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+        z-index: 1;
+      }
+    }
+    
+    
+    .media {
+      z-index: 0;
+
+      .grid:not(.grid--icon-grid):not(.grid--standard) & {
+        aspect-ratio: 16 / 9;
+      }
+    }
+  }
+
+  &-text {
+    padding: $space-m;
+
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: $space-m;
+  }
+
+  &-labels {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    // margin-bottom: 0.875rem;
+
+    p {
+      line-height: 1.3;
+      margin: 0;
+      display: inline-block;
+      color: var(--color-body);
+
+      font-size: $step--2;
+
+      @media (min-width: $breakpoint-tablet) {
+        font-size: $step--1;
+      }
+
+      &+p {
+        &::before {
+          padding-left: 10px;
+          margin-left: 10px;
+          content: '';
+          border-left: 1px solid var(--color-border);
+        }
+      }
+    }
+
+    &+.card-title {
+      margin-top: $space-xs;
+    }
+  }
+
+  &-title {
+    // need to add theme for map card
+    font-size: $step-2;
+    line-height: 1.3;
+  }
+
+  &-description {
+    color: var(--color-body);
+    font-size: $step--1;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &-pills {
+    padding-top: $space-s;
+    border-top: 1px solid $color-background-pink;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2xs;
+  }
+
+  &--image {
+    @extend .card;
+
+    .card-media {
+      height: 100%;
+
+      .media {
+        height: 100%;
+        aspect-ratio: auto;
+      }
+    }
+  }
+
+  &--text {
+    @extend .card;
+
+    .grid & {
+      @media (min-width: $breakpoint-tablet) {
+        min-height: 400px;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        min-height: 552px;
+      }
+    }
+
+    .grid--contact & {
+      min-height: 200px;
+
+      @media (min-width: $breakpoint-tablet) {
+        min-height: 340px;
+      }
+    }
+
+    .card {
+      &-text {
+        padding: $space-l $space-m;
+
+        @media (min-width: $breakpoint-tablet) {
+          padding: $space-xl $space-l;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          padding: $space-xl;
+        }
+      }
+
+      &-title {
+        font-size: $step-2;
+
+        .grid--contact & {
+          font-size: $step-3;
+        }
+      }
+
+      &-description {
+        -webkit-line-clamp: 20;
+        font-size: $step-0;
+      }
+    }
+
+    .phone,
+    .location {
+      font-size: $step-0;
+    }
+
+    p+.location {
+      margin-top: $space-s;
+    }
+
+    &[data-color='pink'] {
+      background: $color-background-pink;
+    }
+
+    &[data-padding='small'] {
+      .card {
+        &-text {
+          @media (min-width: $breakpoint-desktop) {
+            padding: $space-xl $space-l;
+          }
+        }
+      }
+    }
+  }
+
+  a & {
+    .media img {
+      transition: transform $transition;
+    }
+
+    &:hover {
+      .media img {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+.home-care-package-card {
+  background: white;
+  border-radius: var(--variable-radius);
+  overflow: hidden;
+  padding: $space-l;
+  display: flex;
+  gap: $space-m;
+  align-items: center;
+
+  &-media {
+    border-radius: var(--variable-radius);
+    overflow: hidden;
+  }
+}
+
+.home-care-package-card {
+  background: white;
+  border-radius: var(--variable-radius);
+  overflow: hidden;
+  padding: $space-l;
+  display: flex;
+  gap: $space-m;
+  align-items: center;
+
+  &-media {
+    border-radius: var(--variable-radius);
+    overflow: hidden;
+  }
+}
+
+.expandable-card {
+  background: white;
+  border-radius: var(--variable-radius);
+  overflow: hidden;
+  padding: $space-l;
+  display: flex;
+  flex-direction: column;
+  gap: $space-m;
+
+  &-container {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-m;
+  }
+
+  &-heading {
+    margin-top: 0;
+    flex: 1;
+  }
+
+  &-description {
+    width: 80%;
+  }
+
+  &-media {
+    width: 72px;
+    height: 72px;
+    flex: 0 0 auto;
+  }
+
+  &-button {
+    flex: 0;
+
+    &.expanded::before {
+      transform: rotate(45deg);
+    }
+  }
+
+  &-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+}

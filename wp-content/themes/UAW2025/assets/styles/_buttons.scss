@@ -1,0 +1,510 @@
+/**
+ * Buttons
+ */
+
+.button {
+  --button-background-color: var(--color-brand-primary-action);
+  --button-border-color: transparent;
+  --button-border-width: 1px;
+  --button-border-radius: 40px;
+  --button-icon-gap: 2px;
+  // --button-font-weight: 700;
+  --button-text-color: #fff;
+  --button-padding-inline: calc(36px - var(--button-border-width));
+  --button-padding-block: calc(28px - var(--button-border-width));
+
+  appearance: none;
+  background-color: var(--button-background-color);
+  border: solid var(--button-border-width) var(--button-border-color);
+  border-radius: var(--button-border-radius);
+  color: var(--button-text-color);
+  cursor: pointer;
+  // display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--button-icon-gap);
+  font: inherit;
+  font-size: $step-0;
+  letter-spacing: 0;
+  line-height: 1;
+  padding-block: var(--button-padding-block);
+  padding-inline: var(--button-padding-inline);
+  text-align: center;
+  text-decoration: none;
+  transition: border-color $transition-button, color $transition-button, opacity $transition-button, background-color $transition-button;
+  vertical-align: top;
+  min-height: 79px;
+
+
+  &[data-size="small"] {
+    min-height: 63px;
+    --button-padding-inline: calc(27px - var(--button-border-width));
+    --button-padding-block: calc(19px - var(--button-border-width));
+  }
+
+  &[data-size="x-small"] {
+    min-height: 48px;
+    --button-padding-inline: calc(18px - var(--button-border-width));
+    --button-padding-block: calc(12px - var(--button-border-width));
+  }
+
+  &[data-size="xx-small"] {
+    min-height: 35px;
+    font-size: $step--1;
+    --button-padding-inline: calc(16px - var(--button-border-width));
+    --button-padding-block: calc(8px - var(--button-border-width));
+
+    &[data-icon]::before {
+      width: 16px;
+    }
+  }
+
+  &[data-icon]::before {
+    transition: background-color $transition-button;
+    content: '';
+    width: 24px;
+    aspect-ratio: 1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--button-text-color);
+    background-size: 100%;
+    mask-size: 100%;
+    mask-image: var(--icon);
+  }
+
+  &[data-icon-gap="medium"] {
+    --button-icon-gap: 4px;
+  }
+
+  &[data-icon-gap="large"] {
+    --button-icon-gap: 6px;
+  }
+
+  &:hover {
+    --button-background-color: var(--color-brand-primary);
+    --button-text-color: #fff;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    --button-background-color: var(--color-brand-primary-action);
+    text-decoration: none;
+  }
+
+  &[data-button-theme="secondary"] {
+    --button-text-color: var(--color-brand-secondary);
+    --button-background-color: var(--color-brand-primary-subtle);
+
+    &:hover {
+      --button-text-color: #fff;
+      --button-background-color: var(--color-brand-primary-action);
+      --button-border-color: var(--color-brand-primary-action);
+    }
+
+    &:active,
+    &.active {
+      --button-background-color: var(--color-brand-primary);
+      --button-border-color: var(--color-brand-primary);
+    }
+  }
+
+  &[data-button-theme="tertiary"] {
+    --button-text-color: #000;
+    --button-background-color: transparent;
+    --button-border-color: var(--color-brand-primary-action);
+
+    &:has([type="checkbox"]:checked),
+    &:hover {
+      --button-text-color: #fff;
+      --button-background-color: var(--color-brand-primary-action);
+      --button-border-color: var(--color-brand-primary-action);
+
+      [type="checkbox"] {
+        --checkbox-background-color: var(--color-brand-primary-action);
+
+        &[data-checkbox-theme="rounded"] {
+          border-color: #fff;
+          // &::before {
+          //   background-color: #fff;
+          // }
+        }
+      }
+    }
+
+    &:has([type="checkbox"]:checked) {
+      [type="checkbox"][data-checkbox-theme="rounded"] {
+        border-color: transparent;
+      }
+    }
+
+    &:active,
+    &.active {
+      --button-background-color: var(--color-brand-primary);
+      --button-border-color: var(--color-brand-primary);
+    }
+
+    &:disabled {
+      --button-text-color: var(--color-text-placeholder);
+      --button-border-color: var(--color-text-placeholder);
+      --button-background-color: transparent;
+    }
+  }
+
+  // used in mega menu
+  &[data-button-theme="white"] {
+    --button-text-color: #000;
+    --button-background-color: #fff;
+    --button-border-color: #fff;
+
+    &:hover {
+      // --button-text-color: #fff;
+      // --button-background-color: var(--color-brand-primary);
+      --button-border-color: var(--color-brand-primary-action);
+    }
+
+    &:active,
+    &.active {
+      --button-text-color: #fff;
+      --button-background-color: var(--color-brand-primary-action);
+      --button-border-color: var(--color-brand-primary-action);
+    }
+
+    &:disabled {
+      --button-text-color: var(--color-text-placeholder);
+      --button-border-color: var(--color-text-placeholder);
+      --button-background-color: transparent;
+    }
+
+    &.selected {
+      --button-text-color: #fff;
+      --button-background-color: var(--color-brand-primary-action);
+      --button-border-color: var(--color-brand-primary-action);
+    }
+  }
+
+  // used in anchor nav
+  &[data-button-theme="anchor-nav"] {
+    --button-text-color: #000;
+    --button-background-color: var(--color-brand-secondary-subtle);
+    --button-border-color: var(--color-brand-secondary-subtle);
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      --button-background-color: #fff;
+      --button-border-color: #fff;
+    }
+
+    // when section is highlighted
+    &.active {
+      --button-background-color: var(--color-brand-secondary-subtle);
+      --button-border-color: var(--color-brand-secondary-subtle);
+    }
+
+    &:hover {
+      --button-text-color: #fff;
+      --button-background-color: var(--color-brand-primary-action);
+      --button-border-color: var(--color-brand-primary-action);
+    }
+
+    &:active {
+      --button-background-color: var(--color-brand-primary);
+      --button-border-color: var(--color-brand-primary);
+    }
+
+    &:disabled {
+      --button-text-color: var(--color-text-placeholder);
+      --button-border-color: var(--color-text-placeholder);
+      --button-background-color: transparent;
+    }
+  }
+
+  &--icon {
+    @extend .button;
+    font-size: 0;
+
+
+    padding: 16px;
+    min-height: auto;
+    border-radius: 16px;
+    gap: 0;
+
+    &[data-icon] {
+      min-height: 0;
+
+      .carousel-container-controls & {
+        padding: 12px;
+
+        @media (min-width: $breakpoint-tablet) {
+          padding: 14px;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          padding: 18px;
+        }
+      }
+
+      &::before {
+        width: 32px;
+
+        .carousel-container-controls & {
+          // 48px button
+          width: 22px;
+
+          @media (min-width: $breakpoint-tablet) {
+            // 70px button
+            width: 30px;
+          }
+
+          @media (min-width: $breakpoint-desktop) {
+            // 72px button
+            width: 34px;
+          }
+        }
+      }
+    }
+
+    &[data-size="small"] {
+      width: 60px;
+      height: 60px;
+
+      &::before {
+        width: 29px;
+        height: 29px;
+        background-size: 100%
+      }
+    }
+
+    &[data-button-theme="white"] {
+      --button-text-color: var(--color-brand-primary-action);
+      --button-background-color: #fff;
+      --button-border-color: var(--color-text-disabled);
+
+      &:hover {
+        --button-background-color: var(--color-brand-primary-action);
+        --button-text-color: #fff;
+        --button-border-color: var(--color-brand-primary-action);
+      }
+
+      &:active {
+        --button-text-color: #fff;
+        --button-background-color: var(--color-brand-primary);
+        --button-border-color: var(--color-brand-primary);
+      }
+
+      &:disabled {
+        --button-background-color: var(--color-background);
+        --button-text-color: var(--color-text-disabled);
+        --button-border-color: var(--color-text-disabled);
+      }
+    }
+
+    &:disabled {
+      --button-background-color: #fff;
+      --button-text-color: var(--color-text-disabled);
+      --button-border-color: var(--color-text-disabled);
+    }
+  }
+
+  &--back {
+    @extend .button;
+
+    @extend [data-button-theme="tertiary"];
+    @extend [data-icon];
+    @extend [data-icon="chevron-left"];
+  }
+
+  // used in search input
+  &--circle[data-icon] {
+    padding: 9px;
+    border-radius: 50%;
+    border-width: 1px;
+    width: 64px;
+    height: 64px;
+
+    &::before {
+      width: 32px;
+      height: 32px;
+      background-size: 100%
+    }
+
+    &[data-size="small"] {
+      width: 48px;
+      height: 48px;
+
+      &::before {
+        width: 28px;
+        height: 28px;
+        background-size: 100%
+      }
+    }
+  }
+
+  &--pagination {
+    @extend .button;
+    // @extend [data-button-theme="tertiary"];
+
+    --button-background-color: #fff;
+    --button-text-color: var(--color-text-primary);
+
+    min-height: auto;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    padding: 0;
+    margin: 0;
+    padding-top: 1px;
+
+    &:not(:disabled):hover {
+      opacity: 1;
+      --button-background-color: var(--color-brand-primary-subtle);
+      --button-text-color: #000;
+    }
+
+    &.current:not(:disabled),
+    &:not(:disabled):active {
+      --button-text-color: #fff;
+      --button-background-color: var(--color-brand-primary-action);
+    }
+
+    &.current {
+      cursor: auto;
+    }
+  }
+
+  &--text {
+    @extend .button;
+    min-height: auto;
+    --button-background-color: transparent;
+    --button-text-color: var(--color-accent);
+    border: 0;
+    padding: 0;
+    justify-content: space-between;
+    border-radius: 0;
+
+    &:hover {
+      --button-background-color: transparent;
+    }
+
+    &:active {
+      --button-background-color: transparent;
+    }
+  }
+
+  &--reversed {
+    flex-direction: row-reverse;
+  }
+
+  &:disabled,
+  &--disabled {
+    cursor: default;
+    pointer-events: none;
+    --button-text-color: var(--color-text-placeholder);
+    --button-background-color: var(--color-disabled);
+  }
+
+}
+
+
+.pills {
+  display: flex;
+  gap: $space-2xs;
+  flex-wrap: wrap;
+
+  &+* {
+    margin-top: $space-l;
+  }
+
+  &+h1 {
+    margin-top: $space-m;
+  }
+}
+
+.pill {
+  --pill-background-color: var(--color-brand-primary-action);
+  --pill-text-color: #fff;
+  --pill-border-color: transparent;
+
+  display: inline-block;
+  font-size: $step--1;
+  padding: 6px 11px 5px;
+  border-radius: 16px;
+  background-color: var(--pill-background-color);
+  border: solid 1px var(--pill-border-color);
+  color: var(--pill-text-color);
+  margin: 0;
+
+  &[data-pill-theme="secondary"] {
+    --pill-text-color: var(--color-brand-secondary);
+    --pill-background-color: var(--color-brand-secondary-subtle);
+  }
+
+  &[data-pill-theme="tertiary"] {
+    --pill-text-color: #000;
+    --pill-background-color: transparent;
+    --pill-border-color: var(--color-brand-primary-action);
+  }
+}
+
+.ellipsis--pagination {
+  // @extend .button;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background: #fff;
+  color: var(--color-text-primary);
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+}
+
+.link {
+  --link-text-color: var(--color-text-primary);
+
+  color: var(--link-text-color);
+  display: inline-flex;
+  gap: $space-3xs;
+  // font-size: $step--1;
+  transition: color $transition-button;
+
+  &[data-icon]::before {
+    transition: background-color $transition-button;
+    content: '';
+    width: 22px;
+    aspect-ratio: 1;
+    align-self: flex-start;
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--link-text-color);
+    background-size: 100%;
+    mask-size: 100%;
+    mask-image: var(--icon);
+    display: inline-flex;
+  }
+
+  &:hover {
+    --link-text-color: var(--color-brand-primary-action);
+  }
+
+  &--arrow {
+    @extend .link;
+
+    &[data-icon]::after {
+      transition: background-color $transition-button;
+      content: '';
+      width: 17px;
+      aspect-ratio: 1;
+      align-self: flex-start;
+      flex-shrink: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: var(--link-text-color);
+      background-size: 100%;
+      mask-size: 100%;
+      mask-image: var(--icon-arrow-up-right);
+    }
+  }
+}

@@ -1,0 +1,39 @@
+flynt-component[name='BlockHeading'] {
+  margin-top: var(--space-section-small);
+
+  & + * {
+    margin-top: $space-xl;
+  }
+
+
+  .content-section {
+		display: flex;
+		flex-direction: column;
+		gap: $space-m;
+		
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: $space-xl;
+		}
+	}
+	
+	.rhs {
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			max-width: math.percentage(math.div(648, 1593));
+
+      padding-top: $space-l;
+		}
+	}
+
+  .description {
+		font-size: $step-1;
+		max-inline-size: 790px;
+	}
+  
+
+  .cta {
+    margin-top: $space-l;
+  }
+}

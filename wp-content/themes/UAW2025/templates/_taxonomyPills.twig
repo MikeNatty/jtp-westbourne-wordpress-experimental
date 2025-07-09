@@ -1,0 +1,10 @@
+
+<div name="TaxonomyPills" class="container componentSpacing">
+    <div class="content" {% if size %}data-size="{{size}}"{% endif %}>
+        <div class="pills">
+            {% for taxonomy in taxonomies %}
+                <p class="pill" {% if theme %}data-pill-theme="{{theme}}">{% endif %}{{taxonomy}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>

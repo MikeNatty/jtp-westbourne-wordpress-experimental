@@ -1,0 +1,33 @@
+flynt-component[name="BlockTable"] {
+	margin-top: var(--space-section-small);
+
+	.content-section {
+		max-width: 1414px;
+		margin-inline: auto;
+
+		overflow-x: scroll;
+		&::-webkit-scrollbar {
+			height: 6px;
+			border-radius: 3px;
+			background-color: var(--color-mid-white);
+		}
+		
+		&::-webkit-scrollbar-thumb {
+				border-radius: 3px;
+				background-color: var(--color-border);
+		}
+	}
+
+	// .sectionHeading {
+	// 	font-size: $step-1;
+	// }
+	
+	// .heading {
+	// 	font-size: $step-7;
+	// 	line-height: 1;
+	// }
+			
+	// .description {
+	// 	font-size: $step-1;
+	// }
+}

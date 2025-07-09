@@ -1,0 +1,96 @@
+{% set latitude = mapLocation.lat %}
+{% set longitude = mapLocation.lng %}
+{% set addressTitle = mapLocation.address %}
+
+<flynt-component name="BlockContactCard" data-animated>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+    <div class="container">
+      <div class="content-section" animation="border-fade-in">
+        <div class="cta-container">
+          {% if title %}
+            <h2 class="title">{{ title }}</h2>
+          {% endif %}
+          {% if email %}
+            <a 
+              href="mailto:{{ email }}" 
+              title="Mail: {{ email }}"
+              class="button" 
+              data-size="small"
+            >
+              Get in touch
+            </a>
+          {% endif %}
+        </div>
+        <div class="contact-container">
+            {% if latitude and longitude and addressTitle %}
+              <a 
+                href="https://www.google.com/maps/dir/?api=1&destination={{latitude}},{{longitude}}" 
+                title="{{ addressTitle }}" 
+                target="_blank" 
+                class="link" 
+              >
+                <span class="button--icon" data-icon="location-pin-large" data-button-theme="white"></span>
+                {{ addressTitle }}
+              </a>
+            {% endif %}
+            {% if phoneNumber %}
+              <a 
+                href="tel:{{ phoneNumber|replace({' ': ''}) }}" 
+                title="Call: {{ phoneNumber }}"
+                class="link" 
+              >
+                <span 
+                  class="button--icon" 
+                  data-icon="ringing-phone" 
+                  data-button-theme="white"
+                ></span>
+                {{ phoneNumber }}
+              </a>
+            {% endif %}
+            {% if email %}
+              <a 
+                href="mailto:{{ email }}" 
+                title="Mail: {{ email }}"
+                class="link" 
+              >
+                <span 
+                  class="button--icon" 
+                  data-icon="new-email" 
+                  data-button-theme="white"
+                ></span>
+                {{ email }}
+              </a>
+            {% endif %}
+        </div>
+        <div class="image-container desktop-only">
+          {% if latitude and longitude and addressTitle %}
+            {% set zoom = 14 %}
+            {% set size = "240x240" %}
+            {% set scale = 2 %}
+            {% set maptype = 'roadmap' %}
+
+            {% set mapUrl = "https://maps.googleapis.com/maps/api/staticmap?" 
+              ~ "center=" ~ latitude ~ "," ~ longitude
+              ~ "&zoom=" ~ zoom
+              ~ "&size=" ~ size
+              ~ "&scale=" ~ scale
+              ~ "&maptype=" ~ maptype
+              ~ "&markers=color:red%7C" ~ latitude ~ "," ~ longitude
+              ~ "&key=" ~ apiKey 
+            %}
+            <figure class="media" style="border-radius: 32px">
+              <img src="{{mapUrl}}" alt="{{addressTitle}} Location Map">
+            </figure>
+            {# {% if image %}
+              {% include 'templates/_image.twig' with {
+                      'image': image, 
+                      'width': 240,
+                      'height': 240,
+                      'radius': 32,
+              } only %}
+            {% endif %} #}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+</flynt-component>

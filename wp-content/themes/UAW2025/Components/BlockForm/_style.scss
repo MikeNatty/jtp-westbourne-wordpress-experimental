@@ -1,0 +1,37 @@
+flynt-component[name="BlockForm"] {
+    margin-top: var(--space-section-medium);
+    
+    .content {
+        background: #fff;
+        border-radius: 27px;
+
+        padding: $space-xl $space-s;
+        @media (min-width: $breakpoint-tablet) {
+            padding: $space-xl $space-l;
+        }
+        @media (min-width: $breakpoint-desktop) {
+            padding: $space-xl $space-2xl;
+        }
+    }
+    fieldset {
+        text-align: center;
+        padding: 0 !important;
+    }
+
+    .frm_form_title {
+        margin-bottom: $space-xs;
+    }
+    .form-subtitle {
+        margin-bottom: $space-l;
+    }
+    .form-submit-container {
+        margin-bottom: 0 !important;
+
+        button {
+            @media (min-width: $breakpoint-tablet) {
+                min-width: 280px;
+            }
+        }
+    }
+
+}
