@@ -39,7 +39,10 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\BlockQuote\getACFLayout(),
 
-                    // remove for prod 
+                    // Mike Test Components
+//                    Components\BlockTestComponent\getACFLayout(),
+
+                    // remove for prod
                     Components\BlockChildPages\getACFLayout(),
                 ],
             ],
@@ -148,9 +151,9 @@ add_action('Flynt/afterRegisterComponents', function () {
                                 'label' => __('Downloadable File', 'flynt'),
                                 'name' => 'file',
                                 'type' => 'file',
-                                'return_format' => 'array',             
+                                'return_format' => 'array',
                                 'required' => 0,
-                            ],  
+                            ],
                         ],
                         'conditional_logic' => [
                             [
