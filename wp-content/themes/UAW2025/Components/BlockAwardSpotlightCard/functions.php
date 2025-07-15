@@ -1,0 +1,56 @@
+<?php
+
+namespace Flynt\Components\BlockAwardSpotlightCard;
+
+use Flynt\FieldVariables;
+
+function getACFLayout(): array
+{
+    return [
+        'name' => 'blockAwardSpotlightCard',
+        'label' => __('Award Spotlight Card', 'flynt'),
+        'sub_fields' => [
+            [
+                'label' => __('Content', 'flynt'),
+                'name' => 'contentTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
+             [
+                'label' => __('Title', 'flynt'),
+                'name' => 'title',
+                'type' => 'textarea',
+                'rows' => 1,
+                'new_lines' => 'br',
+                'required' => 1,
+            ],
+//            [
+//                'label' => __('Image', 'flynt'),
+//                'instructions' => __('Image-Format: JPG, PNG, WebP.', 'flynt'),
+//                'name' => 'image',
+//                'type' => 'image',
+//                'preview_size' => 'medium',
+//                'mime_types' => 'jpg,jpeg,png,webp',
+//                'required' => 1,
+//            ],
+            // [
+            //     'label' => __('Options', 'flynt'),
+            //     'name' => 'optionsTab',
+            //     'type' => 'tab',
+            //     'placement' => 'top',
+            //     'endpoint' => 0
+            // ],
+            // [
+            //     'label' => '',
+            //     'name' => 'options',
+            //     'type' => 'group',
+            //     'layout' => 'row',
+            //     'sub_fields' => [
+            //         FieldVariables\getTheme(),
+            //         FieldVariables\getSize()
+            //     ]
+            // ]
+        ]
+    ];
+}
