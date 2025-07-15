@@ -62,6 +62,9 @@ add_action('init', function (): void {
         'publicly_queryable'    => true,
         'capability_type'       => 'page',
         'rewrite'               => array( 'slug' => 'home-card', 'with_front' => false ),
+        'show_in_graphql' => true,
+        'graphql_single_name' => 'homeCard',
+        'graphql_plural_name' => 'homeCards',
     ];
 
     register_post_type('homecard', $args);

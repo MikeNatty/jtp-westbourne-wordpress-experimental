@@ -16,9 +16,9 @@ add_action('Flynt/afterRegisterComponents', function () {
                     'type' => 'flexible_content',
                     'button_label' => __('Add Component', 'flynt'),
                     'layouts' => [
-                        Components\BlockWysiwyg\getACFLayout(),
                         Components\BlockImage\getACFLayout(),
-                        Components\BlockTable\getACFLayout(),
+                        Components\BlockQuote\getACFLayout(),
+                        Components\BlockCTACard\getACFLayout(),
                     ],
                 ],
             ],
