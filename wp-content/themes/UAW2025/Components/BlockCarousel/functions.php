@@ -632,17 +632,17 @@ function getACFLayout()
                         // // TODO remove for prod
                         // 'default_value' => 'Lorem ipsum',
                     ],
-                    [
-                        'label' => __('Description', 'flynt'),
-                        'name' => 'description',
-                        'type' => 'textarea',
-                        'rows' => 1,
-                        'placeholder' => '',
-                        'new_lines' => 'br',
-                        'required' => 0,
-                        // // TODO remove for prod
-                        // 'default_value' => 'Lorem ipsum',
-                    ],
+//                    [
+//                        'label' => __('Description', 'flynt'),
+//                        'name' => 'description',
+//                        'type' => 'textarea',
+//                        'rows' => 1,
+//                        'placeholder' => '',
+//                        'new_lines' => 'br',
+//                        'required' => 0,
+//                        // // TODO remove for prod
+//                        // 'default_value' => 'Lorem ipsum',
+//                    ],
                     [
                         'label' => __('Link', 'flynt'),
                         'name' => 'link',

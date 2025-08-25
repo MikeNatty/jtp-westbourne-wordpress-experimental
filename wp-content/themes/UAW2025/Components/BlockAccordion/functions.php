@@ -35,33 +35,33 @@ function getACFLayout()
                 // // TODO remove for prod
                 // 'default_value' => 'Lorem sed unde omnis',
             ],
-            [
-                'label' => __('Section Heading', 'flynt'),
-                'name' => 'sectionHeading',
-                'type' => 'textarea',
-                'rows' => 2,
-                'new_lines' => 'br',
-                'required' => 0,
-                'wrapper' => [
-                    'width' => '50',
-                ],
-                // // TODO remove for prod
-                // 'default_value' => 'Lorem sed unde omnis',
-            ],
-            [
-                'label' => __('Description', 'flynt'),
-                'name' => 'description',
-                'type' => 'textarea',
-                'rows' => 2,
-                'new_lines' => 'br',
-                'required' => 0,
-                'wrapper' => [
-                    'width' => '50',
-                ],
-                // // TODO remove for prod
-                // 'default_value' => 'Lorem sed unde omnis',
-            ],
-            FieldVariables\getCTA(),
+//            [
+//                'label' => __('Section Heading', 'flynt'),
+//                'name' => 'sectionHeading',
+//                'type' => 'textarea',
+//                'rows' => 2,
+//                'new_lines' => 'br',
+//                'required' => 0,
+//                'wrapper' => [
+//                    'width' => '50',
+//                ],
+//                // // TODO remove for prod
+//                // 'default_value' => 'Lorem sed unde omnis',
+//            ],
+//            [
+//                'label' => __('Description', 'flynt'),
+//                'name' => 'description',
+//                'type' => 'textarea',
+//                'rows' => 2,
+//                'new_lines' => 'br',
+//                'required' => 0,
+//                'wrapper' => [
+//                    'width' => '50',
+//                ],
+//                // // TODO remove for prod
+//                // 'default_value' => 'Lorem sed unde omnis',
+//            ],
+//            FieldVariables\getCTA(),
             [
                 'label' => __('Panels', 'flynt'),
                 'name' => 'panels',
@@ -83,26 +83,26 @@ function getACFLayout()
                         // // TODO remove for prod
                         // 'default_value' => 'Lorem ipsum',
                     ],
-                    [
-                        'label' => __('Icon Image', 'flynt'),
-                        'instructions' => __('Image-Format: JPG, PNG, WebP. <br>Recommended size: 240px x 240px', 'flynt'),
-                        'name' => 'iconImage',
-                        'type' => 'image',
-                        'preview_size' => 'medium',
-                        'mime_types' => 'jpg,jpeg,png,svg,webp',
-                        'conditional_logic' => [
-                            [
-                                [
-                                    'fieldPath' => '../variant',
-                                    'operator' => '==',
-                                    'value' => '1',
-                                ],
-                            ],
-                        ],
-                        'required' => 0,
-                        // TODO remove for prod
-                        'default_value' => 676
-                    ],
+//                    [
+//                        'label' => __('Icon Image', 'flynt'),
+//                        'instructions' => __('Image-Format: JPG, PNG, WebP. <br>Recommended size: 240px x 240px', 'flynt'),
+//                        'name' => 'iconImage',
+//                        'type' => 'image',
+//                        'preview_size' => 'medium',
+//                        'mime_types' => 'jpg,jpeg,png,svg,webp',
+//                        'conditional_logic' => [
+//                            [
+//                                [
+//                                    'fieldPath' => '../variant',
+//                                    'operator' => '==',
+//                                    'value' => '1',
+//                                ],
+//                            ],
+//                        ],
+//                        'required' => 0,
+//                        // TODO remove for prod
+//                        'default_value' => 676
+//                    ],
                     [
                         'label' => __('Content', 'flynt'),
                         'name' => 'contentHtml',
@@ -113,34 +113,34 @@ function getACFLayout()
                         // // TODO remove for prod
                         // 'default_value' => 'AgeWell connect recognises the importance of maintaining these social connections, or helping to establish new ones, offering trusted services, information and transport.',
                     ],
-                    FieldVariables\getCTA(
-                        'cta',
-                        [
-                            'fieldPath' => '../variant',
-                            'operator' => '==',
-                            'value' => '1',
-                        ],
-                    ),
-                    [
-                        'label' => __('Image', 'flynt'),
-                        'instructions' => __('Image-Format: JPG, PNG, WebP. <br>Recommended size: 1674px x 942px', 'flynt'),
-                        'name' => 'image',
-                        'type' => 'image',
-                        'preview_size' => 'medium',
-                        'mime_types' => 'jpg,jpeg,png,svg,webp',
-                        'conditional_logic' => [
-                            [
-                                [
-                                    'fieldPath' => '../variant',
-                                    'operator' => '==',
-                                    'value' => '1',
-                                ],
-                            ],
-                        ],
-                        'required' => 0,
-                        // // TODO remove for prod
-                        // 'default_value' => 91
-                    ],
+//                    FieldVariables\getCTA(
+//                        'cta',
+//                        [
+//                            'fieldPath' => '../variant',
+//                            'operator' => '==',
+//                            'value' => '1',
+//                        ],
+//                    ),
+//                    [
+//                        'label' => __('Image', 'flynt'),
+//                        'instructions' => __('Image-Format: JPG, PNG, WebP. <br>Recommended size: 1674px x 942px', 'flynt'),
+//                        'name' => 'image',
+//                        'type' => 'image',
+//                        'preview_size' => 'medium',
+//                        'mime_types' => 'jpg,jpeg,png,svg,webp',
+//                        'conditional_logic' => [
+//                            [
+//                                [
+//                                    'fieldPath' => '../variant',
+//                                    'operator' => '==',
+//                                    'value' => '1',
+//                                ],
+//                            ],
+//                        ],
+//                        'required' => 0,
+//                        // // TODO remove for prod
+//                        // 'default_value' => 91
+//                    ],
                 ]
             ],
             [
@@ -150,7 +150,7 @@ function getACFLayout()
                 'placement' => 'top',
                 'endpoint' => 0
             ],
-            FieldVariables\getAnchorOptions(),  
+            FieldVariables\getAnchorOptions(),
             FieldVariables\getAnchorOptions(),
             [
                 'label' => __('Variant', 'flynt'),
