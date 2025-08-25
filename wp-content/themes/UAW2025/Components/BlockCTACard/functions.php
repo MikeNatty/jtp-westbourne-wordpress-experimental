@@ -17,14 +17,14 @@ function getACFLayout(): array
                 'placement' => 'top',
                 'endpoint' => 0,
             ],
-//             [
-//                'label' => __('Title', 'flynt'),
-//                'name' => 'title',
-//                'type' => 'textarea',
-//                'rows' => 1,
-//                'new_lines' => 'br',
-//                'required' => 1,
-//            ],
+             [
+                'label' => __('Title', 'flynt'),
+                'name' => 'title',
+                'type' => 'textarea',
+                'rows' => 1,
+                'new_lines' => 'br',
+                'required' => 1,
+            ],
 //             [
 //                'label' => __('Heading', 'flynt'),
 //                'name' => 'heading',

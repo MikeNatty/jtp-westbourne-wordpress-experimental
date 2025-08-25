@@ -17,7 +17,14 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                 'type' => 'flexible_content',
                 'button_label' => __('Add Component', 'flynt'),
                 'layouts' => [
+
+                    // Westbourne Components
+                    Components\BlockParallaxGallery\getACFLayout(),
+                    Components\BlockCarousel\getACFLayout(),
                     Components\BlockAccordion\getACFLayout(),
+                    Components\BlockHero\getACFLayout(),
+
+                    // Old list for UAW - to remove
                     Components\BlockCardCarousel\getACFLayout(),
                     Components\BlockCardGrid\getACFLayout(),
                     Components\BlockChecklist\getACFLayout(),
@@ -27,7 +34,6 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     Components\blockContentFullWidth\getACFLayout(),
                     Components\BlockForm\getACFLayout(),
                     Components\BlockHeading\getACFLayout(),
-                    Components\BlockHero\getACFLayout(),
                     Components\BlockLocationMap\getACFLayout(),
                     Components\BlockServiceChecker\getACFLayout(),
                     Components\BlockMedia\getACFLayout(),
