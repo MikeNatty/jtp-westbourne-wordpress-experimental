@@ -1,0 +1,159 @@
+flynt-component[name="BlockHero"] {
+	margin-top: var(--space-section-medium);
+	position: relative;
+	overflow: hidden;
+	
+	&[data-variant="1"] {
+		.content-section-text {
+			@media (min-width: $breakpoint-tablet-horizontal) {
+				max-width: math.percentage(math.div(648, 1593));
+			}
+		}
+		.content-section-media {
+			@media (min-width: $breakpoint-tablet-horizontal) {
+				max-width: math.percentage(math.div(837, 1593));
+			}
+		}
+
+		.image-container {
+			.media {
+				@media (min-width: $breakpoint-tablet-horizontal) {
+					aspect-ratio: 837 / 741;
+				}
+			}
+		}
+		
+		.title {
+			@media (min-width: $breakpoint-tablet-horizontal) {
+				margin-top: auto;
+			}
+		}
+		
+		.subtitle {
+			@media (min-width: $breakpoint-tablet-horizontal) {
+				max-width: 480px;
+			}
+		}
+	}
+	
+	&[data-variant="2"] {
+		.content-section-text {
+			@media (min-width: $breakpoint-tablet-horizontal) {
+				max-width: math.percentage(math.div(742, 1593));
+			}
+		}
+		.content-section-media {
+			@media (min-width: $breakpoint-tablet-horizontal) {
+				max-width: math.percentage(math.div(742, 1593));
+			}
+		}
+		.image-container {
+			.media {
+				@media (min-width: $breakpoint-tablet-horizontal) {
+					aspect-ratio: 742 / 556;
+				}
+			}
+		}
+	}
+
+	.content-section {
+		display: flex;
+		flex-direction: column-reverse;
+		flex-wrap: nowrap;
+		gap: $space-l;
+		
+		@media (min-width: $breakpoint-tablet) {
+			flex-direction: column;
+			align-items: center;
+			gap: $space-2xl;
+		}
+		
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 0;
+		}
+
+		.image-container-2 {
+			--flow-space: calc( -1 * var(--space-s));
+			margin-left: auto;
+			margin-right: 94px;
+			max-width: 270px;
+		}
+	}
+
+	.content-section-text {
+		position: relative;
+		inline-size: 100%;
+		
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			padding-top: 13px;
+		}
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			max-width: 60%;
+			min-height: 179px;
+			padding-top: 0;
+
+			align-self: stretch;
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	.content-section-media {
+		width: 100%;
+		position: relative;
+		// opacity: 0;
+		// transition: opacity 1000ms ease;
+
+		// @media (min-width: $breakpoint-tablet-horizontal) {
+		// 	max-width: 40%;
+		// }
+	}
+
+	.image-container {
+		.media {
+			aspect-ratio: 702/526;
+		}
+
+		// for animation 
+		// clip-path: inset(10%);
+	}
+
+	.subtitle {
+		position: relative;
+		font-size: $step-0;
+
+		max-width: 572px;
+		--flow-space: var(--space-m);
+	}
+
+	.title {
+		position: relative;
+		--flow-space: var(--space-2xl);
+
+		
+		font-size: $step-9;
+		&.size--medium {
+			font-size: $step-7;
+		}
+		&.size--large {
+			font-size: $step-8;
+		}
+	}
+
+	.cta-container {
+		--flow-space: var(--space-l);
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		gap: $space-s;
+		position: relative;
+		
+		@media (min-width: $breakpoint-tablet) {
+			--flow-space: var(--space-xl);
+			flex-direction: row;
+		}
+	}
+}

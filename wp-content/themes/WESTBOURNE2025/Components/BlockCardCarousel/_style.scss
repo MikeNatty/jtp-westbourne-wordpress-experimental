@@ -1,0 +1,115 @@
+flynt-component[name="BlockCardCarousel"] + flynt-component[name="BlockCardCarousel"] {
+	margin-top: var(--space-section-small);
+}
+
+flynt-component[name="BlockCardCarousel"] {
+	position: relative;
+	overflow: hidden;
+
+	margin-top: var(--space-section-large);
+	
+	// margin-block: var(--space-section-medium);
+	
+	// only for content hub
+	// margin-top: var(--space-section-xs);
+	// .container-inner {
+	// 	padding-top: var(--space-section-xs);
+	// 	border-top: 1px solid $color-border;
+	// }
+
+	
+	.heading-container {
+		grid-area: title;
+
+		display: flex;
+		gap: $space-m;
+		align-items: center;
+
+		.button {
+			margin: 0;
+		}
+	}
+
+	.heading {
+		font-size: $step-6;
+		line-height: 1.1;
+		
+		&.size--large {
+			line-height: 1.05;
+			font-size: $step-8;
+		}
+		&.size--small {
+			font-size: $step-3;
+		}
+	}
+
+	.carousel-container-card {
+		grid-area: carousel;
+		position: relative;
+		width: 100%;
+		max-width: 100%;
+
+		border-radius: var(--variable-radius);
+		
+		margin-top: $space-m;
+		@media (min-width: $breakpoint-tablet) {
+			margin-top: $space-l;
+		}
+		@media (min-width: $breakpoint-desktop) {
+			overflow: clip;
+			margin-top: $space-xl;
+		}
+	}
+	
+	&[data-title-size="small"] {
+		.carousel-container-card {
+			margin-top: var(--space-section-xs);
+		}
+	}
+
+	.carousel-container-controls {
+		grid-area: controls;
+	
+		align-self: end;
+		display: flex;
+		gap: $space-s;
+		align-items: center;
+		margin-top: $space-l;
+		justify-content: space-between;
+		pointer-events: none;
+		& > * {
+			pointer-events: all;
+		}
+		@media (min-width: $breakpoint-desktop) {
+			margin-top: 0;
+			justify-content: flex-end;
+		}
+	
+	}
+
+	.pagination-container {
+		margin-top: 40px;
+		grid-area: pagination;
+		display: none;
+		@media (min-width: $breakpoint-desktop) {
+			display: flex;
+		}
+	}
+
+	.container {
+		&-inner {
+			position: relative;
+			display: grid;
+			grid-template-areas: "title" "carousel" "controls";
+			
+			// fix grid issue for swiper 
+			grid-template-columns: minmax(0, 1fr);
+			
+			@media (min-width: $breakpoint-desktop) {
+				grid-template-areas: "title controls" "carousel carousel" "pagination pagination";
+				grid-template-columns: repeat(minmax(0, 1fr), 2);
+			}
+		}
+	}
+
+}

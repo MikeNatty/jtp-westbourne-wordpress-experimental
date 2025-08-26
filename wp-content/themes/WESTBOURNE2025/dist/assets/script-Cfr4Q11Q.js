@@ -1,0 +1,1 @@
+import{b as s}from"./helpers-QecM1zFF.js";function c(t){const e=s(t),o=t.dataset.notificationId;e.closeButton.addEventListener("click",i=>{t.remove(),o&&sessionStorage.setItem(o,"closed"),t.remove()})}export{c as default};

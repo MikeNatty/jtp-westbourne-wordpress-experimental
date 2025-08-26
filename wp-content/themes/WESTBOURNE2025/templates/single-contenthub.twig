@@ -1,0 +1,72 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+  {% if post.terms('contenthub-type') %}
+    {% include 'templates/_taxonomyPills.twig' with {
+        taxonomies: post.terms('contenthub-type'),
+        theme: "tertiary",
+    } only %}
+  {% endif %}
+
+  {{
+    renderComponent(
+      'BlockHeading',
+      {
+        title: post.title
+      }
+    )
+  }}
+  {{
+    renderComponent(
+      'BlockMedia',
+      {
+        gallery: [post.field_contenthubOpitons_mainImage ? post.field_contenthubOpitons_mainImage : post.thumbnail],
+        variant: post.field_contenthubOpitons_articleType == '8' ? "videoPlayer" : "carousel",
+        oembed: post.field_contenthubOpitons_oembed,
+        coverImage: post.field_contenthubOpitons_mainImage ? post.field_contenthubOpitons_mainImage : post.thumbnail,
+      }
+    )
+  }}
+
+  {% if post.terms('contenthub-category') %}
+    {% include 'templates/_taxonomyPills.twig' with {
+        taxonomies: post.terms('contenthub-category'),
+        theme: "tertiary",
+        size: "medium",
+    } only %}
+  {% endif %}
+
+  {{ post.content }}
+
+  {% if post.field_contenthubOpitons_articleType == '9' %}
+    {% include 'templates/_podcastiFrame.twig' with {
+        podcastURL: post.field_contenthubOpitons_podcastURL
+    } only %}
+  {% endif %}
+
+  {% include 'templates/_socialSharing.twig' with {
+      post: post,
+      size: "medium",
+      cta: post.field_contenthubOpitons_ctaLink
+  } only %}
+
+  {% set relatedTaxonomies = [] %}
+    {% if post.terms('contenthub-type') %}
+      {% set relatedTaxonomies = relatedTaxonomies|merge(['contenthub-type']) %}
+    {% endif %}
+    {% if post.terms('contenthub-category') %}
+      {% set relatedTaxonomies = relatedTaxonomies|merge(['contenthub-category']) %}
+  {% endif %}
+
+  {{
+    renderComponent(
+      'BlockCardCarousel',
+      {
+        heading: "Recent content",
+        filter: 'related',
+        post: post,
+        relatedTaxonomies: relatedTaxonomies
+      }
+    )
+  }}
+{% endblock %}

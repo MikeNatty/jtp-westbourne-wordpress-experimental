@@ -1,0 +1,116 @@
+
+
+flynt-component[name="BlockCardCarousel"] + flynt-component[name="BlockCardGrid"] {
+	.heading-container {
+		padding-top: var(--space-section-xs);
+		border-top: 1px solid $color-border;
+	}
+}
+
+
+flynt-component[name="BlockCardGrid"] {
+	margin-top: var(--space-section-xs);
+	// margin-block: var(--space-section-medium);
+	position: relative;
+	overflow: hidden;
+
+
+	.heading-container {
+		& + .grid {
+			margin-top: $space-2xl;
+		}
+	}
+
+	.heading {
+
+		font-size: $step-6;
+		line-height: 1.1;
+		
+		&.size--large {
+			line-height: 1.05;
+			font-size: $step-8;
+		}
+		&.size--small {
+			font-size: $step-3;
+		}
+	}
+
+	.grid {
+		column-gap: $space-s;
+		row-gap: $space-s;
+		@media (min-width: $breakpoint-desktop) {
+			column-gap: $space-m;
+			row-gap: $space-m;
+		}
+
+		&.grid--icon-grid,
+		&[data-max-columns='2'],
+		&[data-max-columns='3'] {
+			&:not(.grid--posts):not(.grid--contact) {
+				@media (min-width: $breakpoint-desktop) {
+					padding-left: math.percentage(math.div(135, 1593));
+				}
+			}
+		}
+
+		&[data-max-columns='5'] {
+			gap: $space-xs;
+		}
+		
+		
+		&--icon-grid {
+			&[data-max-columns='3'] {
+				@media (min-width: $breakpoint-mobile-horizontal) {
+					& > *:nth-child(1) {
+						grid-column: span 2;
+					}
+				}
+
+				@media (min-width: $breakpoint-tablet-horizontal) {
+					grid-template-columns: repeat(6, 1fr);
+					& > *:nth-child(-n+3) {
+						grid-column: span 2;
+					}
+					& > *:nth-child(n+4) {
+						grid-column: span 3;
+					}
+				}
+			}
+		}
+		
+		
+		&--posts {
+			column-gap: $space-xs;
+			row-gap: $space-xs;
+			@media (min-width: $breakpoint-tablet) {
+				row-gap: $space-l;
+			}
+			@media (min-width: $breakpoint-desktop) {
+				row-gap: var(--space-section-xs);
+			}
+		}
+
+		margin-top: $space-m; // TODO update
+	}
+	
+	&[data-title-size="small"] {
+		.carousel-container-card {
+			margin-top: var(--space-section-xs);
+		}
+	}
+
+
+	.pagination-container {
+		margin-top: var(--space-section-xs);
+	}
+
+	// .container {
+	// 	&-inner {
+	// 		// padding-top: var(--space-section-xs);
+	// 		// border-top: 1px solid $color-border;
+
+	// 		position: relative;
+	// 	}
+	// }
+
+}

@@ -1,0 +1,578 @@
+[
+  {
+    "name": "Andrew Kerr Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/andrew-kerr-home-care",
+    "category": "home-care",
+    "address": "67-69 Tanti Avenue, Mornington VIC 3931",
+    "phone": "(03) 5975 6334",
+    "fax": "",
+    "location": {
+      "lat": "-37.8992676",
+      "lng": "145.0927713"
+    },
+    "area": "southern-victoria",
+    "pageSummary": "Andrew Kerr Home Care supports seniors on the peninsula to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/HCP_grace_hero.jpg",
+    "pageNumber": "1"
+  },
+  {
+    "name": "Barwon Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/barwon-home-care",
+    "category": "home-care",
+    "address": "95 Francis Street, Belmont VIC 3216",
+    "phone": "(03) 4249 0000",
+    "fax": "",
+    "location": {
+      "lat": "-38.1803747",
+      "lng": "144.3482584"
+    },
+    "area": "barwon-victoria",
+    "pageSummary": "Barwon Home Care supports seniors in the Geelong region to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Barwon-HC-banner.jpg",
+    "pageNumber": "1"
+  },
+  {
+    "name": "Gippsland Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/gippsland-home-care",
+    "category": "home-care",
+    "address": "49 McCulloch St, Bairnsdale VIC 3875",
+    "phone": "(03) 5152 9699",
+    "fax": "",
+    "location": {
+      "lat": "-37.8283569",
+      "lng": "147.6249002"
+    },
+    "area": "gippsland-victoria",
+    "pageSummary": "Gippsland Home Care supports people in Victoria’s east to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Gippsland_hero.jpg",
+    "pageNumber": "1"
+  },
+  {
+    "name": "Grampians Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/grampians-home-care",
+    "category": "home-care",
+    "address": "19 Albert Street",
+    "phone": "(03) 5326 0700",
+    "fax": "",
+    "location": {
+      "lat": "-37.5593492",
+      "lng": "143.877331"
+    },
+    "area": "ballarat-ararat-pyrenees",
+    "pageSummary": "Grampians Home Care supports seniors in the Grampians region to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Grampians_web_hero.jpg",
+    "pageNumber": "1"
+  },
+  {
+    "name": "Hume Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/hume-home-care",
+    "category": "home-care",
+    "address": "12 Rowan Street, Wangaratta, VIC, 3677",
+    "phone": "(03) 8527 5880",
+    "fax": "",
+    "location": {
+      "lat": "-36.3528144",
+      "lng": "146.3242036"
+    },
+    "area": "hume",
+    "pageSummary": "Hume Home Care supports seniors in the Hume region to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Ken-Lloyd-hero.jpg",
+    "pageNumber": "1"
+  },
+  {
+    "name": "Loddon Mallee North Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/loddon-mallee-north-home-care",
+    "category": "home-care",
+    "address": "424 San Mateo AveMildura VIC 3500",
+    "phone": "(03) 4026 7000",
+    "fax": "",
+    "location": {
+      "lat": "-34.2093233",
+      "lng": "142.1438363"
+    },
+    "area": "loddon-mallee-north-victoria",
+    "pageSummary": "Uniting AgeWell supports people across the Loddon Mallee to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/loddon-mallee-north-banner.jpg",
+    "pageNumber": "1"
+  },
+  {
+    "name": "Loddon Mallee South Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/loddon-mallee-south-home-care",
+    "category": "home-care",
+    "address": "Shop 13 / 172 McIvor Highway, Strathdale VIC 3550",
+    "phone": "(03) 5454 2100",
+    "fax": "",
+    "location": {
+      "lat": "-36.7594709",
+      "lng": "144.3103488"
+    },
+    "area": "loddon-mallee-south-victoria",
+    "pageSummary": "Uniting AgeWell supports people across the Loddon Mallee to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Loddon-Mallee-South-HC-banner.jpg",
+    "pageNumber": "2"
+  },
+  {
+    "name": "Melbourne East Metro Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/eastern-metro-home-care",
+    "category": "home-care",
+    "address": "378 Burwood HighwayBurwood East, 3151",
+    "phone": "(03) 8845 1800",
+    "fax": "",
+    "location": {
+      "lat": "-37.8551882",
+      "lng": "145.1673368"
+    },
+    "area": "eastern-victoria",
+    "pageSummary": "Eastern Metro Home Care support people in Melbourne’s east to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Uniting-AgeWell-Melbourne-East-Metro-Home-Care_hero.jpg",
+    "pageNumber": "2"
+  },
+  {
+    "name": "Melbourne South Metro Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/southern-metro-home-care",
+    "category": "home-care",
+    "address": "12 Wheeler Street,Berwick, VIC 3806",
+    "phone": "(03) 9089 1900",
+    "fax": "",
+    "location": {
+      "lat": "-37.8992676",
+      "lng": "145.0927713"
+    },
+    "area": "southern-victoria",
+    "pageSummary": "Melbourne South Metro Home Care supports people in Melbourne’s south-east to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/HCP_hero_keith_1.jpg",
+    "pageNumber": "2"
+  },
+  {
+    "name": "Melbourne South East Home Care - Casey",
+    "link": "https://www.unitingagewell.org/our-services/home-care/casey",
+    "category": "home-care",
+    "address": "1412A South Gippsland Highway, Cranbourne VIC 3977",
+    "phone": "(03) 5911 5700",
+    "fax": "",
+    "location": {
+      "lat": "-38.1138762",
+      "lng": "145.2826208"
+    },
+    "area": "southern-victoria",
+    "pageSummary": "South Metro Home Care supports people in Melbourne’s south-east to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Casey_hero.jpg",
+    "pageNumber": "2"
+  },
+  {
+    "name": "Melbourne West Metro Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/west-metro-home-care",
+    "category": "home-care",
+    "address": "319 Geelong Road, Kingsville VIC 3012",
+    "phone": "(03) 9111 9593",
+    "fax": "",
+    "location": {
+      "lat": "-37.807403",
+      "lng": "144.8770799"
+    },
+    "area": "west-metro-victoria",
+    "pageSummary": "Uniting AgeWell Melbourne West Metro Home Care supports people in Melbourne’s west to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Melbourne-home-care-hero.jpg",
+    "pageNumber": "2"
+  },
+  {
+    "name": "Melbourne North Metro Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/north-metro-home-care",
+    "category": "home-care",
+    "address": "9 Langwells Pde, Northcote 3070",
+    "phone": "(03) 9658 5696",
+    "fax": "",
+    "location": {
+      "lat": "-37.7672355",
+      "lng": "145.000213"
+    },
+    "area": "north-metro-victoria",
+    "pageSummary": "Melbourne North Metro Home Care supports people in Melbourne North to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Mary_and_Emily_webhero.jpg",
+    "pageNumber": "2"
+  },
+  {
+    "name": "Tasmania North Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/northern-tasmania-home-care",
+    "category": "home-care",
+    "address": "5 Normanstone Road, South Launceston TAS 7249",
+    "phone": "(03) 6715 7000",
+    "fax": "",
+    "location": {
+      "lat": "-41.3803429",
+      "lng": "147.1247249"
+    },
+    "area": "northern-tasmania",
+    "pageSummary": "Tasmania North Home Care supports people in the regions of George Town, Launceston, Meander Valley, Northern Midlands and West Tamar to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Tasmania-home-care-24-hero.jpg",
+    "pageNumber": "3"
+  },
+  {
+    "name": "Tasmania North West Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/north-western-tasmania-home-care",
+    "category": "home-care",
+    "address": "8 Hamilton Street, Latrobe TAS 7307",
+    "phone": "(03) 6715 7000",
+    "fax": "",
+    "location": {
+      "lat": "-41.2362386",
+      "lng": "146.4119979"
+    },
+    "area": "north-western-tasmania",
+    "pageSummary": "Tasmania North West Home Care supports people in Tasmania’s north west to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Tasmania-North-West_hero.jpg",
+    "pageNumber": "3"
+  },
+  {
+    "name": "Tasmania South Home Care",
+    "link": "https://www.unitingagewell.org/our-services/home-care/southern-tasmania-home-care",
+    "category": "home-care",
+    "address": "&quot;The Cottage&quot;283 Cambridge Road Mornington TAS 7018",
+    "phone": "(03) 6289 8800",
+    "fax": "(03) 6282 1186",
+    "location": {
+      "lat": "-42.8579936",
+      "lng": "147.3902616"
+    },
+    "area": "southern-tasmania",
+    "pageSummary": "Tasmania South Home Care supports people around the eastern and western shores of Hobart to remain living at home, safely and independently, for as long as possible.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Tasmania-South-HC-banner.jpg",
+    "pageNumber": "3"
+  },
+  {
+    "name": "Support to live and age well at home",
+    "link": "https://www.unitingagewell.org/our-services/home-care/guardian-network",
+    "category": "home-care",
+    "address": "",
+    "phone": "",
+    "fax": "",
+    "location": {
+      "lat": "",
+      "lng": ""
+    },
+    "area": "",
+    "pageSummary": "Guardian Network is a wholly owned company of Uniting AgeWell. Effective 26 May 2024, Guardian Network will no longer provide labour hire services or home care services to private clients.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/home-care-worker-hero.jpg",
+    "pageNumber": "3"
+  },
+  {
+    "name": "Andrew Kerr Care Community",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/andrew-kerr-care-community",
+    "category": "residential-care",
+    "address": "67 Tanti Ave, Mornington VIC 3931",
+    "phone": "(03) 5975 6334",
+    "fax": "",
+    "location": {
+      "lat": "-38.2196028",
+      "lng": "145.0451602"
+    },
+    "area": "none",
+    "pageSummary": "Welcome to Uniting AgeWell Andrew Kerr Community, where we support you to age well.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Andrew-Kerr-Care-hero-image.jpg",
+    "pageNumber": "1"
+  },
+  {
+    "name": "Box Hill Community",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/box-hill-community",
+    "category": "residential-care",
+    "address": "75 Thames Street, Box Hill VIC 3128",
+    "phone": "(03) 9843 2200",
+    "fax": "(03) 9843 2211",
+    "location": {
+      "lat": "-37.813795",
+      "lng": "145.123129"
+    },
+    "area": "none",
+    "pageSummary": "Welcome to Uniting AgeWell Box Hill Community, where we support you to age well",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Hero_box_hill.jpg",
+    "pageNumber": "1"
+  },
+  {
+    "name": "Camberwell Community, Condare Court",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/camberwell-community-condare-court",
+    "category": "residential-care",
+    "address": "8 Joffre Street, Camberwell VIC 3124",
+    "phone": "(03) 9809 1558",
+    "fax": "(03) 9809 1674",
+    "location": {
+      "lat": "-37.8430264",
+      "lng": "145.0919031"
+    },
+    "area": "none",
+    "pageSummary": "Welcome to Uniting AgeWell Condare Court Community, where we support you to age well.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Condare-Court_banner_updated.jpg",
+    "pageNumber": "1"
+  },
+  {
+    "name": "Hawthorn Community",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/hawthorn-community",
+    "category": "residential-care",
+    "address": "27-29 Wattle Road, Hawthorn VIC 3122",
+    "phone": "(03) 8840 2700",
+    "fax": "(03) 8840 2799",
+    "location": {
+      "lat": "-37.8246135",
+      "lng": "145.0289632"
+    },
+    "area": "none",
+    "pageSummary": "An exciting new 120-bed aged care residence now open in the heart of Hawthorn.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/UA-web_Hawthorn_hero.jpg",
+    "pageNumber": "1"
+  },
+  {
+    "name": "Kalkee Community, Murray",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/kalkee-community-murray",
+    "category": "residential-care",
+    "address": "9 Spring Street, Belmont VIC 3216",
+    "phone": "(03) 5243 9566",
+    "fax": "(03) 5243 8257",
+    "location": {
+      "lat": "-38.1804258",
+      "lng": "144.3460677"
+    },
+    "area": "none",
+    "pageSummary": "Welcome to Uniting AgeWell Kalkee Community, Murray, where we support you to age well.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Kalkee-Murray_banner.jpg",
+    "pageNumber": "1"
+  },
+  {
+    "name": "Kalkee Community, Nangatta",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/kalkee-community-nangatta",
+    "category": "residential-care",
+    "address": "206 High Street, Belmont VIC 3216",
+    "phone": "(03) 5243 6688",
+    "fax": "(03) 5243 5191",
+    "location": {
+      "lat": "-38.1769174",
+      "lng": "144.3401609"
+    },
+    "area": "none",
+    "pageSummary": "Welcome to Uniting AgeWell Kalkee Community, Nangatta, where we support you to age well.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/kalkee-nangatta-hero.jpg",
+    "pageNumber": "1"
+  },
+  {
+    "name": "Kings Meadows Community, Aldersgate",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/kings-meadows-community",
+    "category": "residential-care",
+    "address": "12-22 Hobart Road, Kings Meadows TAS 7249",
+    "phone": "(03) 6341 1400",
+    "fax": "(03) 6344 1807",
+    "location": {
+      "lat": "-41.4592442",
+      "lng": "147.1552684"
+    },
+    "area": "none",
+    "pageSummary": "Our well-established residence just a few minutes from the centre of Launceston offers high quality, flexible care in a comfortable and welcoming environment.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Laughing-Margaret-Young_web-baner.jpg",
+    "pageNumber": "2"
+  },
+  {
+    "name": "Kingsville Community",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/kingsville-community",
+    "category": "residential-care",
+    "address": "319 Geelong Road, Kingsville VIC 3012",
+    "phone": "(03) 9680 0400",
+    "fax": "(03) 9680 0403",
+    "location": {
+      "lat": "-37.806936",
+      "lng": "144.877952"
+    },
+    "area": "none",
+    "pageSummary": "Welcome to Uniting AgeWell Kingsville Community, where we support you to age well.",
+    "image": "https://assets.unitingagewell.org/kingsville-hero.jpg",
+    "pageNumber": "2"
+  },
+  {
+    "name": "Latrobe Community, Strathdevon",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/latrobe-community-strathdevon",
+    "category": "residential-care",
+    "address": "37 Moriarty Road, Latrobe TAS 7307",
+    "phone": "(03) 7038 0400",
+    "fax": "(03) 7038 0477",
+    "location": {
+      "lat": "-41.2317911",
+      "lng": "146.4222893"
+    },
+    "area": "none",
+    "pageSummary": "Our Latrobe Community aged care residence in North West Tasmania provides more high quality care to seniors, enabling them to remain within their local community as they age.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Manor-Lakes-option-2-hero.jpg",
+    "pageNumber": "2"
+  },
+  {
+    "name": "Manor Lakes Community",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/manor-lakes-community",
+    "category": "residential-care",
+    "address": "15 Buffalo Crescent, Wyndham Vale VIC 3024",
+    "phone": "(03) 9742 7201",
+    "fax": "(03) 9742 6634",
+    "location": {
+      "lat": "-37.873506",
+      "lng": "144.606235"
+    },
+    "area": "none",
+    "pageSummary": "Welcome to Uniting AgeWell Manor Lakes Community, our modern aged care residence in Wyndham Vale where we support you to age well.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/manor-lakes-option-3-hero.jpg",
+    "pageNumber": "2"
+  },
+  {
+    "name": "Mornington Community, Lillian Martin",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/mornington-community-lillian-martin",
+    "category": "residential-care",
+    "address": "281 Cambridge Road, Mornington TAS 7018",
+    "phone": "(03) 6282 1111",
+    "fax": "(03) 6282 1199",
+    "location": {
+      "lat": "-42.8589659",
+      "lng": "147.3892393"
+    },
+    "area": "none",
+    "pageSummary": "Welcome to Uniting AgeWell Mornington Community, Lillian Martin, where we support you to age well.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Lilian-Martin_web-banner.jpg",
+    "pageNumber": "2"
+  },
+  {
+    "name": "Newnham Community, Aldersgate Village",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/newnham-community-aldersgate-village",
+    "category": "residential-care",
+    "address": "3 Tallentire Road, Newnham TAS 7248",
+    "phone": "(03) 6323 8200",
+    "fax": "(03) 6326 8327",
+    "location": {
+      "lat": "-41.3803429",
+      "lng": "147.1247249"
+    },
+    "area": "none",
+    "pageSummary": "Our vibrant residence in Launceston overlooking the picturesque Tamar Valley offers high quality, flexible care in a comfortable and welcoming environment.",
+    "image": "https://assets.unitingagewell.org/%C2%A9tso-hero.jpg",
+    "pageNumber": "2"
+  },
+  {
+    "name": "Noble Park Community",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/noble-park-community",
+    "category": "residential-care",
+    "address": "1312 Heatherton Road,Noble Park VIC 3174",
+    "phone": "(03) 9554 0700",
+    "fax": "",
+    "location": {
+      "lat": "-37.9672331",
+      "lng": "145.1905744"
+    },
+    "area": "none",
+    "pageSummary": "Welcome to Uniting AgeWell Noble Park Community, where we support you to age well.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Hero_noblePark.jpg",
+    "pageNumber": "3"
+  },
+  {
+    "name": "Preston Community",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/preston-community",
+    "category": "residential-care",
+    "address": "78 Bruce Street, Preston VIC 3072",
+    "phone": "(03) 9658 5400",
+    "fax": "",
+    "location": {
+      "lat": "-37.741354",
+      "lng": "144.992402"
+    },
+    "area": "none",
+    "pageSummary": "An exciting new 104-bed aged care residence is now open in the heart of Preston.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Preston_hero.jpg",
+    "pageNumber": "3"
+  },
+  {
+    "name": "Queenborough Rise Community",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/queenborough-rise-community",
+    "category": "residential-care",
+    "address": "3 Peel Street, Sandy Bay TAS 7005",
+    "phone": "(03) 6283 4000",
+    "fax": "(03) 6283 4044",
+    "location": {
+      "lat": "-42.9063016",
+      "lng": "147.3310951"
+    },
+    "area": "none",
+    "pageSummary": "Welcome to Uniting AgeWell Queenborough Rise Community, where we support you to age.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Queenborough-rise.jpg",
+    "pageNumber": "3"
+  },
+  {
+    "name": "Rosetta Community, Strathaven",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/rosetta-community-strathaven",
+    "category": "residential-care",
+    "address": "9 Strathaven Drive, Rosetta TAS 7010",
+    "phone": "(03) 6208 3208",
+    "fax": "(03) 6208 3209",
+    "location": {
+      "lat": "-42.8161827",
+      "lng": "147.259036"
+    },
+    "area": "none",
+    "pageSummary": "​Welcome to Uniting AgeWell Rosetta Community, Strathaven, where we support you to live well.",
+    "image": "https://assets.unitingagewell.org/Lilian-Martin_banner.jpg",
+    "pageNumber": "3"
+  },
+  {
+    "name": "Rosetta Community, Strathglen",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/rosetta-community-strathglen",
+    "category": "residential-care",
+    "address": "2b Chardonnay Drive,Berriedale TAS 7011",
+    "phone": "(03) 6249 8766",
+    "fax": "(03) 6249 8767",
+    "location": {
+      "lat": "-42.813582",
+      "lng": "147.2522915"
+    },
+    "area": "none",
+    "pageSummary": "Welcome to Uniting AgeWell Rosetta Community, Strathglen, where we support you to age well.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Tas_Residential-Care_banner.jpg",
+    "pageNumber": "3"
+  },
+  {
+    "name": "Sorell Community, Ningana",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/sorell-community-ningana",
+    "category": "residential-care",
+    "address": "1 The Circle,Sorell TAS 7172",
+    "phone": "(03) 6269 1000",
+    "fax": "(03) 6269 1099",
+    "location": {
+      "lat": "-42.7852242",
+      "lng": "147.5566697"
+    },
+    "area": "none",
+    "pageSummary": "Welcome to Uniting AgeWell Sorell Community, Ningana, where we support you to age well.",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Ningana_banner.jpg",
+    "pageNumber": "3"
+  },
+  {
+    "name": "Strathdon Community",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/strathdon-community",
+    "category": "residential-care",
+    "address": "17 Jolimont Road, Forest Hill VIC 3131",
+    "phone": "(03) 9845 3111",
+    "fax": "(03) 9894 3489",
+    "location": {
+      "lat": "-37.842967",
+      "lng": "145.173067"
+    },
+    "area": "none",
+    "pageSummary": "Welcome to Uniting AgeWell Strathdon Community, where we support you to age well.",
+    "image": "https://assets.unitingagewell.org/strathdon-hero-2019.jpg",
+    "pageNumber": "4"
+  },
+  {
+    "name": "Strath-Haven Community",
+    "link": "https://www.unitingagewell.org/our-services/residential-care/strath-haven-community",
+    "category": "residential-care",
+    "address": "131-149 Condon Street,Bendigo VIC 3550",
+    "phone": "(03) 5434 3000",
+    "fax": "(03) 5441 2744",
+    "location": {
+      "lat": "-36.7736552",
+      "lng": "144.3056977"
+    },
+    "area": "none",
+    "pageSummary": "Our home at Strath-Haven Community",
+    "image": "https://assets.unitingagewell.org/Hero-Images/Hero_Strath-Haven.jpg",
+    "pageNumber": "4"
+  }
+]

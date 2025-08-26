@@ -1,0 +1,18 @@
+<flynt-component name="BlockWysiwyg" class="componentSpacing" data-animated>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+  <div class="container">
+    <div class="content" data-size="medium" animation="fade-up">
+      {% if srcUrl %}
+        <iframe 
+            src={{ srcUrl }}
+            width="100%" 
+            height={{ iframeHeight ? iframeHeight : 480 }}
+            seamless="seamless" 
+            scrolling="no" 
+            frameborder="0" 
+            allowfullscreen>
+        </iframe>
+      {% endif %}
+    </div>
+  </div>
+</flynt-component>

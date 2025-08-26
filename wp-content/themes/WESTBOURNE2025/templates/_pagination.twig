@@ -1,0 +1,71 @@
+{% if posts %}
+  {% set pagination = posts.pagination %}
+{% endif %}
+
+{% set current_page = pagination.current %}
+{% set total_pages = pagination.total %}
+{% set pages = pagination.pages %}
+
+
+{% set visible_pages = [] %}
+{% set max_visible = 5 %}
+
+{% if total_pages <= max_visible %}
+    {# If total pages is 5 or less, show all pages #}
+    {% for page in pages %}
+        {% set visible_pages = visible_pages|merge([page]) %}
+    {% endfor %}
+{% else %}
+    {% if current_page <= 3 %}
+        {# Near the start #}
+        {% set visible_pages = [1, 2, 3] %}
+        {% set visible_pages = visible_pages|merge(['ellipsis']) %}
+        {% set visible_pages = visible_pages|merge([total_pages]) %}
+    {% elseif current_page >= (total_pages - 2) %}
+        {# Near the end #}
+        {% set visible_pages = [1] %}
+        {% set visible_pages = visible_pages|merge(['ellipsis']) %}
+        {% set visible_pages = visible_pages|merge([total_pages - 2, total_pages - 1, total_pages]) %}
+    {% else %}
+        {# Middle pages - show current page with one on either side #}
+        {% set visible_pages = [1] %}
+        {% set visible_pages = visible_pages|merge(['ellipsis']) %}
+        {% set visible_pages = visible_pages|merge([current_page]) %}
+        {% if current_page + 1 < total_pages - 1 %}
+            {% set visible_pages = visible_pages|merge(['ellipsis']) %}
+            {% set visible_pages = visible_pages|merge([total_pages]) %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+
+<nav class="pagination" role="navigation" aria-label="pagination">
+  {% if pagination.prev %}
+    <a href="{{ pagination.prev.link }}" data-paged="{{ pagination.current - 1 }}" class="button--icon button--pagination" data-icon="chevron-left" title="Previous page" aria-label="Previous page">Previous page</a>
+  {% endif %}
+
+  <ul class="pagination-list">
+    {% for pageNumber in visible_pages %}
+      <li>
+        {% if pageNumber == 'ellipsis' %}
+          <span class="ellipsis--pagination" disabled>&hellip;</span>
+        {% else %}
+          {# {% set page = pages[pageNumber - 1] %} #}
+          {% set index = loop.index %}
+          {% set page = pages[index - 1] %}
+          {% if page.title %}
+            {% if page.link %}
+              <a href="{{ page.link }}" data-paged="{{ page.title }}" class="button--pagination {{ page.class }}" title="Go to page {{ page.title }}" aria-label="Go to page {{ page.title }}">{{ page.title }}</a>
+            {% else %}
+              <span class="button--pagination {{ page.class }}">{{ page.title }}</a>
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% if pagination.next %}
+    <a href="{{ pagination.next.link }}" data-paged="{{ pagination.current + 1 }}"  class="button--icon button--pagination" data-icon="chevron-right" title="Next page" aria-label="Next page">Next page</a>
+  {% endif %}
+</nav>

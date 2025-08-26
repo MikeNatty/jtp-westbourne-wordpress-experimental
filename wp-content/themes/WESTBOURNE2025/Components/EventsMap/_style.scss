@@ -1,0 +1,54 @@
+flynt-component[name="EventsMap"] {
+	position: relative;
+	
+	
+	.mapWrapper {
+		margin-top: $space-xl;
+		position: relative;
+		width: 100%;
+		border-radius: 8px;
+		overflow: hidden;
+		border-radius: var(--variable-radius);
+
+		--border-width: 7px;
+
+		border: var(--border-width) solid #fff;
+
+		height: 440px;
+
+		.map-controls {
+			position: absolute;
+			top: calc($space-m - var(--border-width));
+			right: calc($space-m - var(--border-width));
+
+			display: flex;
+			flex-direction: column;
+			gap: $space-2xs;
+		}
+	  }
+	  
+	  .map {
+		height: 100%;
+		width: 100%;
+	  }
+	  
+
+	  .event-container {
+		padding: $space-m;
+		background: #fff;
+		border: 1px solid $color-border;
+		border-radius: 8px;
+	  
+		font-size: $step--1;
+		color: var(--color-text-primary);
+		--icon-color: var(--color-text-primary);
+	  
+		& > * {
+		  --flow-space: var(--space-2xs);
+		}
+	  
+		.button {
+		  margin-top: $space-s;
+		}
+	  }
+}

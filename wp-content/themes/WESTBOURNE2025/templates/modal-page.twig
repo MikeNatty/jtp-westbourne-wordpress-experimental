@@ -1,0 +1,5 @@
+{% block content %}
+  {% for component in post.meta('pageComponents') %}
+    {{ renderComponent(component) }}
+  {% endfor %}
+{% endblock %}

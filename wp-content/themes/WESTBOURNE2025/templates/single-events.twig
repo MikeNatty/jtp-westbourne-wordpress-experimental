@@ -1,0 +1,69 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+
+    {% set mainImage = post.field_eventOptions_mainImage %}
+    {% set cardImage = post.field_eventOptions_cardImage %}
+    {% set subheading = post.field_eventOptions_subheading %}
+    {% set cta = post.field_eventOptions_cta %}
+    {% set detailsText = post.field_eventOptions_detailsText %}
+    {% set eventStartDate = post.field_eventOptions_eventStartDate %}
+    {% set eventEndDate = post.field_eventOptions_eventEndDate %}
+    {% set timeText = post.field_eventOptions_timeText %}
+    {% set locationText = post.field_eventOptions_locationText %}
+    
+
+      {% if post.terms('contenthub-type') %}
+        {% include 'templates/_taxonomyPills.twig' with {
+            taxonomies: post.terms('contenthub-type'),
+            theme: "tertiary",
+        } only %}
+      {% endif %}
+
+      {{
+        renderComponent(
+          'BlockHeading',
+          {
+            title: post.title
+          }
+        )
+      }}
+      {{
+        renderComponent(
+          'BlockMedia',
+          {
+            gallery: [post.field_contenthubOpitons_mainImage ? post.field_contenthubOpitons_mainImage : post.thumbnail],
+            variant: post.field_contenthubOpitons_oembed ? "videoPlayer" : "carousel",
+            oembed: post.field_contenthubOpitons_oembed,
+            coverImage: post.field_contenthubOpitons_mainImage ? post.field_contenthubOpitons_mainImage : post.thumbnail,
+          }
+        )
+      }}
+
+      {{
+        renderComponent(
+          'EventsMap',
+          {
+            mapLocation: post.mapLocation,
+          }
+        )
+      }}
+
+
+      {% include 'templates/_socialSharing.twig' with {
+          post: post,
+          size: "medium",
+      } only %}
+
+      {{
+        renderComponent(
+          'BlockCardCarousel',
+          {
+            heading: "Recent content",
+            contentSource: 'post',
+            filter: 'upcoming',
+            post: post,
+          }
+        )
+      }}
+{% endblock %}

@@ -1,0 +1,23 @@
+@use 'sass:math';
+
+@import
+  'styles/reset',
+  'styles/variables',
+  'styles/icons',
+  'styles/fonts',
+  'styles/base',
+  'styles/mixins',
+  'styles/forms',
+  'styles/buttons',
+  'styles/swiper',
+  'styles/cards',
+  'styles/skeletons',
+  'styles/modal',
+  'styles/questionnaire',
+  'styles/serviceChecker',
+  'styles/animations',
+  'styles/mmenu-js/src/mmenu.scss',
+  'styles/uaw-pagination';
+
+// stylelint-disable-next-line scss/load-no-partial-leading-underscore, scss/at-import-partial-extension-disallowed-list
+@import '../Components/**/_style.scss';

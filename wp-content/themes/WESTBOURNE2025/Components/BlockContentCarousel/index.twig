@@ -1,0 +1,210 @@
+{% set isTextCarousel = cards|length > 1 %}
+
+{% set width 
+    = variant == '1' ? 789 
+    : 931 %}
+
+
+<flynt-component 
+  name="BlockContentCarousel" 
+  data-bg-color="{{ bgColor }}" 
+  data-variant="{{ variant }}"
+  data-animated
+>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+  <div class="container">
+    <div class="heading-container">
+      {% if heading %}
+        <h2 class="heading {% if titleSize %}size--{{ titleSize }}{% endif %}" animation="text-reveal">{{ heading }}</h2>
+      {% endif %}
+      {% include 'templates/_cta.twig' with {
+        cta: cta,
+      } only %}
+    </div>
+
+    <div class="content-section" animation="fade-up-children" animation-delay="2">
+
+      {# text and image are one carousel that change together #}
+      {% if isTextCarousel %}
+        <div class="text-carousel column">
+          {# {% if isCarousel %} #}
+          <swiper-container 
+            id="text-carousel-{{uuid}}" 
+            css-mode="true"
+          >
+              {% for card in cards %}
+              <swiper-slide>
+                {% include 'templates/_cardText.twig' with {
+                  title: card.title,
+                  description: card.description,
+                } only %}
+              </swiper-slide>
+              {% endfor %}
+
+          </swiper-container>
+          {# {% else %}
+            {% include 'templates/_cardText.twig' with {
+              title: cards[0].title,
+              description: cards[0].description,
+            } only %}
+          {% endif %} #}
+        </div>
+        <div class="image-carousel column">
+          {# {% if isCarousel %} #}
+            <swiper-container 
+              class="main-carousel" 
+              scrollbar-el=".scrollbar-{{uuid}}" 
+              navigation-next-el=".next-{{uuid}}" 
+              navigation-prev-el=".prev-{{uuid}}"
+              pagination-el=".pagination-{{uuid}}"
+              controller-control="#text-carousel-{{uuid}}"
+              grab-cursor="true"
+              space-between="12" 
+              slides-per-view="auto" 
+              breakpoints='{"1280": {"slidesPerView": "1"} }'
+            >
+                {% for card in cards %}
+                  <swiper-slide>
+                    {% if card.image %}
+                      <div class="card">
+                        <div class="card-media">
+                          {% include 'templates/_image.twig' with {
+                              image: card.image,
+                              width: width,
+                              height: "580",
+                          } only %}
+                        </div>
+                        <div class="card-text">
+                          <div class="card-text-top">
+                            <h3 class="card-title">{{card.title}}</h3>
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  </swiper-slide>
+                {% endfor %}
+            </swiper-container>
+
+            <div class="carousel-container-controls">
+              <button type="button" class="button--icon prev-{{uuid}}" data-icon="chevron-left" data-button-theme="white" alt="Previous Slide">Previous Slide</button>
+              <div class="scrollbar-{{uuid}}"></div>
+              <button type="button" class="button--icon next-{{uuid}}" data-icon="chevron-right" data-button-theme="white" alt="Next Slide">Next Slide</button>
+            </div>
+            <div class="pagination-container pagination-{{uuid}}"></div>
+        </div>
+
+      {# text is constant and carousel / image / video #}
+      {# gallery and videos are coming from contentMedia component #}
+      {% else %}
+        <div class="column">
+
+            {% include 'templates/_cardText.twig' with {
+              title: subheading ? subheading : cards[0].title,
+              description: description ? description: cards[0].description,
+            } only %}
+        </div>
+
+        <div class="media-content column">
+
+          {# is carousel #}
+          {% if mediaType == "carousel" %}
+            {% if gallery|length > 1 %}
+              <swiper-container 
+                class="main-carousel" 
+                scrollbar-el=".scrollbar-{{uuid}}" 
+                navigation-next-el=".next-{{uuid}}" 
+                navigation-prev-el=".prev-{{uuid}}"
+                pagination-el=".pagination-{{uuid}}"
+                controller-control="#text-carousel-{{uuid}}"
+                grab-cursor="true"
+                space-between="12" 
+                slides-per-view="auto" 
+                breakpoints='{"1280": {"slidesPerView": "1"} }'
+              >
+                  {% for item in gallery %}
+                    <swiper-slide>
+                      <div class="card">
+                        <div class="card-media">
+                          {% include 'templates/_image.twig' with {
+                              image: item,
+                              width: width,
+                              height: "580",
+                          } only %}
+                        </div>
+                      </div>
+                    </swiper-slide>
+                  {% endfor %}
+              </swiper-container>
+
+              <div class="carousel-container-controls">
+                <button type="button" class="button--icon prev-{{uuid}}" data-icon="chevron-left" data-button-theme="white" alt="Previous Slide">Previous Slide</button>
+                <div class="scrollbar-{{uuid}}"></div>
+                <button type="button" class="button--icon next-{{uuid}}" data-icon="chevron-right" data-button-theme="white" alt="Next Slide">Next Slide</button>
+              </div>
+
+            {# single image #}
+            {% else %}
+              <div class="card">
+                <div class="card-media">
+                  {% include 'templates/_image.twig' with {
+                      image: gallery[0] ? gallery[0] : cards[0].image,
+                      width: width,
+                      height: "580",
+                  } only %}
+                </div>
+              </div>
+            {% endif %}
+
+          {# Video Player #}
+          {% elseif mediaType == "videoPlayer" %}   
+            <div class="video">
+              {% if coverImage %}
+                <div data-ref="coverImage" class="video-image">
+                  {% include 'templates/_image.twig' with {
+                    image: coverImage,
+                    width: width,
+                    height: 580,
+                  } only %}
+                </div>
+              {% endif %}
+              <div data-ref="videoPlayer" class="video-player" >
+                {{ oembed }}
+                <div class="video-loader"></div>
+                {% if btnText %}
+                  <div data-ref="playButton" class="video-playButton">
+                    <button 
+                      class="button" 
+                      type="button" 
+                      data-size="x-small"
+                      data-icon="play-standalone"
+                      data-icon-gap="medium"
+                      aria-label="{{ labels.videoPlayButtonAriaLabel|e }}"
+                    >{{btnText}}</button>
+                  </div>
+                {% else %}
+                  <button data-ref="playButton" class="video-playButton video-playButton--icon" type="button" aria-label="{{ labels.videoPlayButtonAriaLabel|e }}"></button>
+                {% endif %}
+              </div>
+            </div>
+          {# Video Background #}
+          {% elseif mediaType == "videoBackground" %} 
+            <div class="background-video">
+              {% if videoFile %}
+                <video data-ref="videoBackground" data-src="{{ videoFile }}" type="video/mp4" autoplay loop muted></video>
+              {% endif %}
+            </div>
+            {% if videoFile.caption and showCaptions %}
+              <div class="caption-container">
+                <p>{{videoFile.caption}}</p>
+              </div>
+            {% endif %} 
+
+          {% endif %}
+
+        </div>
+      {% endif %}
+
+    </div>
+
+  </div>
+</flynt-component>

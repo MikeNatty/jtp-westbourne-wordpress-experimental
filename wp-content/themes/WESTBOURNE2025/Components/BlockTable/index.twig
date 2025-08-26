@@ -1,0 +1,33 @@
+<flynt-component name="BlockTable" data-animated>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+    <div class="container">
+      <div class="content-section" animation="fade-up">
+        {# {% if sectionHeading %}
+          <h3 class="sectionHeading">{{ sectionHeading }}</h3>
+        {% endif %} 
+        {% if heading %}
+          <h2 class="heading">{{ heading }}</h2>
+        {% endif %} 
+        {% if contentHtml %}
+          <div class="description">
+            {{ contentHtml|e('wp_kses_post') }}
+          </div>
+        {% endif %}  #}
+        {% if table %}
+          <div class="table-wrapper">
+              <table>
+                <tbody>
+                  {% for row in table.body %}
+                    <tr>
+                      {% for cell in row %}
+                          <td>{{ cell.c }}</td>
+                      {% endfor %}
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+          </div>
+        {% endif %} 
+      </div>
+    </div>
+</flynt-component>

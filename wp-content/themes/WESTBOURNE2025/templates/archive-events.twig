@@ -1,0 +1,48 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+  {% set postType = 'events' %}
+  {{renderComponent('BlockHeading', {title: 'Events'})}}
+
+  {{
+    renderComponent(
+      'PostFilter',
+      {
+        postType: postType,
+      }
+    )
+  }}
+
+  {% for component in post.meta('pageComponents') %}
+    {{ renderComponent(component) }}
+  {% endfor %}
+
+
+    {{
+    renderComponent(
+      'BlockCardCarousel',
+      {
+        heading: "Recent Events",
+        sourcePostType: postType,
+        filter: 'recent',
+        titleSize: 'small',
+      }
+    )
+  }}
+
+
+  {% if posts %}
+    {{
+      renderComponent(
+        'BlockCardGrid',
+        {
+          heading: "Archives",
+          posts: posts,
+          titleSize: "small",
+          placeholderImage: imageOptions.placeholderImage,
+          postType: postType
+        }
+      )
+    }}
+  {% endif %}
+{% endblock %}

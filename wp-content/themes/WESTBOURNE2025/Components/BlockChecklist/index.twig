@@ -1,0 +1,36 @@
+<flynt-component 
+  name="BlockChecklist" 
+  data-variant="{{ variant }}" 
+  data-animated
+>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+  <div class="container">
+    <div class="content-section" animation="border-fade-in">
+      <div class="content-section-text">
+        {% if heading %}
+          <h2 class="heading" animation="text-reveal">{{ heading }}</h2>
+        {% endif %}
+        {% if description %}
+          <p class="description" animation="fade-up" animation-delay="2">{{ description }}</p>
+        {% endif %}
+        {% include 'templates/_cta.twig' with {
+          cta: cta,
+        } only %}
+      </div>
+      <div class="content-section-list">
+        {% if items %}
+          <ul class="list" animation="fade-up-children" animation-delay="2">
+            {% for item in items %}
+              {% if item.heading %}
+                <li class="list-item" {% if variant == 'checklist' %}data-refs="toggle" data-is-checked="false"{% endif %}>
+                   <div class="list-icon"></div>
+                   {{ item.heading }}
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</flynt-component>

@@ -1,0 +1,40 @@
+<div class="submenu">
+  <div class="submenu-content">
+    <div class="submenu-content-text"> 
+      {% if title %}
+        <p class="h3 submenu-content-title">{{title}}</p>
+      {% endif %}
+      <div class="submenu-nav">
+        <ul class="submenu-list">
+          {% for item in items|slice(0, 7) %}
+            <li class="submenu-item {{ item.classes | join(' ') }}">
+              <a class="submenu-link button--text button--reversed" data-icon="chevron-right" href="{{ item.link|e('esc_url') }}">{{ item.title }}</a>
+              {% if item.children %}
+                <div class="childmenu-container">
+                  <ul class="childmenu">
+                    {% for childItem in item.children|slice(0, 7) %}
+                      <li class="submenu-item {{ childItem.classes | join(' ') }}">
+                        <a class="submenu-link button--text button--reversed" data-icon="chevron-right" href="{{ childItem.link|e('esc_url') }}">{{ childItem.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="submenu-content-media"> 
+      {% if image %}
+        <div class="content-section-media">
+          {% include 'templates/_image.twig' with {
+            'width': 400,
+            'height': 400,
+            'image': image,
+          } only %}
+        </div>
+      {% endif %}   
+    </div>
+  </div>
+</div>

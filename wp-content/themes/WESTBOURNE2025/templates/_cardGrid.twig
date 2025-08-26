@@ -1,0 +1,34 @@
+{% for post in posts %}
+    <a 
+    href="{{post.link}}"
+    title="{{ post.title }}"
+    target="_self"
+    >
+
+    {% if postType == 'contenthub' %}
+        {# slice the taxonomy terms at 1 so there is only 2 total possible #}
+        {% set pills = post.terms('contenthub-type')|slice(0, 1) %}
+        {% set pills = pills|merge(post.terms('contenthub-category')|slice(0, 1)) %}
+        {% set description = post.field_contenthubOpitons_cardExcerpt %}
+        {% set labels = [ post.date|date('d M Y') ] %}
+    {% elseif postType == 'publications' %}
+        {# {% set labels = post.terms('location-category')|slice(0, 1) %} #}
+        {% set pills = post.terms('publications-tag')|slice(0, 1) %}
+        {% set pills = pills|merge(post.terms('publications-category')|slice(0, 1)) %}
+        {% set labels = [ post.date|date('d M Y') ] %}
+    {% elseif postType == 'events' %}
+        {% set pills = post.terms('events-category')|slice(0, 2) %}
+        {% set labels = [ post.field_eventOptions_eventStartDate|date('d M Y'), post.terms('events-location')[0].name ] %}
+    {% endif %}
+
+    {% include 'templates/_card.twig' with {
+        image: post.thumbnail ?: placeholderImage,
+        theme: cardTheme,
+        labels: labels,
+        theme: "large",
+        description: description,
+        title: post.title,
+        pills: pills,
+    } only %}
+    </a>
+{% endfor %}

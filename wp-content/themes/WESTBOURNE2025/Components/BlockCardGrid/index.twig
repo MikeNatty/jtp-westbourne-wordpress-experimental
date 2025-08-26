@@ -1,0 +1,154 @@
+{# hide this whole thing if cards < 0 #}
+{% if theme == 'team' %}
+  {% set desktopColumns = 5 %}
+{% endif %}
+
+{% set cardTheme =
+  theme == 'icon' ? theme
+  : desktopColumns != 5 ? 'large'
+  : '' %}
+{% set introCardPadding = theme == 'icon' or desktopColumns == 5 ? 'small' : '' %}
+
+{% if theme == 'icon' %}
+  {% set desktopColumns = desktopIconColumns %}
+{% endif %}
+
+<flynt-component
+  name="BlockCardGrid" {% if titleSize %}data-title-size="{{ titleSize }}"{% endif %}
+  data-animated
+>
+  {# <iframe
+  src="https://storage.net-fs.com/hosting/6404630/22/"
+  width="100%"
+  height="500"
+  frameborder="0"
+  allowfullscreen>
+</iframe> #}
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+    <div class="container">
+
+        {# {% if theme == 'team' and heading %} #}
+        {% if heading %}
+          <div class="heading-container">
+              <h2 class="heading {% if titleSize %}size--{{ titleSize }}{% endif %}">{{ heading }}</h2>
+          </div>
+        {% endif %}
+
+        <div
+          {% if posts %}
+            class="grid grid--posts"
+          {% elseif theme == 'icon'%}
+            class="grid grid--icon-grid"
+          {% elseif theme == 'contact'%}
+            class="grid grid--contact"
+          {% else %}
+            class="grid grid--standard"
+          {% endif %}
+          data-max-columns="{{desktopColumns ? desktopColumns : 3}}"
+          animation="border-fade-in-children"
+        >
+
+            {# custom cards #}
+            {% if theme == 'default' %}
+              {% if introCard.title or introCard.description %}
+                {% include 'templates/_cardText.twig' with {
+                  color: "pink",
+                  title: introCard.title,
+                  description: introCard.description,
+                  padding: introCardPadding,
+                } only %}
+              {% endif %}
+
+              {% for card in cards %}
+                {# theme: "large", #}
+                {% if card.type == 'text' %}
+                  {% include 'templates/_cardText.twig' with {
+                    theme: cardTheme,
+                    title: card.title,
+                    description: card.description,
+                  } only %}
+                {% else %}
+                  {% include 'templates/_cardImage.twig' with {
+                    image: card.image,
+                  } only %}
+                {% endif %}
+              {% endfor %}
+
+              {% if ctaCard.title or ctaCard.description %}
+                {% include 'templates/_cardText.twig' with {
+                  color: "pink",
+                  title: ctaCard.title,
+                  cta: ctaCard.cta,
+                } only %}
+              {% endif %}
+
+          {# custom cards #}
+          {% elseif theme == 'contact' %}
+            {% if introCard.title or introCard.description %}
+              {% include 'templates/_cardText.twig' with {
+                color: "pink",
+                title: introCard.title,
+                description: introCard.description,
+                padding: introCardPadding,
+              } only %}
+            {% endif %}
+
+
+            {% for card in contactCards %}
+              {% include 'templates/_cardText.twig' with {
+                theme: cardTheme,
+                title: card.title,
+                locationLink: card.location,
+                phone: card.phone
+              } only %}
+            {% endfor %}
+
+            {# team cards #}
+            {% elseif theme == 'team' %}
+              {% for card in teamCards %}
+                {% if card.bioLink.link %}
+                <a href=#" onClick="openModal({{ card.bioLink.id }})" data-modal-id="{{ card.bioLink.id }}" >
+                {% endif %}
+                  {% include 'templates/_card.twig' with {
+                    theme: cardTheme,
+                    image: card.image,
+                    title: card.title,
+
+                    description: card.position,
+                  } only %}
+                {% if card.bioLink.link %}
+                </a>
+                {% endif %}
+              {% endfor %}
+
+            {# icon #}
+            {% elseif theme == 'icon' %}
+              {% for card in iconCards %}
+                  {% include 'templates/_card.twig' with {
+                    theme: "icon-small",
+                    image: card.image,
+                    title: card.title,
+                    description: card.description,
+                  } only %}
+              {% endfor %}
+
+            {# grid post archives #}
+            {% elseif posts %}
+              {% include 'templates/_cardGrid.twig' with {
+                  posts: posts,
+                  placeholderImage: imageOptions.placeholderImage,
+                  postType: postType
+              } only %}
+            {% endif %}
+
+        </div>
+        {% set pagination = posts.pagination %}
+        {% if pagination %}
+          <div class="pagination-container">
+            {% include 'templates/_pagination.twig' with {
+              'pagination': pagination,
+            } only %}
+          </div>
+        {% endif %}
+    </div>
+</flynt-component>

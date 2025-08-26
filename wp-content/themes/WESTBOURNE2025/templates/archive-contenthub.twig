@@ -1,0 +1,47 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+  {{renderComponent('BlockHeading')}}
+  {# {{dump(post)}} #}
+  {# {{dump(posts)}} #}
+  {# {% if post.meta('pageComponents') %} #}
+  {% for component in post.meta('pageComponents') %}
+    {{ renderComponent(component) }}
+  {% endfor %}
+
+  {{
+    renderComponent(
+      'PostFilter',
+      {
+        postType: "contenthub",
+      }
+    )
+  }}
+
+    {{
+    renderComponent(
+      'BlockCardCarousel',
+      {
+        heading: "Recent content",
+        sourcePostType: 'contenthub',
+        filter: 'recent',
+        titleSize: 'small',
+      }
+    )
+  }}
+
+
+  {% if posts %}
+    {{
+      renderComponent(
+        'BlockCardGrid',
+        {
+          heading: "All Content",
+          posts: posts,
+          titleSize: "small",
+          placeholderImage: imageOptions.placeholderImage,
+        }
+      )
+    }}
+  {% endif %}
+{% endblock %}

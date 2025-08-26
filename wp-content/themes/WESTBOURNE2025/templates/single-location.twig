@@ -1,0 +1,42 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+  {% set anchorBarEnabled = post.meta('anchorLink_enable') %}
+
+  {% if anchorBarEnabled %}
+    {% set anchorLinks = [] %}
+    {% for component in post.meta('pageComponents') %}
+      {% if component.anchorId and component.anchorTitle  %}
+        {% set anchorLinks = anchorLinks|merge({(component.anchorId): component.anchorTitle}) %}
+      {% endif %}
+    {% endfor %}
+    {{ renderComponent('BlockAnchorLinkBar', 
+      {
+        components: anchorLinks,
+        cta: post.meta('anchorLink_cta'),
+        downloads: post.meta('anchorLink_downloads'),
+      }) }}
+  {% endif %}
+
+  {% for component in post.meta('pageComponents') %}
+    {% if component.acf_fc_layout == 'blockHero' %}
+      {{ renderComponent(component,
+        {
+          parentID: post.terms('location-category')[0].meta.locationCategoryPage,
+        }
+      ) }}
+    {% else %}
+      {{ renderComponent(component) }}
+    {% endif %}
+  {% endfor %}
+
+
+  {{ renderComponent('BlockContactCard',
+    {
+      title: 'Get directions or ask a question',
+      phoneNumber: post.meta.phone,
+      email: post.meta.email,
+      mapLocation: post.meta('address'),
+    }
+  )}} 
+{% endblock %}

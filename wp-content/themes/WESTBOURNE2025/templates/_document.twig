@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="html {{ body_class }}" {{ site.language_attributes }}>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="alternate" type="application/rss+xml" title="{{- theme.labels.feed|replace({'%s': site.title}) -}}" href="{{ site.rss2|e('esc_url') }}">
+    {{ function('wp_head') }}
+  </head>
+  <body>
+    
+    {{ function('wp_body_open') }}
+    <a href="#mainContent" class="visuallyHidden-focusable">
+      {{- theme.labels.skipToMainContent|e -}}
+    </a>
+    {% block layout %}
+      {# section tag is a temp solution for mmenu bug, if it remains a div it causes js loading issues #}
+      {# when another div is added to the body tag - currently from a marker.io div #}
+      <section class="pageWrapper" id="page">
+        <header class="mainHeader" id="header">
+          {% block header %}
+            {{ renderComponent('NotificationBar') }}
+            {{ renderComponent('NavigationMain') }}
+            {{ renderComponent('NavigationMegaMenu') }}
+            {{ renderComponent('NavigationBurger') }}
+            {# {{ function('wp_footer') }} #}
+          {% endblock %}
+        </header>
+        <main id="mainContent" class="mainContent" aria-label="{{- theme.labels.mainContentAriaLabel|e -}}">
+          {% if function('post_password_required') %}
+            {{ function('get_the_password_form') }}
+          {% else %}
+            {% block content %}
+              No <code>{{ '{% block content %}' }}</code> defined for this template.
+            {% endblock %}
+            {{ renderComponent('FormModal') }}
+            {{ renderComponent('ContentModal') }}
+          {% endif %}
+        </main>
+        <footer class="mainFooter">
+          {% block footer %}
+            {{ renderComponent('NavigationFooter') }}
+          {% endblock %}
+        </footer>
+      </section>
+    {% endblock %}
+    <div></div>
+    {# {{ renderComponent('NavigationBurger') }} #}
+    {{ function('wp_footer') }}
+  </body>
+</html>

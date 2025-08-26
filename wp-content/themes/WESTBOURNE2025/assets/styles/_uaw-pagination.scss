@@ -1,0 +1,6 @@
+.uaw-pagination__previous-button,
+.uaw-pagination__next-button {
+  &:disabled {
+    opacity: 0;
+  }
+}

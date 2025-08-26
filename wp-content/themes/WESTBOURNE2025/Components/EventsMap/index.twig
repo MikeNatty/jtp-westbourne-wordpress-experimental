@@ -1,0 +1,79 @@
+<flynt-component name="EventsMap" data-animated>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+  <div class="container">
+    <div class="content" data-size="medium">
+        {% if subheading %}
+          <h3>{{subheading}}</h3>
+        {% endif %}
+        {% if cta %}
+          <p>
+            <a href="{{ cta.url }}" title="{{ cta.title }}" target="{{ cta.target }}" class="button">{{ cta.title }}</a>
+          </p>
+        {% endif %}
+        {% if detailsText %}
+          <p>{{detailsText}}</p>
+        {% endif %}
+        <div class="event-container">
+          {% if locationText %}
+            <p><span data-icon="location-pin-large">{{locationText}}</span></p>
+          {% endif %}
+          <p>
+            <span data-icon="calendar-large">
+              {% if eventEndDate %}
+                {# show start date month and year if it doesn't match the end date #}
+                {{eventStartDate|date('d')}} {{ eventStartDate|date('F Y') != eventEndDate|date('F Y') ? eventStartDate|date('F Y') : "" }} - {{eventEndDate|date('d M Y')}}
+              {% else %}
+                {{eventStartDate|date('d M Y')}}
+              {% endif %}
+            </span>
+          </p>
+          {% if timeText %}
+            <p><span data-icon="clock">{{timeText}}</span></p>
+          {% endif %}
+          {% if directionsUrl %}
+            <a href="{{ directionsUrl }}" title="Get directions" target="_blank" class="button" data-size="xx-small" data-button-theme="tertiary" data-icon="browser" data-icon-gap="medium">Get directions</a>
+          {% endif %}
+        </div>
+
+
+
+      {% if apiKey and locationJson %}
+        <div class="mapWrapper" >
+          <div 
+            class="map"
+            data-api-key="{{ apiKey }}"
+            data-location='{{ locationJson }}'
+          ></div>
+
+          <div class="map-controls">
+            <button 
+              type="button" 
+              data-zoom="in" 
+              id="zoom-out" 
+              class="button--icon" 
+              data-icon="plus-large" 
+              data-button-theme="white" 
+              data-size="small"
+              alt="Zoom In"
+            >
+              Zoom In
+            </button>
+            <button 
+              type="button" 
+              data-zoom="out" 
+              class="button--icon" 
+              data-icon="minus" 
+              data-button-theme="white" 
+              data-size="small"
+              alt="Zoom Out"
+            >
+              Zoom Out
+            </button>
+          </div>
+        </div>
+
+    {% endif %}
+
+    </div>
+  </div>
+</flynt-component>

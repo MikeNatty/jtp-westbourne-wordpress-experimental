@@ -1,0 +1,57 @@
+<div class="card--text" 
+    {% if color %}data-color={{color}}{% endif %}
+    {% if padding %}data-padding={{padding}}{% endif %}
+    {% if textCardLarge %}data-card-theme='text-large'{% endif %}
+>
+    {% if theme == 'icon' %}
+        <button type="button" class="button--icon" data-icon="arrow-up-right" data-button-theme="tertiary">settings</button>
+    {% endif %}
+    <div class="card-text">
+        <div class="card-text-top">
+            {% if labels %}
+                <div class="card-labels">
+                    {% for label in labels %}
+                        <p>{{label}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if title %}
+                <h3 class="card-title">{{title}}</h3>
+            {% endif %}
+        </div>
+        {% if description or cta or phone or locationLink %}
+            <div class="card-text-bottom">
+                {% if description %}
+                    <p class="card-description">{{description}}</p>
+                {% endif %}
+                {% include 'templates/_cta.twig' with {
+                    cta: cta,
+                    size: 'small'
+                } only %}
+                {% if phone %}
+                    <p class="phone">
+                        <a href="tel:{{ phone|replace({' ': ''}) }}" 
+                        title="Call: {{ phone }}"
+                        class="link"
+                        data-icon="phone"
+                        >
+                        {{ phone }}
+                        </a>
+                    </p>
+                {% endif %}
+                {% if locationLink %}
+                    <p class="location">
+                        <a href="{{ locationLink.url }}" 
+                        class="link"
+                        data-icon="location-pin-large"
+                        title="{{ locationLink.title }}" 
+                        target="{{ locationLink.target }}"
+                        >
+                        {{ locationLink.title }}
+                        </a>
+                    </p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>

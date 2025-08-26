@@ -1,0 +1,140 @@
+<flynt-component name="NavigationFooter" data-animated>
+  <div class="container">
+    <div class="footer">
+      <div class="footer-cards">
+        {# Information Card #}
+        <div class="panel panel--info" animation="border-fade-in">
+          <h2 class="panel-heading">{{ infoCard.title }}</h2>
+            {% if infoCard.cta %}
+              {# <a href="{{ infoCard.cta.url }}" 
+                title="{{ infoCard.cta.title }}" 
+                target="{{ infoCard.cta.target }}" 
+                class="button" 
+                data-size="small">
+                {{ infoCard.cta.title }}
+              </a> #}
+              {% include 'templates/_cta.twig' with {
+                cta: infoCard.cta,
+                size: 'small',
+              } only %}
+            {% endif %}
+        </div>
+
+        {# Contact Card #}
+        <div class="panel panel-contact" animation="border-fade-in" animation-delay="2">
+          <h2 class="panel-heading">{{ contactCard.title }}</h2>
+          <div class="panel-contact-buttons">
+            {% if contactCard.cta %}
+              {% include 'templates/_cta.twig' with {
+                cta: contactCard.cta,
+                size: 'small',
+              } only %}
+            {% endif %}
+            {% if contactCard.phoneNumber %}
+              <a href="tel:{{ contactCard.phoneNumber|replace({' ': ''}) }}" 
+                title="Call: {{ contactCard.phoneNumber }}"
+                class="button"
+                data-icon="phone"
+                data-button-theme="tertiary"
+                data-size="small">
+                Call: {{ contactCard.phoneNumber }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-content" animation="fade-up" animation-delay="5">
+        <div class="footer-row">
+          {# Acknowledgement #}
+          <div class="footer-acknowledgement">
+            {% if contentHtml %}
+              {{ contentHtml|e('wp_kses_post') }}
+            {% endif %}
+          </div>
+
+          {# Navigation Links #}
+          <nav class="footer-nav" aria-label="{{ labels.ariaLabel|e }}">
+            <ul class="footer-nav-list">
+              {% if menu %}
+                {% set columnLength = (menu.items|length / 3)|round(0,'ceil') %}
+                {% for column in menu.items|batch(columnLength) %}
+                  <div class="footer-nav-column">
+                    {% for link in column %}
+                      <li class="footer-nav-item">
+                        <a href="{{ link.url }}" class="footer-nav-link link" {{- link.is_external or link.is_target_blank ? ' target="_blank" rel="noopener noreferrer"' -}} title="{{ link.title }}">{{ link.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer-contact">
+          <h2 class="footer-contact-title">{{ newsletter.title }}</h2>
+
+          <div class="logo">
+            <img src="{{ logo.src }}" alt="Uniting AgeWell" class="footer__logo" alt="{{ logo.alt }}">
+          </div>
+
+          {# Newsletter #}
+          <div class="footer-newsletter">
+            {# {{ newsletter.formShortcode|shortcodes }} #}
+            <div class="email">
+              <input type="email" placeholder="Enter email address" aria-label="Email address">
+            </div>
+            <button type="submit" class="button" data-size="small">Send</button>
+          </div>
+
+          {# Social Links #}
+          <nav class="social-nav" aria-label="{{ labels.socialAriaLabel|e }}">
+            <ul class="social-nav-list">
+              {% if socialLinks.linkedin %}
+                <li>
+                  <a href="{{socialLinks.linkedin}}" class="button--icon" data-icon="linkedin" data-button-theme="tertiary" title="LinkedIn">LinkedIn</a>
+                </li>
+              {% endif %}
+              {% if socialLinks.facebook %}
+                <li>
+                  <a href="{{socialLinks.facebook}}" class="button--icon" data-icon="social-facebook" data-button-theme="tertiary" title="Facebook">Facebook</a>
+                </li>
+              {% endif %}
+              {% if socialLinks.instagram %}
+                <li>
+                  <a href="{{socialLinks.instagram}}" class="button--icon" data-icon="instagram" data-button-theme="tertiary" title="Instagram">Instagram</a>
+                </li>
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer-legal">
+          {# Legal Links #}
+          <nav aria-label="{{ labels.legalAriaLabel|e }}">
+            {% if menuLegal %}
+              <ul class="footer-legal-links">
+                {% for item in menuLegal.items %}
+                  <li>
+                    <a href="{{ item.url }}" class="link" {{- item.is_external or item.is_target_blank ? ' target="_blank" rel="noopener noreferrer"' -}} title="{{ item.title }}">{{ item.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </nav>
+          {# JTB #}
+          {% include 'Partials/_jtb.twig' %}
+
+          {# copyright #}
+          {% if copyright %}
+            <div class="footer-copyright">
+              {{copyright}}
+            </div>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</flynt-component>

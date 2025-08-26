@@ -1,0 +1,71 @@
+flynt-component[name="BlockContactCard"] {
+	margin-top: var(--space-section-large);
+	position: relative;
+	overflow: hidden;
+	
+	.content-section {
+		background: $color-background-pink;
+		border-radius: var(--variable-radius);
+
+		
+		padding: $space-l $space-s;
+		@media (min-width: $breakpoint-mobile-horizontal) {
+			padding: $space-xl $space-l;
+		}
+		
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			padding: $space-xl;
+			display: flex;
+			flex-direction: row;
+			gap: $space-2xl;
+			justify-content: space-between;
+		}
+	}
+
+	.title {
+		font-size: $step-3;
+	}
+
+	.cta-container {
+		flex-basis: 480px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		
+		@media (min-width: $breakpoint-mobile-horizontal) {
+			align-items: start;
+		}
+
+		button {
+			margin-top: $space-m;
+		}
+	}
+	.contact-container {
+		margin-top: $space-l;
+		display: flex;
+		flex-direction: column;
+		gap: $space-xs;
+		
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			flex-basis: 620px;
+			margin-top: 0;
+		}
+		
+		a {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 12px;
+			font-size: $step-1;
+			color: $color-secondary;
+			word-break: break-word;
+			span {
+				--button-text-color: var(--color-brand-secondary);
+			}
+		}
+	}
+	.image-container {
+		flex-shrink: 0;
+		flex-basis: 240px;
+	}
+}

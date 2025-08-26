@@ -1,0 +1,285 @@
+@use 'node_modules/utopia-core-scss/src/utopia' as utopia;
+
+:root {
+  --color-brand-primary: #5E56A5;
+  --color-brand-primary-subtle: #EDD2F0;
+  --color-brand-primary-action: #7A6BF7;
+
+  --color-brand-secondary: #6F4874;
+  --color-brand-secondary-subtle: #F8EDF9;
+
+
+  --color-beige: #E0D7D1;
+
+  // might change
+  --color-secondary-hover: #DEC4E0;
+  --color-disabled: #F0F0F0;
+  
+  --color-border: #DDDDDD;
+  
+  
+  --color-text-primary: #131121;
+  --color-text-secondary: #52515A;
+  --color-text-tertiary: #939393;
+  --color-text-brand: #4B4584;
+  --color-text-disabled: #B5B6BC;
+  // --color-text-plum: #6F4874;
+  --color-text-placeholder: #727583;
+
+  --color-error: #E50303;
+  --color-error-sublte: #FFF2F2;
+
+
+  // --color-primary: var(--color-brand-primary);
+  // --color-secondary: var(--color-brand-secondary);
+  --color-accent: var(--color-brand-primary);
+  --color-background: #F6F2EF;
+
+  // input padding
+  --input-padding-vertical: 16px;
+  --input-padding-left: 24px;
+  --input-padding-right: 20px;
+
+  // sticky nav
+  --sticky-nav-block-padding: 10px;
+}
+
+$color-primary: var(--color-brand-primary);
+$color-primary-action: var(--color-brand-primary-action);
+$color-secondary: var(--color-brand-secondary);
+
+$color-text-brand: var(--color-text-brand);
+$color-text-primary: var(--color-text-primary);
+
+$color-border: var(--color-border);
+
+$color-background-pink: var(--color-brand-primary-subtle);
+$color-background-purple: var(--color-brand-secondary-subtle);
+
+$breakpoint-mobile-horizontal: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-tablet-horizontal: 1024px;
+$breakpoint-desktop: 1280px;
+
+$border-pink: 1px solid $color-background-pink;
+
+$transition: 350ms ease-out;
+$transition-quick: 200ms ease;
+$transition-slow: 700ms ease;
+$transition-button: 300ms ease;
+
+$delay-multiplier: 0.05;
+
+
+
+:root {
+  /**
+   * FOUC can be reduced with good matching fallback font.
+   * https://meowni.ca/font-style-matcher/ or
+   * https://github.com/pixel-point/fontpie
+   */
+  --font-family-heading: 'Studio6', 'Studio6 Fallback', Helvetica;
+  --font-family-text: 'Studio6', 'Studio6 Fallback', Helvetica;
+
+
+  // default values
+  --color-body: var(--color-text-secondary);
+  --font-size-body: var(--step-0);
+  --font-size-body-small: 1rem;
+  --flow-space: var(--space-m);
+  --column-gap: var(--space-m);
+
+  --content-max-width: 780px;
+  --content-max-width-wide: 900px; 
+
+  --box-spacing: clamp(1rem, 2.50vw + 0.25rem, 2.25rem);
+  --component-spacing: var(--space-2xl);
+  
+  // --container-spacing: clamp(1rem, 2.5vw + 0.25rem, 2.25rem);
+  --container-spacing: var(--space-s);
+  @media (min-width: $breakpoint-tablet) {
+    --container-spacing: var(--space-l);
+  }
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    --container-spacing: var(--space-3xl);
+  }
+
+  // new values 
+  // --content-max-width-full: 1593px;
+  --content-max-width-full: 1920px;
+
+  //random variables
+  --variable-radius: 16px;
+  @media (min-width: $breakpoint-tablet) {
+    --variable-radius: 24px;
+  }
+  
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    --variable-radius: 32px;
+  }
+
+
+  // component spacing
+  --space-section-large: 120px;
+  @media (min-width: $breakpoint-tablet) {
+    --space-section-large: 200px;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    // --space-section-large: 288px;
+    --space-section-large: calc(var(--space-4xl)*1.4);
+  }
+
+  --space-section-medium: var(--space-2xl);
+  @media (min-width: $breakpoint-tablet) {
+    --space-section-medium: var(--space-3xl);
+  }
+  @media (min-width: $breakpoint-desktop) {
+    --space-section-medium: var(--space-4xl);
+  }
+
+  --space-section-small: 52px;
+  @media (min-width: $breakpoint-tablet) {
+    --space-section-small: 69px;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    --space-section-small: 92px;
+  }
+
+  --space-section-xs: 24px;
+  @media (min-width: $breakpoint-tablet) {
+    --space-section-xs: 32px;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    --space-section-xs: 40px;
+  }
+
+  --navigation-height: 70px;
+  @media (min-width: $breakpoint-tablet) {
+    --navigation-height: 98px;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    --navigation-height: 0px;
+  }
+}
+
+
+
+
+// ORIGINAL DESIGN SCALE
+// /* @link https://utopia.fyi/type/calculator?c=376,16,1.125,1776,18,1.25,10,2,768&s=0.75|0.5|0.25,1.5|2|3|4|6|8,s-l&g=m,xl,3xl,12 */
+// :root {
+// 	/* Step -2: 12.642px → 11.52px */
+// 	--step--2: clamp(0.72rem, 0.809rem + -0.0801vw, 0.7901rem);
+// 	/* Step -1: 14.2222px → 14.4px */
+// 	--step--1: clamp(0.8889rem, 0.8859rem + 0.0127vw, 0.9rem);
+// 	/* Step 0: 16px → 18px */
+// 	--step-0: clamp(1rem, 0.9664rem + 0.1429vw, 1.125rem);
+// 	/* Step 1: 18px → 22.5px */
+// 	--step-1: clamp(1.125rem, 1.0495rem + 0.3214vw, 1.4063rem);
+// 	/* Step 2: 20.25px → 28.125px */
+// 	--step-2: clamp(1.2656rem, 1.1334rem + 0.5625vw, 1.7578rem);
+// 	/* Step 3: 22.7813px → 35.1563px */
+// 	--step-3: clamp(1.4238rem, 1.2161rem + 0.8839vw, 2.1973rem);
+// 	/* Step 4: 25.6289px → 43.9453px */
+// 	--step-4: clamp(1.6018rem, 1.2944rem + 1.3083vw, 2.7466rem);
+// 	/* Step 5: 28.8325px → 54.9316px */
+// 	--step-5: clamp(1.802rem, 1.3639rem + 1.8642vw, 3.4332rem);
+// 	/* Step 6: 32.4366px → 68.6646px */
+// 	--step-6: clamp(2.0273rem, 1.4192rem + 2.5877vw, 4.2915rem);
+// 	/* Step 7: 36.4912px → 85.8307px */
+// 	--step-7: clamp(2.2807rem, 1.4525rem + 3.5243vw, 5.3644rem);
+// 	/* Step 8: 41.0526px → 107.2884px */
+// 	--step-8: clamp(2.5658rem, 1.454rem + 4.7311vw, 6.7055rem);
+// 	/* Step 9: 46.1841px → 134.1105px */
+// 	--step-9: clamp(2.8865rem, 1.4106rem + 6.2805vw, 8.3819rem);
+// 	/* Step 10: 51.9571px → 167.6381px */
+// 	--step-10: clamp(3.2473rem, 1.3055rem + 8.2629vw, 10.4774rem);
+// }
+
+
+// NEW DESIGN SCALE
+/* @link https://utopia.fyi/type/calculator?c=376,16,1.125,2136,18,1.25,10,2,768&s=0.75|0.5|0.25,1.5|2|3|4|6|8,s-l&g=m,xl,3xl,12 */
+:root {
+  @include utopia.generateTypeScale((
+    "minWidth": 376,
+    "maxWidth": 2136,
+    "minFontSize": 16,
+    "maxFontSize": 18,
+    "minTypeScale": 1.125,
+    "maxTypeScale": 1.25,
+    "positiveSteps": 10,
+    "negativeSteps": 2,
+    "prefix": "step-",
+    "relativeTo": "viewport-width"
+  ));
+}
+
+$step--2: var(--step--2);
+$step--1: var(--step--1);
+$step-0: var(--step-0);
+$step-1: var(--step-1);
+$step-2: var(--step-2);
+$step-3: var(--step-3);
+$step-4: var(--step-4);
+$step-5: var(--step-5);
+$step-6: var(--step-6);
+$step-7: var(--step-7);
+$step-8: var(--step-8);
+$step-9: var(--step-9);
+$step-10: var(--step-10);
+
+
+
+// ORIGINAL DESIGN SCALE
+// /* @link https://utopia.fyi/space/calculator?c=375,16,1.25,1776,18,1.25,10,2,&s=0.75|0.5|0.25,1.5|2|3|4|6|8,s-l&g=s,l,2xl,12 */
+// :root {
+//   /* Space 3xs: 4px → 5px */
+//   --space-3xs: clamp(0.25rem, 0.2333rem + 0.0714vw, 0.3125rem);
+//   /* Space 2xs: 8px → 9px */
+//   --space-2xs: clamp(0.5rem, 0.4833rem + 0.0714vw, 0.5625rem);
+//   /* Space xs: 12px → 14px */
+//   --space-xs: clamp(0.75rem, 0.7165rem + 0.1428vw, 0.875rem);
+//   /* Space s: 16px → 18px */
+//   --space-s: clamp(1rem, 0.9665rem + 0.1428vw, 1.125rem);
+//   /* Space m: 24px → 27px */
+//   --space-m: clamp(1.5rem, 1.4498rem + 0.2141vw, 1.6875rem);
+//   /* Space l: 32px → 36px */
+//   --space-l: clamp(2rem, 1.9331rem + 0.2855vw, 2.25rem);
+//   /* Space xl: 48px → 54px */
+//   --space-xl: clamp(3rem, 2.8996rem + 0.4283vw, 3.375rem);
+//   /* Space 2xl: 64px → 72px */
+//   --space-2xl: clamp(4rem, 3.8662rem + 0.571vw, 4.5rem);
+//   /* Space 3xl: 96px → 108px */
+//   --space-3xl: clamp(6rem, 5.7993rem + 0.8565vw, 6.75rem);
+//   /* Space 4xl: 128px → 144px */
+//   --space-4xl: clamp(8rem, 7.7323rem + 1.142vw, 9rem);
+// }
+
+// 1920 + 2 * 3xl = (1920 + 216) = 2136
+
+// NEW DESIGN SCALE
+/* @link https://utopia.fyi/space/calculator?c=375,16,1.25,2136,18,1.25,10,2,&s=0.75|0.5|0.25,1.5|2|3|4|6|8,s-l&g=s,l,2xl,12 */
+:root {
+  @include utopia.generateSpaceScale((
+    "minWidth": 375,
+    "maxWidth": 2136,
+    "minSize": 16,
+    "maxSize": 18,
+    "positiveSteps": (1.5, 2, 3, 4, 6, 8),
+    "negativeSteps": (0.75, 0.5, 0.25),
+    "customSizes": ("s-l"),
+    "prefix": "space-",
+    "relativeTo": "viewport-width",
+  ));
+}
+
+$space-3xs: var(--space-3xs);
+$space-2xs: var(--space-2xs);
+$space-xs: var(--space-xs);
+$space-s: var(--space-s);
+$space-m: var(--space-m);
+$space-l: var(--space-l);
+$space-xl: var(--space-xl);
+$space-2xl: var(--space-2xl);
+$space-3xl: var(--space-3xl);
+$space-4xl: var(--space-4xl);

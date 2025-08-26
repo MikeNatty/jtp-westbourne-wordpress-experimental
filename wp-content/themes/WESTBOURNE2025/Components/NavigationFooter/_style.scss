@@ -1,0 +1,327 @@
+flynt-component[name='NavigationFooter'] {
+  color: $color-text-primary;
+
+  margin-top: var(--space-section-large);
+
+  margin-bottom: $space-xl;
+
+  @media (min-width: $breakpoint-tablet) {
+    // margin-top: $space-xl;
+    margin-bottom: $space-2xl;
+  }
+
+  // @media (min-width: $breakpoint-tablet-horizontal) {
+  //   margin-top: $space-2xl;
+  // }
+
+  .footer {
+    &-cards {
+      display: flex;
+      gap: 40px;
+
+      flex-direction: column;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        flex-direction: row;
+      }
+    }
+
+    .panel {
+      --flow-space: var(--space-l);
+      border-radius: $space-m;
+      padding: $space-l $space-m;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        padding: $space-m $space-l $space-xl;
+
+        min-height: 552px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      &--info {
+        background-color: $color-primary;
+        color: #fff;
+        flex-grow: 1;
+
+        .button {
+          &:hover {
+            --button-background-color: #fff;
+            --button-text-color: var(--color-brand-primary-action);
+          }
+        }
+      }
+
+      &-contact {
+        background-color: #fff;
+
+        &-buttons {
+          display: flex;
+          flex-direction: column;
+          gap: $space-s;
+
+          @media (min-width: $breakpoint-tablet) {
+            flex-direction: row;
+            gap: $space-2xs;
+          }
+
+          a {
+            --flow-space: 0;
+          }
+        }
+      }
+
+      &-heading {
+        max-width: 500px;
+        color: inherit;
+        font-size: $step-5;
+      }
+    }
+
+    &-content {
+      margin-top: $space-2xl;
+    }
+
+    &-row {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 40px;
+
+      @media (min-width: $breakpoint-desktop) {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    &-acknowledgement {
+      font-size: $step-0;
+
+      padding-top: 40px;
+      border-top: $border-pink;
+
+      @media (min-width: $breakpoint-desktop) {
+        max-width: 520px;
+        border-top: none;
+        padding-top: 0;
+      }
+    }
+
+    &-nav {
+      &-list {
+        display: flex;
+        flex-direction: column;
+        gap: $space-m;
+
+        @media (min-width: $breakpoint-tablet) {
+          flex-direction: row;
+          gap: 110px;
+        }
+      }
+
+      &-item {
+        font-size: $step-0;
+      }
+
+      &-column {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+    }
+
+    &-contact {
+      display: grid;
+
+      margin-top: 40px;
+      padding-top: $space-l;
+
+
+      border-top: $border-pink;
+      grid-template-columns: 1fr;
+      grid-template-areas: "logo" "title" "newsletter" "social";
+
+      @media (min-width: $breakpoint-tablet) {
+        margin-top: $space-xl;
+        padding-top: $space-xl;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        margin-top: $space-l;
+        padding-top: $space-l;
+        grid-template-columns: 668fr 925fr;
+        grid-template-areas: "title logo" "newsletter social";
+        row-gap: $space-2xl;
+      }
+
+
+      &-title {
+        grid-area: title;
+        color: inherit;
+        font-size: $step-0;
+        margin-top: $space-m;
+
+        @media (min-width: $breakpoint-tablet) {
+          margin-top: 40px;
+          font-size: $step-1;
+        }
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          margin-top: 0;
+          font-size: $step-4;
+        }
+      }
+
+    }
+
+    &-newsletter {
+      grid-area: newsletter;
+      // max-width: 595px;
+      display: flex;
+      flex-direction: column;
+      gap: $space-m;
+      margin-top: $space-m;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        flex-direction: row;
+        gap: 16px;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        margin-top: 0;
+      }
+
+      .button {
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          min-width: 186px;
+        }
+      }
+
+      .email {
+        input {
+          max-width: none;
+          width: 100%;
+        }
+
+        flex-grow: 1;
+      }
+    }
+
+    .logo {
+      grid-area: logo;
+      margin-top: 0;
+      max-width: 145px;
+
+      @media (min-width: $breakpoint-tablet) {
+        max-width: 164px;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        justify-self: flex-end;
+        max-width: 200px;
+      }
+    }
+
+    .social-nav {
+      margin-top: 40px;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        margin-top: 0;
+      }
+
+      &-list {
+        grid-area: social;
+        display: flex;
+        gap: $space-2xs;
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          justify-content: flex-end;
+        }
+      }
+    }
+
+    &-legal {
+      margin-top: 32px;
+      padding-top: $space-l;
+      border-top: $border-pink;
+
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: "legal" "copyright" "logo";
+      gap: $space-m;
+      row-gap: $space-m;
+
+      @media (min-width: $breakpoint-tablet) {
+        row-gap: $space-l;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "legal logo" "copyright copyright";
+        margin-top: $space-xl;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        margin-top: $space-3xl;
+      }
+
+      &-links {
+        display: flex;
+        gap: $space-xl;
+
+        li {
+          font-size: $step--1;
+        }
+      }
+
+      nav {
+        grid-area: legal;
+      }
+
+      .jtb {
+        padding-top: $space-m;
+        border-top: $border-pink;
+        grid-area: logo;
+
+        @media (min-width: $breakpoint-tablet) {
+          border-top: none;
+          padding-top: 0;
+          justify-self: flex-end;
+        }
+      }
+    }
+
+    &-copyright {
+      grid-area: copyright;
+      font-size: $step--1;
+
+      margin-top: 0;
+      padding-top: $space-m;
+
+      @media (min-width: $breakpoint-tablet) {
+        text-align: center;
+        padding-top: $space-xl;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        padding-top: $space-l;
+      }
+
+      border-top: $border-pink;
+    }
+  }
+
+  .button--icon {
+    border-radius: 50%;
+    border-width: 1.5px;
+    width: 48px;
+    height: 48px;
+
+    &::before {
+      width: 28px;
+      height: 28px;
+      background-size: 100%
+    }
+  }
+}
+
+@import 'Partials/jtb';

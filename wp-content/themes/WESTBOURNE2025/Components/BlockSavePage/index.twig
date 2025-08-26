@@ -1,0 +1,23 @@
+<flynt-component 
+  name="BlockSavePage"
+  data-animated
+>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+  <div class="container">
+    <div class="content-section" animation="border-fade-in">
+      <div class="content-section-text">
+        {% if heading %}
+          <h4 class="heading" animation="text-reveal">{{ heading }}</h4>
+        {% endif %}
+        {% if description %}
+          <p class="description" animation="fade-up" animation-delay="2">{{ description }}</p>
+        {% endif %}
+      </div>
+      <div class="content-section-list">
+        {% if formShortcode %}
+          {{ formShortcode|shortcodes }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</flynt-component>

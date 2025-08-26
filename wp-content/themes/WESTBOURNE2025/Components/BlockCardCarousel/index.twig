@@ -1,0 +1,137 @@
+{# hide this whole thing if cards < 0 #}
+{% set textCardLarge = slidesPerView < 4 %}
+{% set cardTheme =
+  theme == 'icon' ? theme
+  : slidesPerView < 4 ? 'large'
+  : '' %}
+{% set introCardPadding = theme == 'icon' or slidesPerView >= 4 ? 'small' : '' %}
+
+
+{# {{sourcePostType}} #}
+
+<flynt-component
+  name="BlockCardCarousel" {% if titleSize %}data-title-size="{{ titleSize }}"{% endif %}
+  data-animated
+>
+  {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+    <div class="container">
+      <div class="container-inner">
+        <div class="heading-container">
+          {% if heading %}
+            <h2 class="heading {% if titleSize %}size--{{ titleSize }}{% endif %}" animation="text-reveal">{{ heading }}</h2>
+          {% endif %}
+          {% include 'templates/_cta.twig' with {
+            cta: cta,
+            size: 'small',
+            theme: 'tertiary'
+          } only %}
+        </div>
+        <div class="carousel-container-controls" animation="fade-up" animation-delay="3">
+          <button type="button" class="button--icon prev-{{uuid}}" data-icon="chevron-left" data-button-theme="white" alt="Previous Slide">Previous Slide</button>
+          <div class="scrollbar-{{uuid}}"></div>
+          <button type="button" class="button--icon next-{{uuid}}" data-icon="chevron-right" data-button-theme="white" alt="Next Slide">Next Slide</button>
+        </div>
+
+        <div class="carousel-container-card">
+          <swiper-container
+            class="main-carousel"
+            scrollbar-el=".scrollbar-{{uuid}}"
+            navigation-next-el=".next-{{uuid}}"
+            navigation-prev-el=".prev-{{uuid}}"
+            pagination-el=".pagination-{{uuid}}"
+            pagination-clickable="true"
+            grab-cursor="true"
+            space-between="12"
+            slides-per-view="auto"
+            {# breakpoints='{ "768": {"spaceBetween": 13}, "1280": {"slidesPerView": {{slidesPerView ? slidesPerView : 3}},"spaceBetween": 14} }' #}
+            breakpoints='{ "768": {"spaceBetween": 13, "slidesPerView": "auto"}, "1280": {"slidesPerView": {{slidesPerView ? slidesPerView : 3}},"spaceBetween": 14} }'
+            animation="fade-up-children"
+            animation-delay="2"
+          >
+            {# {% if contentSource == 'custom' %} #}
+              {% if introCard.title or introCard.description %}
+                <swiper-slide>
+                  {% include 'templates/_cardText.twig' with {
+                    color: "pink",
+                    title: introCard.title,
+                    description: introCard.description,
+                    padding: introCardPadding,
+                    textCardLarge: textCardLarge
+                  } only %}
+                </swiper-slide>
+              {% endif %}
+            {# {% endif %} #}
+
+            {# related article #}
+            {% if posts %}
+              {% for post in posts %}
+                <swiper-slide>
+                  <a
+                    href="{{post.link}}"
+                    title="{{ post.title }}"
+                    target="_self"
+                  >
+                    {% if sourcePostType == 'contenthub' %}
+                      {# slice the taxonomy terms at 1 so there is only 2 total possible #}
+                      {% set pills = post.terms('contenthub-type')|slice(0, 1) %}
+                      {% set pills = pills|merge(post.terms('contenthub-category')|slice(0, 1)) %}
+                      {% set description = post.field_contenthubOpitons_cardExcerpt %}
+                      {% set labels = [ post.date|date('d M Y') ] %}
+                    {% elseif sourcePostType == 'location' %}
+                      {% set labels = post.terms('location-category')|slice(0, 1) %}
+                    {% elseif sourcePostType == 'publications' %}
+                      {% set pills = post.terms('publications-tag')|slice(0, 1) %}
+                      {% set pills = pills|merge(post.terms('publications-category')|slice(0, 1)) %}
+                      {% set labels = [ post.date|date('d M Y') ] %}
+                    {% elseif sourcePostType == 'events' %}
+                      {% set pills = post.terms('events-category')|slice(0, 2) %}
+                      {% set labels = [ post.field_eventOptions_eventStartDate|date('d M Y'), post.terms('events-location')[0].name ] %}
+                    {% endif %}
+
+                    {% include 'templates/_card.twig' with {
+                      image: post.thumbnail ?: imageOptions.placeholderImage,
+                      theme: cardTheme,
+                      labels: labels,
+                      description: description,
+                      title: post.title,
+                      pills: pills,
+                    } only %}
+                  </a>
+                </swiper-slide>
+              {% endfor %}
+
+            {# custom cards #}
+            {% else %}
+              {% for card in cards %}
+              {% set ctaVisible = showCTA and theme == 'default' ? showCTA and card.link.url : false %}
+                <swiper-slide>
+                   {% if not ctaVisible %}
+                    <a
+                      href="{{card.link.url}}"
+                      title="{{ card.link.title }}"
+                      target="{{ card.link.target }}"
+                    >
+                  {% endif %}
+
+                      {# theme: "large", #}
+                    {% include 'templates/_card.twig' with {
+                      image: card.image,
+                      theme: cardTheme,
+                      title: card.title,
+                      description: card.description,
+                      cta: showCTA and ctaVisible ? card.link : null,
+                    } only %}
+
+                  {% if not ctaVisible %}
+                    </a>
+                  {% endif %}
+                </swiper-slide>
+              {% endfor %}
+            {% endif %}
+          </swiper-container>
+
+        </div>
+        <div class="pagination-container pagination-{{uuid}}" animation="fade-in" animation-delay="4"></div>
+      </div>
+    </div>
+</flynt-component>

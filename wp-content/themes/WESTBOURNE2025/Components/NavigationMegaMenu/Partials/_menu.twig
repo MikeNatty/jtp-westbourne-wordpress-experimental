@@ -1,0 +1,17 @@
+<ul class="menu">
+  {% for item in items %}
+    {% set index = loop.index0 %}
+    <li class="item {{ item.classes | join(' ') }} 
+    ">
+      <a class="button button--reversed" data-button-theme="white" {{ item.children ? 'data-icon="chevron-down"' }} href="{{ item.link|e('esc_url') }}">{{ item.title }}</a>
+      {% if item.children %}
+        {% include 'Partials/_submenu.twig' with { 'items': item.children, 'title': item.title, 'image': gallery[index] ? gallery[index] : ''  } only %}
+      {% endif %}
+    </li>
+  {% endfor %}
+    <li class="cta">
+      <a href="javascript:void(0)" class="button button--reversed questionnaire-entry-button" data-icon-gap="large">How can we help?</a>
+    </li>
+
+    <div class="menu-background"></div>
+</ul>

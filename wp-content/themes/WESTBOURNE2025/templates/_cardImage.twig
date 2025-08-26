@@ -1,0 +1,11 @@
+<div class="card--image">
+    {% if image %}
+        <div class="card-media">
+            {% include 'templates/_image.twig' with {
+                image: image,
+                width: 522,
+                height: 522,
+            } only %}
+        </div>
+    {% endif %}
+</div>

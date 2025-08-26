@@ -1,0 +1,61 @@
+<div class="card" {% if theme %}data-card-theme={{theme}}{% endif %}>
+    {% if theme == 'icon' %}
+        <button type="button" class="button--icon" data-icon="arrow-up-right" data-button-theme="white"></button>
+    {% endif %}
+    {% if image %}
+        {% set width 
+            = theme == 'icon' ? 270 
+            : theme == 'large' ? 522 
+            : theme == 'icon-small' ? 76 
+            : 452 %}
+        {% set height 
+            = theme == 'icon' ? 270 
+            : theme == 'large' ? 360 
+            : theme == 'icon-small' ? 76 
+            : 280 %}
+        <div class="card-media">
+            {% include 'templates/_image.twig' with {
+                image: image,
+                width: width,
+                height: height,
+            } only %}
+        </div>
+    {% endif %}
+    <div class="card-text">
+        <div class="card-text-top">
+            {% if labels %}
+                <div class="card-labels">
+                    {% for label in labels %}
+                        <p>{{label}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if title %}
+                <h3 class="card-title">{{title}}</h3>
+            {% endif %}
+        </div>
+        {% if description or pills or cta %}
+            <div class="card-text-bottom">
+                {% if description and theme == 'icon' %}
+                    <div class="card-description-container">
+                        <p class="card-description">{{description}}</p>
+                    </div>
+                {% elseif description %}
+                    <p class="card-description">{{description}}</p>
+                {% endif %}
+                {% if cta %}
+                    <p class="cta">
+                        <a href="{{ cta.url }}" title="{{ cta.title }}" target="{{ cta.target }}" class="button" data-size="x-small">{{ cta.title }}</a>
+                    </p>
+                {% endif %}
+                {% if pills %}
+                    <div class="card-pills pills">
+                        {% for pill in pills %}
+                            <p class="pill" data-pill-theme="secondary">{{pill}}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>

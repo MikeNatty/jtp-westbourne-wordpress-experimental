@@ -1,0 +1,10 @@
+{% if formShortcode %}
+  <flynt-component name="BlockForm" data-animated>
+    {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+    <div class="container">
+      <div class="content" data-size="medium" animation="fade-up">
+        {{ formShortcode|shortcodes }}
+      </div>
+    </div>
+  </flynt-component>
+{% endif %}

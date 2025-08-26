@@ -1,0 +1,63 @@
+flynt-component[name="BlockSavePage"] {
+    margin-top: var(--space-section-medium);
+
+	.content-section {
+		border-radius: var(--variable-radius);
+		background: #fff;
+		grid-template-columns: 1fr;
+
+		display: grid;
+		
+		gap: $space-l;
+		padding: $space-l $space-s;
+		@media (min-width: $breakpoint-tablet) {
+			gap: $space-xl;
+			padding: $space-xl $space-l;
+		}
+		@media (min-width: $breakpoint-desktop) {
+			gap: $space-3xl;
+			padding: $space-2xl;
+			flex-direction: row;
+			grid-template-columns: 648fr 693fr;
+		}
+	}
+
+	.content-section-text {
+		position: relative;
+		inline-size: 100%;
+
+		@media (min-width: $breakpoint-desktop) {
+			padding-block-start: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+	}
+
+	.content-section-list {
+		width: 100%;
+		position: relative;
+	}
+
+    fieldset {
+        text-align: center;
+        padding: 0 !important;
+    }
+
+    .frm_form_title {
+        margin-bottom: $space-xs;
+    }
+    .form-subtitle {
+        margin-bottom: $space-l;
+    }
+    .form-submit-container {
+        margin-bottom: 0 !important;
+
+        button {
+            @media (min-width: $breakpoint-tablet) {
+                min-width: 280px;
+            }
+        }
+    }
+
+}

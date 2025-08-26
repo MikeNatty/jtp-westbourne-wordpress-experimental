@@ -1,0 +1,20 @@
+{% if question_entry %}
+  <flynt-component name="BlockPersonalisationLauncher" data-animated>
+    {% include 'templates/_anchor.twig' with {'anchorId': anchorId } only %}
+    <div class="container">
+      <div class="content-section">
+        {% if question_entry.question_title %}
+          <h2 class="heading" animation="text-reveal">{{ question_entry.question_title }}</h2>
+        {% endif %} 
+        {% if question_entry.question_description %}
+          <p class="description" animation="fade-up" animation-delay="3">{{ question_entry.question_description }}</p>
+        {% endif %} 
+        <div class="cta-container" animation="fade-up-children" animation-delay="3">
+          {% for option in question_entry.options %}
+            <button class="button questionnaire-custom-entry-button" data-button-theme="secondary" data-question="{{loop.index-1}}">{{option.question_option}}</button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </flynt-component>
+{% endif %}

@@ -1,0 +1,50 @@
+<flynt-component name="BlockAnchorLinkBar">
+  <div class="container">
+    <div class="content-section">
+
+      {# {{dump(components)}} #}
+      {% include 'templates/_cta.twig' with {
+        cta: cta,
+        size: 'small'
+      } only %}  
+
+      {# {% if cta %}
+        <a href="{{ cta.url }}" title="{{ cta.title }}" target="{{ cta.target }}" class="button" data-size="small">{{ cta.title }}</a>
+      {% endif %} #}
+
+        {% if components|length > 0 %}
+          <ul class="anchor-list">
+            {% for key,title in components %}
+              <li class="anchor-list-item">
+                {# <a data-anchor-nav-item="{{ item.anchor }}" class="menu-link" href="#{{ item.anchor }}" title="{{ item.title }}">{{ item.title }}</a> #}
+                <a data-anchor-nav-item="{{ key }}" class="menu-link button" href="#{{ key }}" title="{{title}}" data-button-theme="anchor-nav" data-size="small">{{ title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+
+        {% if downloads|length > 0 %}
+          {# <ul class="list"> #}
+            {% for item in downloads %}
+              {% if item.file %}
+                {# {{dump(item.file)}} #}
+                <a 
+                  download 
+                  class="button button--reversed download" 
+                  href="{{ item.file.url }}" 
+                  title="{{ item.file.title }}" 
+                  data-icon-gap="medium"
+                  data-icon="dropdown-style-2-down"
+                  data-button-theme="anchor-nav"
+                  data-size="small"
+                >
+                Downloads</a>
+              {% endif %}
+            {% endfor %}
+          {# </ul> #}
+        {% endif %}
+
+    </div>
+  </div>
+</flynt-component>

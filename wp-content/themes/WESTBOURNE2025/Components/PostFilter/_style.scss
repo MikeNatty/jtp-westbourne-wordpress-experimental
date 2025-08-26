@@ -1,0 +1,325 @@
+flynt-component[name="PostFilter"] {
+	z-index: 1000;
+	position: relative;
+
+	& + * {
+		margin-top: var(--space-section-xs);
+	}
+
+
+	.container {
+		background-color: var(--color-background);
+		padding-block: 26px;
+	}
+
+	.filter-bar {
+		padding: $space-xs;
+		background: #fff;
+		border-radius: 50px;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+    justify-content: space-between;
+		gap: $space-xs;
+		position: sticky;
+		top: 10px;
+		z-index: 100;
+    //overflow: hidden;
+
+		.search-wrapper {
+		  flex-grow: 1;
+
+		  input {
+			width: 100%;
+		  }
+		}
+
+		& > div:first-child {
+			margin-right: auto;
+		}
+
+    #filter-button {
+      transition: background-color $transition-button;
+      display: none;
+
+      &:hover {
+        background-color: var(--color-brand-primary-action);
+      }
+    }
+
+    #reset-filter {
+      display: flex;
+    }
+
+    #clear-filters-button[data-button-theme=white] {
+      display: none;
+      border: 1px solid var(--color-border);
+    }
+
+    .select-wrapper:has(#content-type-filter) {
+      width: auto;
+    }
+
+    .select-wrapper:has(#sort-by-filter) {
+      display: flex;
+    }
+
+    .select-wrapper:has(#category-filter) {
+      display: flex;
+    }
+
+    //@media (max-width: $breakpoint-tablet ) {
+
+      &.minimized {
+
+        //@media (max-width: $breakpoint-tablet ) {
+
+        #filter-button {
+          display: flex;
+        }
+
+        #reset-filter {
+          display: none;
+        }
+
+        .select-wrapper:has(#content-type-filter) {
+          width: 70%;
+        }
+
+        .select-wrapper:has(#sort-by-filter) {
+          display: none;
+        }
+
+        .select-wrapper:has(#category-filter) {
+          display: none;
+        }
+      }
+    //}
+
+    //@media (max-width: $breakpoint-mobile-horizontal ) {
+    //
+    //  #filter-button {
+    //    display: block;
+    //  }
+    //}
+
+
+
+  }
+
+  .bottom-sheet {
+
+    display: none;
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5000;
+
+
+    .backing {
+      //&::before {
+      left: 0;
+      /* content: ""; */
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+
+      //opacity: 0;
+      //transition: opacity 800ms ease;
+      //}
+    }
+
+    .sheet-container {
+      z-index: 2;
+      background-color: white;
+      bottom: 0;
+      position: fixed;
+      width: 100%;
+
+      border-radius: var(--Radius-Radius-XL, 20px) var(--Radius-Radius-XL, 20px) 0px 0px;
+      background: var(--surface-neutral-bg-100, #FFF);
+
+      //transform: translateY(300px);
+      transition: opacity 0.3s, transform 0.3s;
+
+      &.active {
+        transform: translateY(0);
+      }
+
+    }
+
+    &.active {
+    //@media (max-width: $breakpoint-tablet ) {
+      display: flex;
+      flex-direction: column;
+
+      .title-bar {
+        height: 50px;
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+          font-size: var(--step-1);
+          color: var(--color-body);
+        }
+
+        .close-button {
+          position: absolute;
+          right: -2px;
+          top: -5px;
+          border: none;
+          cursor: pointer;
+          width: 60px;
+          height: 60px;
+          background-color: transparent;
+
+          &:hover {
+            --button-text-color: black;
+            color: var(--color-brand-primary-action);
+            //background-color: var(--color-brand-primary-action);
+          }
+          &:active {
+            background-color: transparent;
+          }
+        }
+      }
+
+      .sheet-content {
+        display: flex;
+
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+      }
+
+      .filter-bar {
+
+        &.minimized {
+
+          flex-direction: column;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          align-content: center;
+
+          #clear-filters-button[data-button-theme=white] {
+            display: flex;
+          }
+
+          #filter-button {
+            display: none;
+          }
+
+          .select-wrapper:has(#sort-by-filter) {
+            display: flex;
+          }
+
+          .select-wrapper:has(#category-filter) {
+            display: flex;
+          }
+
+
+          .select-wrapper,
+          .select-wrapper:has(#content-type-filter){
+            display: flex;
+            width: 90%;
+            flex-direction: row;
+            justify-content: center;
+          }
+
+          @media (aspect-ratio > 1.5/1) {
+            flex-direction: row;
+            padding-top: 0;
+            margin-top: 0;
+            flex-wrap: nowrap;
+
+            #clear-filters-button[data-button-theme=white] {
+              width: 20%;
+            }
+
+            .select-wrapper,
+            .select-wrapper:has(#content-type-filter){
+              display: flex;
+              width: 30%;
+              flex-direction: row;
+              justify-content: center;
+              margin-right: 0;
+            }
+
+            .sheet-container {
+              .sheet-content {
+                padding-top: 0;
+              }
+            }
+
+            // :: HACK ::
+            // Landscape mobile we can't fit all these options
+            // Try to turn the filter "reset filters" button to icon only
+            #clear-filters-button[data-button-theme=white] {
+              position: relative;
+              background: none;
+               /* Hide text visually but keep it accessible */
+              text-indent: -9999px;
+              overflow: hidden;
+              white-space: nowrap;
+
+              &::before {
+                content: "Reset";   // Shorten text
+                display: inline-block;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                text-indent: 0;
+              }
+            }
+
+          }
+
+        }
+
+
+      }
+
+
+    }
+
+    // Choices, when in sheet mode
+    .choices__list--dropdown, .choices__list[aria-expanded] {
+      //padding-top: 50px;
+      //top: 140%;
+      //bottom: 180%;
+      top:unset;
+      bottom:unset;
+      padding: 10px;
+      min-width: 250px;
+      border: 1px solid var(--color-brand-primary-action) !important;
+      border-radius: 8px;
+
+    }
+
+
+
+  }
+
+
+
+
+
+}
+
+

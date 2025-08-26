@@ -1,0 +1,55 @@
+{# <flynt-component load:on="idle" load:on:media="(min-width: 1280px)" name="NavigationMain"> #}
+<flynt-component name="NavigationMain">
+  <nav class="navigation" aria-label="{{ labels.ariaLabel|e }}">
+    <div class="container">
+      {% include 'Partials/_logo.twig' with {'logo': logo, 'site': site} only %}
+      {% if menu %}
+        {% include 'Partials/_menu.twig' with {'items': menu.items, 'searchTitle': search.title} only %}
+      {% endif %}
+    </div>
+  </nav>
+
+  <div class="search" aria-expanded="false">
+    <div class="search-inner">
+      <div class="container">
+        <div class="search-title">
+          <h3>{{search.subtitle}}</h3>
+        </div>
+        <div class="search-form">
+          <form 
+            role="search" 
+            method="get"
+            class="searchBar" 
+            action="/"
+          >
+            <div class="search-wrapper">
+              <input 
+                type="search" 
+                class="searchBar-input" 
+                aria-label="Search" 
+                placeholder="{{ placeholder|default('Search') }}"  
+                name="s"
+                data-rlvlive="true" 
+                data-rlvparentel="#universal-search1" 
+                data-rlvconfig="default" 
+              />
+              <button 
+                type="submit" 
+                class="search-submit button--icon button--circle searchBar-button" 
+                data-icon="search" 
+                data-button-theme="primary" 
+                data-size="small" 
+                aria-label="Submit search" 
+              />
+            </div>
+            <div id="universal-search1" class="search-results-wrapper"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="close-button">
+      <button type="button" class="button--icon button--circle" data-size="small" data-icon="close-large" data-button-theme="white">Tertiary</button>
+    </div>
+  </div>
+  <div class="page-overlay"></div>
+</flynt-component>

@@ -1,0 +1,1 @@
+import{b as s}from"./helpers-QecM1zFF.js";function d(e){s(e,!0).toggle.forEach(t=>t.addEventListener("click",r=>{const i=t.getAttribute("data-is-checked")==="true";t.setAttribute("data-is-checked",!i)}))}export{d as default};

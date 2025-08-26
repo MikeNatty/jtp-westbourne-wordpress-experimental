@@ -1,0 +1,25 @@
+<flynt-component name="BlockChildPages">
+    <div class="container">
+        {# Child Pages List Block #}
+        {% if post.children %}
+            <div class="child-pages">
+                <h2>{{post.title}}</h2>
+                <ul class="child-pages-list">
+                    {% for child in post.children %}
+                        <li class="child-page-item">
+                            <a href="{{ child.link }}" class="child-page-link">
+                                {# {% if child.thumbnail %}
+                                    <img src="{{ child.thumbnail.src }}" alt="{{ child.thumbnail.alt|default(child.title) }}" class="child-page-thumb">
+                                {% endif %} #}
+                                <span class="child-page-title">{{ child.title }}</span>
+                                {# {% if child.excerpt %}
+                                    <span class="child-page-excerpt">{{ child.excerpt }}</span>
+                                {% endif %} #}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</flynt-component>

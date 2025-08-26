@@ -1,0 +1,77 @@
+{% if cta %}
+    {% if cta.type == "link" and cta.link %}
+        <p class="cta {{class}}">
+            <a
+                class="button"
+                href="{{ cta.link.url }}" 
+                title="{{ buttonText ?: cta.link.title }}" 
+                target="{{ cta.link.target }}" 
+                data-size="{{size ?: 'regular'}}"
+                {% if theme %}data-button-theme="{{theme}}"{% endif %}
+            >
+                {{ buttonText ?: cta.link.title }}
+            </a>
+        </p>
+    {% elseif cta.type == "modal" and cta.modal %}
+        {# {{dump(cta.modal)}} #}
+        {% set text = 'Open Modal' %}
+        <p class="cta {{class}}">
+            <button
+                class="button"
+                title="{{ buttonText ?: text }}" 
+                data-size="{{size ?: 'regular'}}"
+                data-modal-id="{{ cta.modal }}"
+                {% if theme %}data-button-theme="{{theme}}"{% endif %}
+            >
+                {{ cta.buttonText ?: text }}
+            </button>
+        </p>
+    {% elseif cta.type == "form" and cta.form %}
+        {% set text 
+            = cta.form == 'enquiry' ? 'Enquire now' 
+            : cta.form == 'bookCall' ? 'Book a call' 
+            : cta.form == 'talkRecruitment' ? 'View Openings' 
+            : cta.form == 'bookTour' ? 'Book a tour' 
+            : 'Make a donation' %}
+        <p class="cta {{class}}">
+            <button
+                class="button"
+                title="{{ buttonText ?: text }}" 
+                data-size="{{size ?: 'regular'}}"
+                data-form-target="{{ cta.form }}"
+                {% if theme %}data-button-theme="{{theme}}"{% endif %}
+            >
+                {{ cta.buttonText ?: text }}
+            </button>
+        </p>
+    {% elseif cta.type == "download" and cta.file %}
+        {% set text = 'Download file' %}
+        <p class="cta {{class}}">
+            <a 
+                download 
+                class="button button--reversed" 
+                href="{{ cta.file.url }}" 
+                title="{{ cta.file.title }}" 
+                data-icon-gap="medium"
+                data-icon="download-02"
+                data-size="{{size ?: 'regular'}}"
+                {% if theme %}data-button-theme="{{theme}}"{% endif %}
+            >
+                {{ cta.buttonText ?: text }}
+            </a>
+        </p>
+    {% elseif cta.type == "questionnaire" %}
+        {% set text = 'Take the questionnaire' %}
+        <p class="cta {{class}}">
+            <a 
+                class="button questionnaire-entry-button" 
+                href="javascript:void(0)" 
+                title="{{ cta.buttonText ?: text }}" 
+                data-size="{{size ?: 'regular'}}"
+                {% if theme %}data-button-theme="{{theme}}"{% endif %}
+            >
+                {{ cta.buttonText ?: text }}
+            </a>
+        </p>
+    {% endif %}
+{% endif %}

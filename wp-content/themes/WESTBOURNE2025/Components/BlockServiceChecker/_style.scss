@@ -1,0 +1,160 @@
+flynt-component[name="BlockServiceChecker"] {
+    margin-top: var(--space-section-large);
+
+    .title {
+        font-size: $step-7;
+        line-height: 1.05;
+        max-width: 1200px;
+        text-align: center;
+    }
+    
+    .subtitle {
+        font-size: $step-1;
+        max-width: 780px;
+        text-align: center;
+        margin-top: $space-l;
+    }
+}
+
+
+.service-checker {
+    
+    &-search-container {
+        max-width: 720px;
+        margin-inline: auto;
+
+        background-color: white;
+        display: flex;
+        gap: $space-s;
+        align-items: center;
+        padding: 24px 28px;
+        border-radius: 100px;
+        margin-top: $space-xl;
+
+        input, select {
+            border-radius: 100px;
+            width: 100%;
+        }
+    }
+
+    &-container {
+        max-width: 1120px;
+        margin: $space-l auto;
+        // border-top: solid lightgray 1px;
+        padding: $space-l 0;
+    }
+
+    &-service-type {
+        display: flex;
+        gap: $space-s;
+        align-items: center;
+        margin-bottom: $space-l;
+
+        .button {
+            margin: 0;
+        }
+    }
+
+    &-header {
+        display: flex;
+        flex-direction: column;
+        // gap: $space-l;
+        align-items: center;
+    }
+
+    &-home-care {
+        margin-bottom: $space-xl;
+    }
+
+    &-home-care-packages {
+        display: flex;
+        flex-direction: column;
+        gap: $space-s;
+        margin-bottom: $space-l;
+    }
+
+    &-home-care-services {
+        display: flex;
+        flex-direction: column;
+        gap: $space-s;
+    }
+
+    &-skeleton-cards {
+        display: flex;
+        flex-direction: column;
+        gap: $space-xs;
+
+        .skeleton-card {
+            padding: $space-m;
+            border-radius: var(--variable-radius);
+        }
+    }
+
+    &-in-your-area {
+
+        &-locations {
+            display: flex;
+            flex-direction: column;
+            gap: $space-s;
+        }
+    }
+
+    &-feedback-form,
+    &-service-area-message {
+        display: none;
+
+        max-width: 769px;
+        margin-inline: auto;
+
+        .content {
+            background: #fff;
+            border-radius: 27px;
+    
+            padding: $space-xl $space-s;
+            @media (min-width: $breakpoint-tablet) {
+                padding: $space-xl $space-l;
+            }
+            @media (min-width: $breakpoint-desktop) {
+                padding: $space-xl $space-2xl;
+            }
+        }
+    }
+
+    &-service-area-message {
+        .content {
+            border: 1px solid $color-primary-action;
+            text-align: center;
+        }
+    }
+
+    &-feedback-form {
+        fieldset {
+            text-align: center;
+            padding: 0 !important;
+        }
+    
+        .frm_form_title {
+            margin-bottom: $space-xs;
+        }
+        .form-subtitle {
+            margin-bottom: $space-l;
+        }
+        .form-submit-container {
+            margin-bottom: 0 !important;
+    
+            button {
+                @media (min-width: $breakpoint-tablet) {
+                    min-width: 280px;
+                }
+            }
+        }
+    }
+}
+
+#service-checker.show-feedback-form + .service-checker-feedback-form {
+    display: block;
+}
+
+#service-checker.show-service-area-message + div + .service-checker-service-area-message {
+    display: block;
+}

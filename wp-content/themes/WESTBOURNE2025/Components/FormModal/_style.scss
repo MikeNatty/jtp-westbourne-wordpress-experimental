@@ -1,0 +1,23 @@
+flynt-component[name='FormModal'] {
+  .form-container {
+    margin-inline: auto;
+    max-width: 658px;
+
+    background: #fff;
+    padding: $space-xl;
+
+    p {
+      margin-top: $space-m;
+    }
+  }
+
+  .modal-container {
+    visibility: hidden;
+    pointer-events: none;
+    
+    &.active {
+        visibility: visible;
+        pointer-events: all;
+    }
+  }
+}
