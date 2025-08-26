@@ -4,6 +4,17 @@ namespace Flynt\Components\BlockAccordion;
 
 use Flynt\FieldVariables;
 
+// Add UUID to GraphQL schema
+add_action('graphql_register_types', function () {
+    register_graphql_field('PageComponentsPageComponentsBlockAccordionLayout', 'uuid', [
+        'type' => 'String',
+        'description' => 'Unique identifier for the accordion block.',
+        'resolve' => function($root) {
+            return $root['uuid'] ?? null;
+        }
+    ]);
+});
+
 add_filter('Flynt/addComponentData?name=BlockAccordion', function ($data) {
     $data['uuid'] = $data['uuid'] ?? wp_generate_uuid4();
     return $data;
