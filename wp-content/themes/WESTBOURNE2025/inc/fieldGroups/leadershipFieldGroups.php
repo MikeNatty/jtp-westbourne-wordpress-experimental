@@ -4,8 +4,8 @@ use ACFComposer\ACFComposer;
 
 add_action('Flynt/afterRegisterComponents', function() {
      ACFComposer::registerFieldGroup([
-        'name' => 'locationDetails',
-        'title' => 'Location Details',
+        'name' => 'leadershipDetails',
+        'title' => 'Leadership Details',
         'style' => 'seamless',
         'show_in_rest' => true,
         'fields' => [

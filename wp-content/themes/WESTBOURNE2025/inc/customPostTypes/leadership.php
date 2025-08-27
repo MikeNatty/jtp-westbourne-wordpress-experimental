@@ -65,7 +65,7 @@ add_action('init', function (): void {
         'rewrite'               => array( 'slug' => 'leadership', 'with_front' => false ),
         'show_in_graphql' => true,
         'graphql_single_name' => 'leadership',
-        'graphql_plural_name' => 'leadership',
+        'graphql_plural_name' => 'leaderships',
     ];
 
     register_post_type('leadership', $args);
