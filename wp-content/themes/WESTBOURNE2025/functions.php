@@ -323,13 +323,26 @@ add_action('wp_body_open', function() {
 
 
 // Add UUID to GraphQL schema
-add_action('graphql_register_types', function () {
-    register_graphql_field('BlockAccordion', 'uuid', [
-        'type' => 'String',
-        'description' => 'Unique identifier for the accordion block.',
-        'resolve' => function($root) {
-            return $root['uuid'] ?? null;
-        }
-    ]);
-});
+// :: TODO :: Not currently working - needs further investigation
+//add_action('graphql_register_types', function () {
+//    register_graphql_field('BlockAccordion', 'uuid', [
+//        'type' => 'String',
+//        'description' => 'Unique identifier for the accordion block.',
+//        'resolve' => function($root) {
+//            return $root['uuid'] ?? null;
+//        }
+//    ]);
+//});
+
+// Expose Notification Bar content in GraphQL
+//add_action('graphql_register_types', function() {
+//    register_graphql_field('RootQuery', 'notificationBar', [
+//        'type' => 'String',
+//        'description' => __('Notification Bar content', 'flynt'),
+//        'resolve' => function() {
+//            // Fetch the option value
+//            return get_option('options_notificationContent');
+//        }
+//    ]);
+//});
 

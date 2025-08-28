@@ -9,7 +9,7 @@ use Timber\Timber;
 add_filter('Flynt/addComponentData?name=NotificationBar', function (array $data): array {
     // Check if the notification bar should be displayed based on scheduling
     $data['showNotification'] = shouldShowNotification($data);
-    
+
     // Set unique ID for the notification bar (used in localStorage)
     if (!empty($data['notificationContent']) && $data['showNotification']) {
         $data['notificationId'] = 'notification_' . md5($data['notificationContent'] . (isset($data['endDate']) ? $data['endDate'] : ''));
@@ -24,10 +24,10 @@ function shouldShowNotification($data) {
     if (empty($data['isEnabled'])) {
         return false;
     }
-    
+
     $showNotification = true;
     $currentDate = current_time('timestamp');
-    
+
     // Check start date if set
     if (!empty($data['startDate'])) {
         $startDate = strtotime($data['startDate']);
@@ -35,7 +35,7 @@ function shouldShowNotification($data) {
             $showNotification = false;
         }
     }
-    
+
     // Check end date if set
     if (!empty($data['endDate'])) {
         $endDate = strtotime($data['endDate']);
@@ -43,7 +43,7 @@ function shouldShowNotification($data) {
             $showNotification = false;
         }
     }
-    
+
     return $showNotification;
 }
 
@@ -134,4 +134,11 @@ Options::addTranslatable('NotificationBar', [
             ]
         ]
     ],
+],
+    [
+    'show_in_graphql' => true,                  // For WPGraphQL
+    'graphql_field_name' => 'notificationBar',  // Name in GraphQL
+    ]
 ]);
+
+

@@ -9,7 +9,7 @@ use Timber\Timber;
 add_filter('Flynt/addComponentData?name=NotificationBar', function (array $data): array {
     // Check if the notification bar should be displayed based on scheduling
     $data['showNotification'] = shouldShowNotification($data);
-    
+
     // Set unique ID for the notification bar (used in localStorage)
     if (!empty($data['notificationContent']) && $data['showNotification']) {
         $data['notificationId'] = 'notification_' . md5($data['notificationContent'] . (isset($data['endDate']) ? $data['endDate'] : ''));
@@ -24,10 +24,10 @@ function shouldShowNotification($data) {
     if (empty($data['isEnabled'])) {
         return false;
     }
-    
+
     $showNotification = true;
     $currentDate = current_time('timestamp');
-    
+
     // Check start date if set
     if (!empty($data['startDate'])) {
         $startDate = strtotime($data['startDate']);
@@ -35,7 +35,7 @@ function shouldShowNotification($data) {
             $showNotification = false;
         }
     }
-    
+
     // Check end date if set
     if (!empty($data['endDate'])) {
         $endDate = strtotime($data['endDate']);
@@ -43,7 +43,7 @@ function shouldShowNotification($data) {
             $showNotification = false;
         }
     }
-    
+
     return $showNotification;
 }
 
@@ -135,3 +135,50 @@ Options::addTranslatable('NotificationBar', [
         ]
     ],
 ]);
+//],
+//    [
+//    'show_in_graphql' => true,                  // For WPGraphQL
+//    'graphql_field_name' => 'notificationBar',  // Name in GraphQL
+//    ]
+//);
+
+
+add_action('graphql_register_types', function() {
+    register_graphql_object_type('NotificationBar', [
+        'description' => __('Notification Bar options', 'flynt'),
+        'fields' => [
+            'isEnabled' => [
+                'type' => 'Boolean',
+                'description' => __('Is notification enabled?', 'flynt'),
+            ],
+            'notificationContent' => [
+                'type' => 'String',
+                'description' => __('Notification content', 'flynt'),
+            ],
+            'startDate' => [
+                'type' => 'String',
+                'description' => __('Start date', 'flynt'),
+            ],
+            'endDate' => [
+                'type' => 'String',
+                'description' => __('End date', 'flynt'),
+            ],
+        ],
+    ]);
+
+    register_graphql_field('RootQuery', 'notificationBar', [
+        'type' => 'NotificationBar',
+        'description' => __('Notification Bar options', 'flynt'),
+        'resolve' => function() {
+            return [
+                'isEnabled' => get_option('options_translatable_NotificationBar_isEnabled'),
+                'notificationContent' => get_option('options_translatable_NotificationBar_notificationContent'),
+                'startDate' => get_option('options_translatable_NotificationBar_startDate'),
+                'endDate' => get_option('options_translatable_NotificationBar_endDate'),
+            ];
+        }
+    ]);
+});
+
+
+//options_translatable_NotificationBar_notificationContent
