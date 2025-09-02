@@ -64,7 +64,7 @@ function getACFLayout()
                 [
                     'fieldPath' => 'variant',
                     'operator' => '==',
-                    'value' => '2',
+                    'value' => '1',
                 ],
             ),
             [
