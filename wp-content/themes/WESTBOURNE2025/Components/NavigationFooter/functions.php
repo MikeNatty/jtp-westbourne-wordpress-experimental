@@ -243,10 +243,6 @@ add_action('graphql_register_types', function() {
     register_graphql_object_type('CTA', [
         'description' => __('Call to Action', 'flynt'),
         'fields' => [
-//            'label' => [
-//                'type' => 'String',
-//                'description' => __('CTA label', 'flynt'),
-//            ],
             'title' => [
                 'type' => 'String',
                 'description' => __('CTA label', 'flynt'),
