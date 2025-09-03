@@ -24,6 +24,7 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     Components\BlockAccordion\getACFLayout(),
                     Components\BlockHero\getACFLayout(),
                     Components\BlockLongCopy\getACFLayout(),
+                    Components\BlockImageCarousel\getACFLayout(),
 
                     // Old list for UAW - to remove
                     Components\BlockCardCarousel\getACFLayout(),
