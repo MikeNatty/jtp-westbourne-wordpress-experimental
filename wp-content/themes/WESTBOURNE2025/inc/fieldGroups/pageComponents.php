@@ -25,6 +25,8 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     Components\BlockHero\getACFLayout(),
                     Components\BlockLongCopy\getACFLayout(),
                     Components\BlockImageCarousel\getACFLayout(),
+                    Components\BlockSectionIntro\getACFLayout(),
+
 
                     // Old list for UAW - to remove
                     Components\BlockCardCarousel\getACFLayout(),
@@ -40,7 +42,6 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     Components\BlockServiceChecker\getACFLayout(),
                     Components\BlockMedia\getACFLayout(),
                     Components\BlockPersonalisationLauncher\getACFLayout(),
-                    Components\BlockSectionIntro\getACFLayout(),
                     Components\BlockSearchResults\getACFLayout(),
                     Components\BlockTable\getACFLayout(),
                     Components\BlockVirtualTour\getACFLayout(),
