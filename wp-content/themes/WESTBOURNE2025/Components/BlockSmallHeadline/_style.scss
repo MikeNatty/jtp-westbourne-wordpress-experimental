@@ -1,0 +1,46 @@
+flynt-component[name="BlockSectionIntro"] {
+	margin-top: var(--space-section-medium);
+			
+	.content-section {
+		display: flex;
+		flex-direction: column;
+		gap: $space-xl;
+		
+		@media (min-width: $breakpoint-tablet) {
+			gap: $space-2xl;
+		}
+		
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: $space-l;
+		}
+	}
+	
+	.lhs {
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			max-width: math.percentage(math.div(648, 1593));
+		}
+	}
+	.rhs {
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			max-width: math.percentage(math.div(918, 1593));
+		}
+	}
+
+	.heading {
+		font-size: $step-5;
+		line-height: 1.15;
+	}
+			
+	.description {
+		font-size: $step-1;
+		max-inline-size: 790px;
+
+		margin-top: var(--space-l);
+		@media (min-width: $breakpoint-tablet-horizontal) {
+			margin-top: var(--space-2xl);
+		}
+	}
+}
