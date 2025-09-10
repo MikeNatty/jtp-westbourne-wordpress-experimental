@@ -13,7 +13,7 @@ function getACFLayout()
 {
     return [
         'name' => 'blockHeading',
-        'label' => __('Horizontal Title + Body', 'flynt'),
+        'label' => __('Full-width Section Intro', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('Content', 'flynt'),
@@ -41,7 +41,7 @@ function getACFLayout()
                     'width' => '50',
                 ],
             ],
-            FieldVariables\getCTA(),
+//            FieldVariables\getCTA(),
             [
                 'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
@@ -49,8 +49,8 @@ function getACFLayout()
                 'placement' => 'top',
                 'endpoint' => 0
             ],
-            FieldVariables\getAnchorOptions(),  
-            FieldVariables\getPersonalisation(),
+            FieldVariables\getAnchorOptions(),
+//            FieldVariables\getPersonalisation(),
         ]
     ];
 }

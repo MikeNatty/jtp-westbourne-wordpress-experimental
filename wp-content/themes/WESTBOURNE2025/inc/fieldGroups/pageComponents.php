@@ -26,6 +26,10 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     Components\BlockLongCopy\getACFLayout(),
                     Components\BlockImageCarousel\getACFLayout(),
                     Components\BlockSectionIntro\getACFLayout(),
+                    Components\BlockSmallHeadline\getACFLayout(),
+                    Components\BlockFullContentLayout\getACFLayout(),
+                    Components\BlockLargeLinkedList\getACFLayout(),
+                    Components\BlockCallout\getACFLayout(),
 
 
                     // Old list for UAW - to remove

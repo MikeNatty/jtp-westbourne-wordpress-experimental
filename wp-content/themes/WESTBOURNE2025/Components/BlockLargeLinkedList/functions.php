@@ -187,8 +187,8 @@ add_filter('Flynt/addComponentData?name=BlockLargeLinkedList', function ($data) 
 function getACFLayout()
 {
     return [
-        'name' => 'BlockCarousel',
-        'label' => 'Card Carousel',
+        'name' => 'blockLargeLinkedList',
+        'label' => 'Large Linked List',
         'sub_fields' => [
             [
                 'label' => __('Content', 'flynt'),
@@ -196,6 +196,16 @@ function getACFLayout()
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
+            ],
+            [
+                'label' => __('Section Heading', 'flynt'),
+                'name' => 'sectionHeading',
+                'type' => 'textarea',
+                'rows' => 1,
+                'new_lines' => 'br',
+                'required' => 0,
+                // TODO remove for prod
+//                'default_value' => 'Small heading',
             ],
             [
                 'label' => __('Heading', 'flynt'),
@@ -222,8 +232,70 @@ function getACFLayout()
 //                ],
                 // // TODO remove for prod
                 // 'default_value' => 'Lorem sed unde omnis',
+                'conditional_logic' => [
+                    [
+                        [
+                            'fieldPath' => 'variant',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
             ],
-//            FieldVariables\getCTA(),
+            [
+                'label' => 'Call to Action Card',
+                'name' => 'ctaCard',
+                'type' => 'group',
+                'sub_fields' => [
+                    [
+                        'label' => __('Enable CTA Card ', 'flynt'),
+                        'name' => 'ctaEnabled',
+                        'type' => 'true_false',
+                        'default_value' => 0,
+                        'allow_in_bindings' => 0,
+                        'ui' => 1,
+                        'ui_on_text' => '', //__('True', 'flynt'),
+                        'ui_off_text' => '', //__('False', 'flynt'),
+                        'wrapper' => [
+                            'width' => '20',
+                        ],
+                    ],
+                    FieldVariables\getCTA(
+                        'cta',
+                        [
+                            'fieldPath' => 'ctaEnabled',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ),
+                ],
+                'conditional_logic' => [
+                    [
+                        [
+                            'fieldPath' => 'variant',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+
+            ],
+
+//                    array_map(function ($field) {
+//                        $field['conditional_logic'] = [
+//                            [
+//                                [
+//                                    'fieldPath' => 'ctaEnabled',
+//                                    'operator' => '==',
+//                                    'value' => 1,
+//                                ],
+//                            ],
+//                        ];
+//                        return $field;
+//                    }, FieldVariables\getCTA()[0]['sub_fields'])
+//                )
+//            ],
+
             [
                 'label' => __('Content Source', 'flynt'),
                 'name' => 'contentSource',
@@ -596,8 +668,8 @@ function getACFLayout()
                 'name' => 'cards',
                 'type' => 'repeater',
                 'min' => 1,
-                'max' => 20,
-                'collapsed' => 'field_pageComponents_pageComponents_blockCardCarousel_cards_title',
+                'max' => 4,
+                'collapsed' => 'field_pageComponents_pageComponents_blockLargeLinkedList_cards_title',
                 'conditional_logic' => [
                     [
                         [
@@ -619,7 +691,7 @@ function getACFLayout()
                         'mime_types' => 'jpg,jpeg,png,svg,webp',
                         'required' => 0,
                         // TODO remove for prod
-                        'default_value' => 91
+//                        'default_value' => 91
                     ],
                     [
                         'label' => __('Title', 'flynt'),
@@ -632,17 +704,17 @@ function getACFLayout()
                         // // TODO remove for prod
                         // 'default_value' => 'Lorem ipsum',
                     ],
-//                    [
-//                        'label' => __('Description', 'flynt'),
-//                        'name' => 'description',
-//                        'type' => 'textarea',
-//                        'rows' => 1,
-//                        'placeholder' => '',
-//                        'new_lines' => 'br',
-//                        'required' => 0,
-//                        // // TODO remove for prod
-//                        // 'default_value' => 'Lorem ipsum',
-//                    ],
+                    [
+                        'label' => __('Text', 'flynt'),
+                        'name' => 'text',
+                        'type' => 'textarea',
+                        'rows' => 2,
+                        'placeholder' => '',
+                        'new_lines' => 'br',
+                        'required' => 0,
+                        // // TODO remove for prod
+                        // 'default_value' => 'Lorem ipsum',
+                    ],
                     [
                         'label' => __('Link', 'flynt'),
                         'name' => 'link',
@@ -666,37 +738,51 @@ function getACFLayout()
             ],
             FieldVariables\getAnchorOptions(),
             [
-                'label' => __('Heading size', 'flynt'),
-                'name' => 'titleSize',
-                'type' => 'button_group',
-                // 'instructions' => 'Size of the title on desktop.',
+                'label' => __('Variant', 'flynt'),
+                'name' => 'variant',
+                'type' => 'radio',
+                'instructions' => 'Variant 1: 4 panels + Optional CTA panel. <br>Variant 2: 3 panels.',
                 'other_choice' => 0,
                 'save_other_choice' => 0,
                 'layout' => 'horizontal',
                 'choices' => [
-                    'small' => __('Small (Step 3)', 'flynt'),
-                    'medium' => __('Medium (Step 6)', 'flynt'),
-                    'large' => __('Large (Step 8)', 'flynt'),
+                    '1' => __('Variant 1', 'flynt'),
+                    '2' => __('Variant 2', 'flynt'),
                 ],
-                'default_value' => 'medium',
+                'default_value' => '1'
             ],
-            [
-                'label' => __('Carousel Columns', 'flynt'),
-                'name' => 'slidesPerView',
-                'type' => 'button_group',
-                'instructions' => 'How many cards appear per view on desktop.',
-                'other_choice' => 0,
-                'save_other_choice' => 0,
-                'layout' => 'horizontal',
-                'choices' => [
-                    '2' => __('2', 'flynt'),
-                    '3' => __('3', 'flynt'),
-                    '4' => __('4', 'flynt'),
-                    // '5' => __('5', 'flynt'),
-                ],
-                'default_value' => '3'
-            ],
-            FieldVariables\getPersonalisation(),
+//            [
+//                'label' => __('Heading size', 'flynt'),
+//                'name' => 'titleSize',
+//                'type' => 'button_group',
+//                // 'instructions' => 'Size of the title on desktop.',
+//                'other_choice' => 0,
+//                'save_other_choice' => 0,
+//                'layout' => 'horizontal',
+//                'choices' => [
+//                    'small' => __('Small (Step 3)', 'flynt'),
+//                    'medium' => __('Medium (Step 6)', 'flynt'),
+//                    'large' => __('Large (Step 8)', 'flynt'),
+//                ],
+//                'default_value' => 'medium',
+//            ],
+//            [
+//                'label' => __('Carousel Columns', 'flynt'),
+//                'name' => 'slidesPerView',
+//                'type' => 'button_group',
+//                'instructions' => 'How many cards appear per view on desktop.',
+//                'other_choice' => 0,
+//                'save_other_choice' => 0,
+//                'layout' => 'horizontal',
+//                'choices' => [
+//                    '2' => __('2', 'flynt'),
+//                    '3' => __('3', 'flynt'),
+//                    '4' => __('4', 'flynt'),
+//                    // '5' => __('5', 'flynt'),
+//                ],
+//                'default_value' => '3'
+//            ],
+//            FieldVariables\getPersonalisation(),
         ],
     ];
 }

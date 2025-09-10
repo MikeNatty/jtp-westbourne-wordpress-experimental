@@ -29,7 +29,7 @@ function getACFLayout()
                 'new_lines' => 'br',
                 'required' => 0,
                 // TODO remove for prod
-                'default_value' => 'Small heading',
+//                'default_value' => 'Small heading',
             ],
             [
                 'label' => __('Heading', 'flynt'),
@@ -50,7 +50,7 @@ function getACFLayout()
                 'required' => 0,
                 // TODO remove for prod
                 'default_value' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            ],  
+            ],
             FieldVariables\getCTA(),
             [
                 'label' => __('Options', 'flynt'),
@@ -59,8 +59,8 @@ function getACFLayout()
                 'placement' => 'top',
                 'endpoint' => 0
             ],
-            FieldVariables\getAnchorOptions(),  
-            FieldVariables\getPersonalisation(),                                                    
+            FieldVariables\getAnchorOptions(),
+            FieldVariables\getPersonalisation(),
         ]
     ];
 }

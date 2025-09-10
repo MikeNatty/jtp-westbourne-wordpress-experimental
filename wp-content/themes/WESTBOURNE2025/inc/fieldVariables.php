@@ -71,30 +71,49 @@ function getCTA($name = 'cta', $conditional = null): array
         'name' => $name,
         'type' => 'group',
         'wrapper' => [
-            'width' => '50',
+            'width' => '100',
         ],
         'sub_fields' => [
+            [
+                'label' => __('CTA Style', 'flynt'),
+                'name' => 'style',
+                'type' => 'button_group',
+                'layout' => 'horizontal',
+                'wrapper' => ['width' => '20'],
+                'choices' => [
+                    'bar' => __('Bar', 'flynt'),
+                    'button' => __('Button', 'flynt'),
+                ],
+                'default_value' => 'bar'
+            ],
             [
                 'label' => __('CTA type', 'flynt'),
                 'name' => 'type',
                 'type' => 'button_group',
                 'layout' => 'horizontal',
+                'wrapper' => [
+                    'width' => '20',
+                ],
                 'choices' => [
                     'none' => __('None', 'flynt'),
                     'link' => __('Link', 'flynt'),
-                    'modal' => __('Modal content', 'flynt'),
-                    'form' => __('Form', 'flynt'),
-                    'download' => __('Download', 'flynt'),
-                    'questionnaire' => __('Questionnaire', 'flynt'),
+//                    'modal' => __('Modal content', 'flynt'),
+//                    'form' => __('Form', 'flynt'),
+//                    'download' => __('Download', 'flynt'),
+//                    'questionnaire' => __('Questionnaire', 'flynt'),
                 ],
                 'default_value' => 'none'
             ],
+
             [
                 'label' => __('Link', 'flynt'),
                 'name' => 'link',
                 'type' => 'link',
                 'return_format' => 'array',
                 'required' => 0,
+                'wrapper' => [
+                    'width' => '60',
+                ],
                 'conditional_logic' => [
                     [
                         [
@@ -105,52 +124,53 @@ function getCTA($name = 'cta', $conditional = null): array
                     ],
                 ],
             ],
-            [
-                'label' => __('Modal Content', 'flynt'),
-                'name' => 'modal',
-                'type' => 'post_object',
-                'post_type' => [
-                    'modal',
-                ],
-                'taxonomy' => '',
-                'allow_null' => 0,
-                'multiple' => 0,
-                // 'return_format' => 'object',
-                'return_format' => 'id',
-                'ui' => 1,
-                'conditional_logic' => [
-                    [
-                        [
-                            'fieldPath' => 'type',
-                            'operator' => '==',
-                            'value' => 'modal',
-                        ],
-                    ],
-                ],
-            ],
-            [
-                'label' => __('Form', 'flynt'),
-                'name' => 'form',
-                'type' => 'select',
-                'layout' => 'horizontal',
-                'choices' => [
-                    'enquiry' => __('Enquiry - "Enquire now"', 'flynt'),
-                    'bookCall' => __('Book a call back - "Book a call"', 'flynt'),
-                    'talkRecruitment' => __('Talk to our recruitment team - "View Openings"', 'flynt'),
-                    'bookTour' => __('Book a tour - "Book a tour"', 'flynt'),
-                    'donation' => __('Make a donation - "Make a donation"', 'flynt'),
-                ],
-                'default_value' => 'enquiry',
-                'conditional_logic' => [
-                    [
-                        [
-                            'fieldPath' => 'type',
-                            'operator' => '==',
-                            'value' => 'form',
-                        ],
-                    ],
-                ],
-            ],
+
+//            [
+//                'label' => __('Modal Content', 'flynt'),
+//                'name' => 'modal',
+//                'type' => 'post_object',
+//                'post_type' => [
+//                    'modal',
+//                ],
+//                'taxonomy' => '',
+//                'allow_null' => 0,
+//                'multiple' => 0,
+//                // 'return_format' => 'object',
+//                'return_format' => 'id',
+//                'ui' => 1,
+//                'conditional_logic' => [
+//                    [
+//                        [
+//                            'fieldPath' => 'type',
+//                            'operator' => '==',
+//                            'value' => 'modal',
+//                        ],
+//                    ],
+//                ],
+//            ],
+//            [
+//                'label' => __('Form', 'flynt'),
+//                'name' => 'form',
+//                'type' => 'select',
+//                'layout' => 'horizontal',
+//                'choices' => [
+//                    'enquiry' => __('Enquiry - "Enquire now"', 'flynt'),
+//                    'bookCall' => __('Book a call back - "Book a call"', 'flynt'),
+//                    'talkRecruitment' => __('Talk to our recruitment team - "View Openings"', 'flynt'),
+//                    'bookTour' => __('Book a tour - "Book a tour"', 'flynt'),
+//                    'donation' => __('Make a donation - "Make a donation"', 'flynt'),
+//                ],
+//                'default_value' => 'enquiry',
+//                'conditional_logic' => [
+//                    [
+//                        [
+//                            'fieldPath' => 'type',
+//                            'operator' => '==',
+//                            'value' => 'form',
+//                        ],
+//                    ],
+//                ],
+//            ],
             // Mike - Video option
 //            [
 //                'label' => __('Video Type', 'flynt'),
@@ -172,22 +192,22 @@ function getCTA($name = 'cta', $conditional = null): array
 //                ],
 //                'default_value' => 'videoPlayer'
 //            ],
-            [
-                'label' => __('Downloadable File', 'flynt'),
-                'name' => 'file',
-                'type' => 'file',
-                'return_format' => 'array',
-                'required' => 0,
-                'conditional_logic' => [
-                    [
-                        [
-                            'fieldPath' => 'type',
-                            'operator' => '==',
-                            'value' => 'download'
-                        ],
-                    ],
-                ],
-            ],
+//            [
+//                'label' => __('Downloadable File', 'flynt'),
+//                'name' => 'file',
+//                'type' => 'file',
+//                'return_format' => 'array',
+//                'required' => 0,
+//                'conditional_logic' => [
+//                    [
+//                        [
+//                            'fieldPath' => 'type',
+//                            'operator' => '==',
+//                            'value' => 'download'
+//                        ],
+//                    ],
+//                ],
+//            ],
             [
                 'label' => __('Button text', 'flynt'),
                 'name' => 'buttonText',
