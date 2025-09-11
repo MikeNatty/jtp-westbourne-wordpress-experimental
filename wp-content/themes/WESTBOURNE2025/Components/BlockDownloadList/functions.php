@@ -69,6 +69,36 @@ function getACFLayout()
                     ],
             ),
             [
+                'label' => __('Files', 'flynt'),
+                'name' => 'files',
+                'type' => 'repeater',
+                'min' => 1,
+                'max' => 20,
+                'collapsed' => 'field_pageComponents_pageComponents_blockDownloadList_files_title',
+                'layout' => 'row',
+                'button_label' => __('Add File', 'flynt'),
+                'sub_fields' => [
+                    [
+                        'label' => __('File', 'flynt'),
+                        'instructions' => __('Allowed formats: PDF, DOCX, ZIP, etc.', 'flynt'),
+                        'name' => 'file',
+                        'type' => 'file',
+                        'required' => 0,
+                        'mime_types' => 'pdf,doc,docx,zip'
+                    ],
+                    [
+                        'label' => __('Label', 'flynt'),
+                        'name' => 'label',
+                        'type' => 'textarea',
+                        'rows' => 1,
+                        'placeholder' => '',
+                        'new_lines' => 'br',
+                        'required' => 0,
+                     ],
+
+                ]
+            ],
+            [
                 'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
