@@ -30,6 +30,7 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     Components\BlockFullContentLayout\getACFLayout(),
                     Components\BlockLargeLinkedList\getACFLayout(),
                     Components\BlockCallout\getACFLayout(),
+                    Components\BlockDownloadList\getACFLayout(),
 
 
                     // Old list for UAW - to remove

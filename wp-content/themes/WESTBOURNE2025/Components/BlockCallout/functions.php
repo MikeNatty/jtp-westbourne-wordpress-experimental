@@ -85,6 +85,24 @@ function getACFLayout()
 
             ],
             [
+                'label' => __('Heading', 'flynt'),
+                'name' => 'heading',
+                'type' => 'textarea',
+                'rows' => 1,
+                'new_lines' => 'br',
+                'required' => 0,
+                'conditional_logic' => [
+                    [
+                        [
+                            'fieldPath' => 'variant',
+                            'operator' => '==',
+                            'value' => '2',
+                        ],
+                    ],
+                ]
+
+            ],
+            [
                 'label' => __('Description', 'flynt'),
                 'name' => 'description',
                 'type' => 'textarea',
@@ -104,7 +122,7 @@ function getACFLayout()
             // TODO :: group for single quote
             [
                 'label' => 'Quote',
-                'name' => 'quoteGroup',
+                'name' => 'singleQuote',
                 'type' => 'group',
                 'sub_fields' => getQuoteFields(),
                 'conditional_logic' => [

@@ -59,6 +59,9 @@ add_action('init', function (): void {
         'exclude_from_search'   => false,
         'publicly_queryable'    => true,
         'capability_type'       => 'page',
+        'show_in_graphql'      => true,
+        'graphql_single_name'  => 'Publication',
+        'graphql_plural_name'  => 'Publications',
         'rewrite'               => array( 'slug' => 'publications', 'with_front' => false ),
     ];
 
