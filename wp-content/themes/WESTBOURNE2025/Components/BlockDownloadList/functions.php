@@ -59,6 +59,15 @@ function getACFLayout()
                 'wrapper' => [
                     'width' => '50',
                 ],
+                'conditional_logic' => [
+                    [
+                        [
+                            'fieldPath' => 'variant',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ]
             ],
             FieldVariables\getCTA(
                 'cta',
@@ -68,6 +77,23 @@ function getACFLayout()
                         'value' => '2'
                     ],
             ),
+            [
+                'label' => __('CTA Text', 'flynt'),
+                'name' => 'ctaText',
+                'type' => 'textarea',
+                'rows' => 3,
+                'new_lines' => 'br',
+                'required' => 0,
+                'conditional_logic' => [
+                    [
+                        [
+                            'fieldPath' => 'variant',
+                            'operator' => '==',
+                            'value' => '2',
+                        ],
+                    ],
+                ]
+            ],
             [
                 'label' => __('Files', 'flynt'),
                 'name' => 'files',
