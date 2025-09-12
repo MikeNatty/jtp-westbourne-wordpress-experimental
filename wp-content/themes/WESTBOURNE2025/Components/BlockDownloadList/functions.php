@@ -78,8 +78,8 @@ function getACFLayout()
                     ],
             ),
             [
-                'label' => __('CTA Text', 'flynt'),
-                'name' => 'ctaText',
+                'label' => __('CTA Prompt', 'flynt'),
+                'name' => 'ctaPrompt',
                 'type' => 'textarea',
                 'rows' => 3,
                 'new_lines' => 'br',
