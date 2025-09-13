@@ -99,7 +99,7 @@ function getCTA($name = 'cta', $conditional = null): array
                     'link' => __('Link', 'flynt'),
 //                    'modal' => __('Modal content', 'flynt'),
 //                    'form' => __('Form', 'flynt'),
-//                    'download' => __('Download', 'flynt'),
+                    'download' => __('Download', 'flynt'),
 //                    'questionnaire' => __('Questionnaire', 'flynt'),
                 ],
                 'default_value' => 'none'
@@ -192,43 +192,43 @@ function getCTA($name = 'cta', $conditional = null): array
 //                ],
 //                'default_value' => 'videoPlayer'
 //            ],
-//            [
-//                'label' => __('Downloadable File', 'flynt'),
-//                'name' => 'file',
-//                'type' => 'file',
-//                'return_format' => 'array',
-//                'required' => 0,
-//                'conditional_logic' => [
-//                    [
-//                        [
-//                            'fieldPath' => 'type',
-//                            'operator' => '==',
-//                            'value' => 'download'
-//                        ],
-//                    ],
-//                ],
-//            ],
             [
-                'label' => __('Button text', 'flynt'),
-                'name' => 'buttonText',
-                'instructions' => 'Optional override for button text.',
-                'type' => 'text',
+                'label' => __('Downloadable File', 'flynt'),
+                'name' => 'file',
+                'type' => 'file',
+                'return_format' => 'array',
                 'required' => 0,
                 'conditional_logic' => [
                     [
                         [
                             'fieldPath' => 'type',
                             'operator' => '==',
-                            'value' => 'modal',
+                            'value' => 'download'
                         ],
                     ],
-                    [
-                        [
-                            'fieldPath' => 'type',
-                            'operator' => '==',
-                            'value' => 'form',
-                        ],
-                    ],
+                ],
+            ],
+            [
+                'label' => __('Button text', 'flynt'),
+                'name' => 'buttonText',
+//                'instructions' => 'CTA button text',
+                'type' => 'text',
+                'required' => 0,
+                'conditional_logic' => [
+//                    [
+//                        [
+//                            'fieldPath' => 'type',
+//                            'operator' => '==',
+//                            'value' => 'modal',
+//                        ],
+//                    ],
+//                    [
+//                        [
+//                            'fieldPath' => 'type',
+//                            'operator' => '==',
+//                            'value' => 'form',
+//                        ],
+//                    ],
                     [
                         [
                             'fieldPath' => 'type',
@@ -236,13 +236,13 @@ function getCTA($name = 'cta', $conditional = null): array
                             'value' => 'download',
                         ],
                     ],
-                    [
-                        [
-                            'fieldPath' => 'type',
-                            'operator' => '==',
-                            'value' => 'questionnaire',
-                        ],
-                    ],
+//                    [
+//                        [
+//                            'fieldPath' => 'type',
+//                            'operator' => '==',
+//                            'value' => 'questionnaire',
+//                        ],
+//                    ],
                 ],
             ],
 
