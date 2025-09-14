@@ -50,7 +50,66 @@ function getACFLayout()
                 'required' => 0,
                 // // TODO remove for prod
                 // 'default_value' => 91
+                'wrapper' => [
+                    'width' => '50',
+                ],
             ],
+            [
+                'label' => 'Image OverlayText',
+                'name' => 'imageText',
+                'type' => 'group',
+                'wrapper' => [
+                    'width' => '50',
+                ],
+               'allow_in_bindings' => 0,
+                'sub_fields' => [
+                    [
+                        'label' => __('Image Heading', 'flynt'),
+                        'name' => 'imageHeading',
+                        'type' => 'textarea',
+                        'rows' => 1,
+                        'new_lines' => 'br',
+                        'required' => 0,
+                        'conditional_logic' => [
+                            [
+                                [
+                                    'fieldPath' => 'variant',
+                                    'operator' => '==',
+                                    'value' => '2',
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'label' => __('Image Subheading', 'flynt'),
+                        'name' => 'imageSubheading',
+                        'type' => 'textarea',
+                        'rows' => 2,
+                        'new_lines' => 'br',
+                        'required' => 0,
+                        'conditional_logic' => [
+                            [
+                                [
+                                    'fieldPath' => 'variant',
+                                    'operator' => '==',
+                                    'value' => '2',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                'conditional_logic' => [
+                    [
+                        [
+                            'fieldPath' => 'variant',
+                            'operator' => '==',
+                            'value' => '2',
+                        ],
+                    ],
+                ],
+
+            ],
+
             FieldVariables\getCTA(),
             [
                 'label' => __('Options', 'flynt'),
@@ -60,6 +119,20 @@ function getACFLayout()
                 'endpoint' => 0
             ],
             FieldVariables\getAnchorOptions(),
+            [
+                'label' => __('Variant', 'flynt'),
+                'name' => 'variant',
+                'type' => 'button_group',
+                'instructions' => 'Variant 1: CTA Image banner<br>Variant 2: CTA Split layout.',
+                'other_choice' => 0,
+                'save_other_choice' => 0,
+                'layout' => 'horizontal',
+                'choices' => [
+                    '1' => __('Variant 1', 'flynt'),
+                    '2' => __('Variant 2', 'flynt'),
+                ],
+                'default_value' => '1'
+            ],
         ]
     ];
 }

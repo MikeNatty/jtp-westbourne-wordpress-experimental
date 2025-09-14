@@ -248,7 +248,7 @@ function getACFLayout()
                 'type' => 'group',
                 'sub_fields' => [
                     [
-                        'label' => __('Enable CTA Card ', 'flynt'),
+                        'label' => __('Show CTA Card ', 'flynt'),
                         'name' => 'ctaEnabled',
                         'type' => 'true_false',
                         'default_value' => 0,
@@ -268,6 +268,28 @@ function getACFLayout()
                             'value' => '1',
                         ],
                     ),
+                    [
+                        'label' => __('CTA Prompt', 'flynt'),
+                        'name' => 'ctaPrompt',
+                        'type' => 'textarea',
+                        'rows' => 2,
+                        'new_lines' => 'br',
+                        'required' => 0,
+                          'wrapper' => [
+                            'width' => '50',
+                          ],
+                        // // TODO remove for prod
+                         'default_value' => 'Have questions? We’ve gathered answers to the most common queries to help you find the information you need quickly and easily.',
+                        'conditional_logic' => [
+                            [
+                                [
+                                    'fieldPath' => 'ctaEnabled',
+                                    'operator' => '==',
+                                    'value' => '1',
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 'conditional_logic' => [
                     [
@@ -665,11 +687,11 @@ function getACFLayout()
 //            ],
             [
                 'label' => __('Cards', 'flynt'),
-                'name' => 'cards',
+                'name' => 'ctaCards',
                 'type' => 'repeater',
                 'min' => 1,
                 'max' => 4,
-                'collapsed' => 'field_pageComponents_pageComponents_blockLargeLinkedList_cards_title',
+                'collapsed' => 'field_pageComponents_pageComponents_blockLargeLinkedList_ctaCards_title',
                 'conditional_logic' => [
                     [
                         [

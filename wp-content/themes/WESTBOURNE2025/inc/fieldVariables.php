@@ -64,6 +64,68 @@ function getPersonalisation(): array
     ];
 }
 
+function getCardFields($name = 'card', $label = 'Card', $imageConditional = null ) : array {
+
+    $imageField = [
+        'label' => __('Image', 'flynt'),
+        'instructions' => __('Image-Format: JPG, PNG, WebP. <br>Recommended size: 240px x 240px', 'flynt'),
+        'name' => 'image',
+        'type' => 'image',
+        'preview_size' => 'medium',
+        'mime_types' => 'jpg,jpeg,png,svg,webp',
+        'required' => 0,
+        'show_in_graphql' => 1
+    ];
+
+    if ($imageConditional) {
+        $imageField['conditional_logic'] = [ $imageConditional ];
+    }
+
+    $fields = [
+        'label' => __($label, 'flynt'),
+        'name' => $name,
+        'type' => 'group',
+        'sub_fields' => [
+            [
+                'label' => __('Title', 'flynt'),
+                'name' => 'title',
+                'type' => 'textarea',
+                'rows' => 1,
+                'placeholder' => '',
+                'new_lines' => 'br',
+                'required' => 0,
+                'show_in_graphql' => 1
+                // // TODO remove for prod
+                // 'default_value' => 'Lorem ipsum',
+            ],
+            [
+                'label' => __('Text', 'flynt'),
+                'name' => 'text',
+                'type' => 'textarea',
+                'rows' => 2,
+                'placeholder' => '',
+                'new_lines' => 'br',
+                'required' => 0,
+                'show_in_graphql' => 1
+                // // TODO remove for prod
+                // 'default_value' => 'Lorem ipsum',
+            ],
+            [
+                'label' => __('Link', 'flynt'),
+                'name' => 'link',
+                'type' => 'link',
+                'return_format' => 'array',
+                'show_in_graphql' => 1
+            ],
+            $imageField,
+        ]
+    ];
+
+    return [
+        $fields
+    ];
+}
+
 function getCTA($name = 'cta', $conditional = null): array
 {
     $fields = [

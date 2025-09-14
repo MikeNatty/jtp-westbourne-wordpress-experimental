@@ -33,6 +33,7 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     Components\BlockDownloadList\getACFLayout(),
                     Components\BlockPromoBanner\getACFLayout(),
                     Components\BlockCTABanner\getACFLayout(),
+                    Components\BlockTwoCards\getACFLayout(),
 
 
                     // Old list for UAW - to remove
