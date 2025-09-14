@@ -257,19 +257,11 @@ function getACFLayout()
                         'ui_on_text' => '', //__('True', 'flynt'),
                         'ui_off_text' => '', //__('False', 'flynt'),
                         'wrapper' => [
-                            'width' => '20',
+                            'width' => '40',
                         ],
                     ],
-                    FieldVariables\getCTA(
-                        'cta',
-                        [
-                            'fieldPath' => 'ctaEnabled',
-                            'operator' => '==',
-                            'value' => '1',
-                        ],
-                    ),
                     [
-                        'label' => __('CTA Prompt', 'flynt'),
+                        'label' => __('CTA Card Prompt', 'flynt'),
                         'name' => 'ctaPrompt',
                         'type' => 'textarea',
                         'rows' => 2,
@@ -290,6 +282,15 @@ function getACFLayout()
                             ],
                         ],
                     ],
+                    FieldVariables\getCTA(
+                        'cta',
+                        [
+                            'fieldPath' => 'ctaEnabled',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ),
+
                 ],
                 'conditional_logic' => [
                     [
@@ -318,6 +319,41 @@ function getACFLayout()
 //                )
 //            ],
 
+
+//             [
+//                'label' => __('Card Style', 'flynt'),
+//                'name' => 'cardStyle',
+//                'type' => 'button_group',
+//                // 'instructions' => 'Variant 1: Large single image and bottom aligned content. <br>Variant 2: Additional small image and top aligned content.',
+//                'other_choice' => 0,
+//                'save_other_choice' => 0,
+//                'layout' => 'horizontal',
+//                'wrapper' => [
+//                    'width' => '40',
+//                ],
+//                'choices' => [
+//                    'cta' => __('Text with CTA', 'flynt'),
+//                    'textimage' => __('Text and Image', 'flynt'),
+//                ],
+//                'default_value' => 'cta'
+//            ],
+            [
+                'label' => __('Device display', 'flynt'),
+                'name' => 'deviceStyle',
+                'type' => 'button_group',
+                // 'instructions' => 'Variant 1: Large single image and bottom aligned content. <br>Variant 2: Additional small image and top aligned content.',
+                'other_choice' => 0,
+                'save_other_choice' => 0,
+                'layout' => 'horizontal',
+                'wrapper' => [
+                    'width' => '40',
+                ],
+                'choices' => [
+                    'carousel' => __('Carousel', 'flynt'),
+                    'stacked' => __('Stacked', 'flynt'),
+                ],
+                'default_value' => 'carousel'
+            ],
             [
                 'label' => __('Content Source', 'flynt'),
                 'name' => 'contentSource',
@@ -327,7 +363,7 @@ function getACFLayout()
                 'save_other_choice' => 0,
                 'layout' => 'horizontal',
                 'wrapper' => [
-                    'width' => '30',
+                    'width' => '50',
                 ],
                 'choices' => [
                     'custom' => __('Custom', 'flynt'),
@@ -689,8 +725,8 @@ function getACFLayout()
                 'label' => __('Cards', 'flynt'),
                 'name' => 'ctaCards',
                 'type' => 'repeater',
-                'min' => 1,
-                'max' => 4,
+                'min' => 3,
+                'max' => 5,
                 'collapsed' => 'field_pageComponents_pageComponents_blockLargeLinkedList_ctaCards_title',
                 'conditional_logic' => [
                     [
@@ -763,14 +799,15 @@ function getACFLayout()
                 'label' => __('Variant', 'flynt'),
                 'name' => 'variant',
                 'type' => 'radio',
-                'instructions' => 'Variant 1: 4 panels + Optional CTA panel. <br>Variant 2: 3 panels.',
+                'instructions' => 'Variant 1: Large heading, 4 TEXT cards. <br>Variant 2: Small heading, 3-5 TEXT cards.<br>Variant 3: Small heading, 3 or 5 IMAGE cards.',
                 'other_choice' => 0,
                 'save_other_choice' => 0,
                 'layout' => 'horizontal',
                 'choices' => [
                     '1' => __('Variant 1', 'flynt'),
                     '2' => __('Variant 2', 'flynt'),
-                ],
+                    '3' => __('Variant 3', 'flynt'),
+                 ],
                 'default_value' => '1'
             ],
 //            [

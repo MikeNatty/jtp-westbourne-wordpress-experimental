@@ -141,7 +141,7 @@ function getCTA($name = 'cta', $conditional = null): array
                 'name' => 'style',
                 'type' => 'button_group',
                 'layout' => 'horizontal',
-                'wrapper' => ['width' => '20'],
+                'wrapper' => ['width' => '30'],
                 'choices' => [
                     'bar' => __('Bar', 'flynt'),
                     'button' => __('Button', 'flynt'),
@@ -154,7 +154,7 @@ function getCTA($name = 'cta', $conditional = null): array
                 'type' => 'button_group',
                 'layout' => 'horizontal',
                 'wrapper' => [
-                    'width' => '20',
+                    'width' => '50',
                 ],
                 'choices' => [
                     'none' => __('None', 'flynt'),
@@ -173,9 +173,9 @@ function getCTA($name = 'cta', $conditional = null): array
                 'type' => 'link',
                 'return_format' => 'array',
                 'required' => 0,
-                'wrapper' => [
-                    'width' => '60',
-                ],
+//                'wrapper' => [
+//                    'width' => '60',
+//                ],
                 'conditional_logic' => [
                     [
                         [
