@@ -92,7 +92,13 @@ function getACFLayout()
                     ]
                 ]
             ],
-
+            [
+                'label' => __('Options', 'flynt'),
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
             FieldVariables\getAnchorOptions(),
 
         ]

@@ -38,6 +38,7 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     Components\BlockList\getACFLayout(),
                     Components\BlockContactEmailList\getACFLayout(),
                     Components\BlockLogoList\getACFLayout(),
+                    Components\BlockThumbnailList\getACFLayout(),
 
 
                     // Old list for UAW - to remove
