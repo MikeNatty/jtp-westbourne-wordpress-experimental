@@ -39,6 +39,7 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     Components\BlockContactEmailList\getACFLayout(),
                     Components\BlockLogoList\getACFLayout(),
                     Components\BlockThumbnailList\getACFLayout(),
+                    Components\BlockTable\getACFLayout(),
 
 
                     // Old list for UAW - to remove
@@ -56,7 +57,6 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     Components\BlockMedia\getACFLayout(),
                     Components\BlockPersonalisationLauncher\getACFLayout(),
                     Components\BlockSearchResults\getACFLayout(),
-                    Components\BlockTable\getACFLayout(),
                     Components\BlockVirtualTour\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\BlockQuote\getACFLayout(),

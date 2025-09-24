@@ -6,7 +6,8 @@ import FullReload from 'vite-plugin-full-reload';
 import fs from 'fs';
 import react from '@vitejs/plugin-react';
 
-const wordpressHost = 'http://localhost:3000';
+// const wordpressHost = 'http://localhost:3000';
+const wordpressHost = '';
 
 const dest = './dist';
 
