@@ -64,7 +64,7 @@ function getPersonalisation(): array
     ];
 }
 
-function getCardFields($name = 'card', $label = 'Card', $imageConditional = null ) : array {
+function getCardFields($name = 'card', $label = 'Card',  $imageConditional = null ) : array {
 
     $imageField = [
         'label' => __('Image', 'flynt'),

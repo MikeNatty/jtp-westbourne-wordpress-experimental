@@ -59,7 +59,7 @@ function getACFLayout()
                     ...FieldVariables\getCardFields('card1', 'Card 1',
                     [
                         [
-                            'fieldPath' => 'variant',
+                            'field' => 'field_pageComponents_pageComponents_blockTwoCards_variant', // Need to use the actual field key
                             'operator' => '==',
                             'value' => '2',
                         ],
@@ -67,7 +67,7 @@ function getACFLayout()
                     ...FieldVariables\getCardFields('card2', 'Card 2',
                     [
                         [
-                            'fieldPath' => 'variant',
+                            'field' => 'field_pageComponents_pageComponents_blockTwoCards_variant', // Need to use the actual field key
                             'operator' => '==',
                             'value' => '2',
                         ],

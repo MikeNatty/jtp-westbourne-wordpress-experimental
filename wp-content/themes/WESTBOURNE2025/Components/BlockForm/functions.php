@@ -18,8 +18,8 @@ function getACFLayout(): array
                 'endpoint' => 0,
             ],
             [
-                'label' => __('Formidable Forms shortcode', 'flynt'),
-                'name' => 'formShortcode',
+                'label' => __('GravityForm ID', 'flynt'),
+                'name' => 'gravityFormId',
                 'type' => 'text',
                 'delay' => 0,
                 'required' => 1,
@@ -30,9 +30,9 @@ function getACFLayout(): array
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
-            ],     
-            FieldVariables\getAnchorOptions(),    
-            FieldVariables\getPersonalisation(),     
+            ],
+            FieldVariables\getAnchorOptions(),
+            FieldVariables\getPersonalisation(),
         ]
     ];
 }

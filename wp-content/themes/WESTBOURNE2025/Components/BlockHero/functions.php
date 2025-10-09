@@ -41,18 +41,6 @@ function getACFLayout()
                 // // TODO remove for prod
                 // 'default_value' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             ],
-
-//            // primary
-//            FieldVariables\getCTA(),
-//            // secondary
-//            FieldVariables\getCTA(
-//                'cta2',
-//                [
-//                    'fieldPath' => 'variant',
-//                    'operator' => '==',
-//                    'value' => '1'
-//                ],
-//            ),
             [
                 'label' => __('Image Main', 'flynt'),
                 'instructions' => __('Image-Format: JPG, PNG, WebP. <br>Min size: 1104px for RHS image. 2880px for bg image.', 'flynt'),
@@ -64,26 +52,6 @@ function getACFLayout()
                 // // TODO remove for prod
                 // 'default_value' => 91
             ],
-//            [
-//                'label' => __('Image', 'flynt'),
-//                'instructions' => __('Image-Format: JPG, PNG, WebP. <br>Min size: 1104px for RHS image. 2880px for bg image.', 'flynt'),
-//                'name' => 'image2',
-//                'type' => 'image',
-//                'preview_size' => 'medium',
-//                'mime_types' => 'jpg,jpeg,png,svg,webp',
-//                'conditional_logic' => [
-//                    [
-//                        [
-//                            'fieldPath' => 'variant',
-//                            'operator' => '==',
-//                            'value' => '2',
-//                        ],
-//                    ],
-//                ],
-//                'required' => 0,
-//                // // TODO remove for prod
-//                // 'default_value' => 91
-//            ],
             [
                 'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
@@ -116,29 +84,7 @@ function getACFLayout()
                 ],
                 'default_value' => '1'
             ],
-            [
-                'label' => __('Title size', 'flynt'),
-                'name' => 'titleSize',
-                'type' => 'radio',
-                'instructions' => 'Size of the title on desktop. <br> Use the smaller size for longer titles.',
-                'other_choice' => 0,
-                'save_other_choice' => 0,
-                'layout' => 'horizontal',
-                'choices' => [
-                    'medium' => __('Medium (Step 7)', 'flynt'),
-                    'large' => __('Large (Step 8)', 'flynt'),
-                ],
-                'default_value' => 'large',
-                // 'conditional_logic' => [
-                //     [
-                //         [
-                //             'fieldPath' => 'variant',
-                //             'operator' => '==',
-                //             'value' => '1',
-                //         ],
-                //     ],
-                // ],
-            ],
+
             FieldVariables\getPersonalisation(),
         ]
     ];
